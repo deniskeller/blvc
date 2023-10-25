@@ -1,13 +1,13 @@
 .BaseInput {
-  font-size: inherit;
   position: relative;
   display: flex;
   flex-direction: column;
 
   //DEFAULT THEME
   .Input {
+    $size: 14px;
     width: 100%;
-    height: em(48px);
+    height: em(48px, $size);
     background: none;
     outline: none;
     border: none;
@@ -17,11 +17,11 @@
     border-bottom: 1px solid rgba(26, 26, 26, 0.6);
     transition: all 0.3s ease;
     @include placeholder-color(transparent);
-    padding: em(23px) em(16px) em(10px) em(10px);
+    padding: em(23px, $size) em(16px, $size) em(10px, $size) em(10px, $size);
 
     text-overflow: ellipsis;
     font-family: 'Mulish', sans-serif;
-    font-size: em(14px);
+    font-size: em($size);
     font-style: normal;
     font-weight: 400;
     line-height: 100%;

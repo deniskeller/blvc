@@ -30,6 +30,7 @@
     .Form {
       display: flex;
       flex-direction: column;
+      margin-bottom: em(48px);
 
       &_Title {
         margin-bottom: em(55px);
@@ -52,7 +53,7 @@
           position: relative;
           &_Input {
             input {
-              padding-right: em(140px);
+              padding-right: em(130px, 14px);
             }
           }
           .Link {
@@ -62,7 +63,7 @@
             transform: translate(0, -50%);
             &:hover {
               span {
-                color: #b80000;
+                color: $red2;
               }
             }
             span {
@@ -76,6 +77,66 @@
           }
         }
       }
+
+      &_Button {
+        width: 100%;
+        height: em(57px);
+        background: rgba(145, 17, 14, 0.5);
+        &:hover {
+          background: #ab0300;
+        }
+        &:active {
+          opacity: 0.8;
+          background: #ab0300;
+        }
+      }
+    }
+
+    .Back {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0 auto;
+      width: max-content;
+      &:hover {
+        svg {
+          transform: translate(-3px, 0);
+          path {
+            fill: $red2;
+            stroke: $red2;
+          }
+        }
+        span {
+          color: $red2;
+        }
+      }
+      svg {
+        margin-right: em(18px);
+        transition: transform $speed ease;
+      }
+      span {
+        color: $white;
+        font-size: em(16px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.64px;
+        text-transform: uppercase;
+        transition: color $speed ease;
+      }
+    }
+  }
+
+  .Copyright {
+    position: absolute;
+    left: em(70px);
+    bottom: em(27px);
+    p {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: em(12px);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 133.333%;
     }
   }
 }

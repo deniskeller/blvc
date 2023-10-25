@@ -1,56 +1,33 @@
-import { ALL_ICONS } from '@constants/icons';
-import React, { MutableRefObject } from 'react';
-import { BaseIcon } from '..';
+import React, { MutableRefObject, ReactNode } from 'react';
 import s from './BaseButtonApp.module.scss';
 
 interface Props {
-	title?: string;
-	ref?: MutableRefObject<null>;
-	type?: string;
-	size?: string;
-	disabled?: boolean;
-	withIcon?: boolean;
-	className?: string;
-	style?: object;
-	onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+  children: string | ReactNode | ReactNode[];
+  type?: string;
+  ref?: MutableRefObject<null>;
+  disabled?: boolean;
+  className?: string;
+  onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const BaseButtonApp: React.FC<Props> = ({
-	title = '',
-	type = '',
-	size = '',
-	disabled = false,
-	withIcon = false,
-	className = '',
-	style,
-	ref,
-	onClick,
+  children,
+  disabled = false,
+  type = 'primary',
+  className = '',
+  ref,
+  onClick,
 }) => {
-	return (
-		<button
-			onClick={onClick}
-			disabled={disabled}
-			className={`${className} ${s.Button} ${s['Button_' + type]} ${
-				s['Button_' + size]
-			}`}
-			style={style}
-			ref={ref}
-		>
-			{withIcon ? (
-				<BaseIcon
-					viewBox='0 0 21 20'
-					icon={ALL_ICONS.PLUS}
-					className={s.IconPlus}
-				/>
-			) : null}
-
-			{title == 'bin' ? (
-				<BaseIcon viewBox='0 0 24 24' icon={ALL_ICONS.BIN} className={s.Icon} />
-			) : (
-				<span className={s.Title}>{title}</span>
-			)}
-		</button>
-	);
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`${className} ${s.Button} ${s['Button_' + type]}`}
+      ref={ref}
+    >
+      {children}
+    </button>
+  );
 };
 
 export default BaseButtonApp;

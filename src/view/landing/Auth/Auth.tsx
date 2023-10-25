@@ -22,6 +22,11 @@ const Auth: React.FC = () => {
     setValue((prev) => ({ ...prev, [key]: val }));
   };
 
+  const submitFormHandler = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    alert('kek');
+  };
+
   useEffect(() => {
     console.log('value: ', value);
   }, [value]);
@@ -39,6 +44,7 @@ const Auth: React.FC = () => {
 
       <div className={s.Auth_Content}>
         <div className={s.Decor}></div>
+
         <form className={s.Form}>
           <div className={s.Form_Title}>
             <h1>Log in</h1>
@@ -73,45 +79,39 @@ const Auth: React.FC = () => {
             </li>
           </ul>
 
-          {/* <Link
-            href="/forgot-password"
-            className={`${s.Form_ForgotPassword} ${s.Form_Link}`}
-          >
-            Забыли пароль?
-          </Link>
-
           <BaseButtonApp
-            title="Войти"
+            // title="Log in"
             className={s.Form_Button}
             onClick={submitFormHandler}
-          />
-
-          <div className={s.Form_Register}>
-            <span>Ещё не зарегистрированы?</span>&nbsp;
-            <Link href="/register" className={s.Form_Link}>
-              Стать партнёром
-            </Link>
-          </div> */}
+          >
+            Log in
+          </BaseButtonApp>
         </form>
 
-        {/* <Link href="/" className={s.BtnBack}>
+        <Link href="/" className={s.Back}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 64 16"
+            width="65"
+            height="17"
+            viewBox="0 0 65 17"
             fill="none"
           >
             <path
               fillRule="evenodd"
               clipRule="evenodd"
-              d="M63.2227 8.5H-15.6758V7.5H63.2227V8.5Z"
+              d="M1 9H79.8984V8H1V9Z"
               fill="white"
             />
-            <path d="M55.9688 13.9219L63.9697 7.91646" stroke="white" />
-            <path d="M63.9688 8L55.9687 2" stroke="white" />
+            <path d="M8.53125 14.4219L0.530285 8.41646" stroke="white" />
+            <path d="M0.53125 8.5L8.53125 2.5" stroke="white" />
           </svg>
 
           <span>to website</span>
-        </Link> */}
+        </Link>
+      </div>
+
+      <div className={s.Copyright}>
+        <p>All rights reserved © 2023 © BLVC</p>
       </div>
     </section>
   );
