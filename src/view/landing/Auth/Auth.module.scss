@@ -7,6 +7,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  padding: em(124px) 0;
 
   @include iftablet {
     background-position: left;
