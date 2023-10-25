@@ -1,4 +1,4 @@
-import { BaseSelectApp2 } from '@base/index';
+import { BaseSelectApp } from '@base/index';
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import s from './Pagination.module.scss';
@@ -83,7 +83,7 @@ const Pagination: React.FC<Props> = ({ className = '' }) => {
           <span>Показывать по</span>
         </div>
 
-        <BaseSelectApp2
+        {/* <BaseSelectApp
           defaultValue={value}
           options={[
             { value: '5', label: '5' },
@@ -93,7 +93,7 @@ const Pagination: React.FC<Props> = ({ className = '' }) => {
           ]}
           onChange={(val: string) => setValue(val)}
           className={s.Pagination_Select_Value}
-        />
+        /> */}
       </div>
     </div>
   );
