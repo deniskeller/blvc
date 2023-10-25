@@ -1,0 +1,52 @@
+.Title {
+	margin-bottom: em(30px);
+}
+
+.Form {
+	ul {
+		list-style: none;
+		margin-bottom: em(32px);
+		li:nth-child(3) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 0 em(12px);
+			@include ifmobile {
+				grid-template-columns: 1fr;
+				gap: em(12px) 0;
+			}
+		}
+	}
+
+	&_Input:not(:last-child) {
+		margin-bottom: em(12px);
+	}
+
+	&_Buttons {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		@include ifmobile {
+			flex-wrap: wrap;
+		}
+		.Button1 {
+			margin-right: auto;
+			@include ifmobile {
+				margin-right: 0;
+				width: auto;
+			}
+		}
+		.Button2 {
+			margin-right: em(10px);
+			@include ifmobile {
+				margin-right: 0;
+				width: 73%;
+			}
+		}
+		.Button3 {
+			@include ifmobile {
+				margin-top: em(16px);
+				width: 100%;
+			}
+		}
+	}
+}

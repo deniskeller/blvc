@@ -1,0 +1,237 @@
+.CatalogCard {
+	cursor: pointer;
+	position: relative;
+	border-radius: em(6px);
+	border: 1px solid #d1d5db;
+	background: $white;
+	box-shadow: 0px 4px 6px -2px rgba(0, 61, 140, 0.04),
+		0px -4px 6px -2px rgba(0, 61, 140, 0.04);
+	transition: all $speed ease;
+	overflow: hidden;
+
+	&:hover {
+		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08),
+			0px -4px 16px 0px rgba(0, 0, 0, 0.04);
+	}
+
+	&_Image {
+		position: relative;
+		width: auto;
+		max-width: em(205px);
+		margin: 0 auto;
+		height: em(180px);
+		@include iflaptop {
+			height: em(205px);
+		}
+		@include iftablet {
+			height: em(202px);
+		}
+		@include ifmobile {
+			height: em(165px);
+		}
+	}
+
+	&_Info {
+		display: flex;
+		flex-direction: column;
+		padding: em(10px) em(12px) em(12px);
+		position: relative;
+
+		&_Article {
+			line-height: 100%;
+			margin-bottom: em(8px);
+			span {
+				color: #b4b5bc;
+				text-align: center;
+				font-family: $ProximaNova;
+				font-size: em(12px);
+				font-style: normal;
+				font-weight: 600;
+				line-height: 100%;
+			}
+		}
+
+		&_Name {
+			line-height: 100%;
+			margin-bottom: em(4px);
+			span {
+				color: $grey3;
+				font-family: $ProximaNova;
+				font-size: em(14px);
+				font-style: normal;
+				font-weight: 600;
+				line-height: 110%;
+				@include iftablet {
+					font-size: em(12px);
+				}
+				@include ifmobile {
+					font-size: em(12px);
+				}
+			}
+		}
+
+		&_Footer {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			margin-top: auto;
+			.Price {
+				span {
+					color: #3b445e;
+					text-align: center;
+					font-family: $ProximaNova;
+					font-size: em(14px);
+					font-style: normal;
+					font-weight: 600;
+					line-height: normal;
+				}
+			}
+
+			.Button {
+				position: relative;
+				// overflow: hidden;
+				&_ToCart {
+					cursor: pointer;
+					border-radius: em(6px);
+					background: #ebeff9;
+					backdrop-filter: blur(5px);
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					padding: em(6px);
+					transition: all $speed ease;
+					&:hover {
+						background: $blue;
+						.Icon {
+							path {
+								stroke: $white;
+								transition: all $speed ease;
+							}
+						}
+					}
+					.Icon {
+						width: em(20px);
+						height: em(20px);
+						path {
+							transition: all $speed ease;
+						}
+					}
+				}
+
+				&_Counter {
+					position: absolute;
+					z-index: 10;
+					bottom: 0;
+					height: 100%;
+					line-height: 100%;
+					display: flex;
+					flex-direction: row;
+					justify-content: center;
+					align-items: center;
+					border-radius: em(6px);
+					background: $blue;
+					backdrop-filter: blur(5px);
+					padding: em(6px) em(8px);
+					transition: all $speed ease;
+					@include ifmobile {
+						width: em(141px);
+						justify-content: space-between;
+						padding: em(6px) em(16px);
+					}
+					.Value {
+						min-width: em(22px);
+						margin: 0 em(6px);
+						text-align: center;
+						border-bottom: 1px solid $white;
+						span {
+							user-select: none;
+							color: $white;
+							font-variant-numeric: lining-nums proportional-nums;
+							font-family: $ProximaNova;
+							font-size: em(13px);
+							font-style: normal;
+							font-weight: 400;
+							line-height: normal;
+							letter-spacing: 0.52px;
+							text-transform: uppercase;
+						}
+					}
+
+					.Minus,
+					.Plus {
+						cursor: pointer;
+						width: em(8px);
+					}
+					.Minus {
+						height: 1px;
+					}
+					.Plus {
+						height: em(9px);
+					}
+				}
+			}
+
+			.NotAvailable {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				position: relative;
+				&_Icon {
+					cursor: pointer;
+					width: em(20px);
+					height: em(20px);
+					&:hover {
+						& + .NotAvailable_Tooltip {
+							opacity: 1;
+						}
+					}
+				}
+
+				&_Tooltip {
+					width: max-content;
+					position: absolute;
+					z-index: 10;
+					bottom: calc(100% + 12px);
+					right: em(-5px);
+					padding: em(6px) em(12px);
+					border-radius: em(6px);
+					border: 1px solid #d1d5db;
+					background: #fdfdfd;
+					opacity: 0;
+					pointer-events: none;
+					transition: all $speed ease;
+					&::after {
+						content: '';
+						display: flex;
+						border: 1px solid #d1d5db;
+						border-bottom: none;
+						border-right: none;
+						height: em(8px);
+						width: em(8px);
+						position: absolute;
+						top: 100%;
+						right: em(10px);
+						transform: translatey(em(-3.3px)) rotate(225deg);
+						background-color: #fdfdfd;
+					}
+					p {
+						color: $grey3;
+						font-family: $ProximaNova;
+						font-size: em(12px);
+						font-style: normal;
+						font-weight: 600;
+						line-height: 110%;
+					}
+				}
+			}
+		}
+	}
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

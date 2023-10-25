@@ -1,0 +1,17 @@
+.Logo {
+  display: flex;
+  height: 100%;
+  width: em(124px);
+  height: em(50px);
+  cursor: pointer;
+
+  @include ifrespons {
+    width: em(95px);
+    height: em(38px);
+  }
+
+  svg {
+    width: inherit;
+    height: 100%;
+  }
+}

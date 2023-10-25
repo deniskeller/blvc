@@ -1,0 +1,319 @@
+.Sidebar {
+	display: flex;
+	flex-direction: column;
+	z-index: 1000;
+	@include ifdesktop {
+		margin-top: em(10px);
+	}
+	@include iflaptop {
+		position: fixed;
+		top: em(108px);
+		left: em(22px);
+	}
+	@include iftablet {
+		position: fixed;
+		top: em(104px);
+		left: em(16px);
+	}
+	@include ifmobile {
+		width: em(220px);
+		min-height: 100vh;
+		position: fixed;
+		top: 0;
+		right: -100%;
+		border-radius: 6px 0px 0px 6px;
+		background: $white;
+		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08),
+			0px -4px 16px 0px rgba(0, 0, 0, 0.04);
+		padding: em(88px) em(18px) em(50px) em(20px);
+		transition: right 0.6s ease;
+	}
+
+	&_Visible {
+		transition: right 0.6s ease;
+		@include ifmobile {
+			right: 0;
+		}
+	}
+
+	&_IconClose {
+		cursor: pointer;
+		display: none;
+		position: absolute;
+		top: em(21px);
+		right: em(13px);
+		width: em(24px);
+		height: em(24px);
+		@include ifmobile {
+			display: block;
+		}
+	}
+
+	&_Flap {
+		cursor: pointer;
+		display: none;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		z-index: 100;
+		right: em(-19px);
+		top: 50%;
+		transform: translate(0%, -50%);
+		width: em(20px);
+		height: em(28px);
+		border-radius: 0px 6px 6px 0px;
+		background: $white;
+		box-shadow: 0px 4px 6px -2px rgba(0, 61, 140, 0.08),
+			0px -4px 6px -2px rgba(0, 61, 140, 0.08);
+		transition: all $speed ease;
+		svg {
+			transition: all $speed ease;
+		}
+
+		@include iflaptop {
+			display: flex;
+		}
+		@include iftablet {
+			display: flex;
+		}
+		@include ifmobile {
+			display: none;
+		}
+	}
+
+	&_Navbar {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		transition: all $speed linear;
+		@include iflaptop {
+			border-radius: em(10px);
+			background: $white;
+			box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08),
+				0px -4px 16px 0px rgba(0, 0, 0, 0.04);
+			padding: em(24px) em(20px);
+		}
+		@include iftablet {
+			border-radius: em(10px);
+			background: $white;
+			box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08),
+				0px -4px 16px 0px rgba(0, 0, 0, 0.04);
+			padding: em(24px) em(20px);
+		}
+		@include ifmobile {
+			margin-bottom: em(40px);
+		}
+
+		&_ShowFlap {
+			@include iflaptop {
+				width: em(80px);
+			}
+			@include iftablet {
+				width: em(80px);
+			}
+		}
+
+		li {
+			list-style: none;
+			&:not(:last-child) {
+				margin-bottom: em(8px);
+			}
+			.Item {
+				overflow: hidden;
+				position: relative;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				transition: all $speed ease;
+				width: 100%;
+				padding: em(10px);
+				border-radius: em(6px);
+				background: rgba(255, 255, 255, 0.2);
+
+				@include iflaptop {
+				}
+				@include iftablet {
+				}
+				@include ifmobile {
+				}
+				&:hover {
+					background: rgba(69, 112, 253, 0.1);
+					.Item_Icon {
+						path,
+						circle,
+						ellipse {
+							stroke: #26355f;
+						}
+					}
+					.Item_Label {
+						opacity: 1;
+					}
+				}
+				&_Active {
+					background: $blue;
+					pointer-events: none;
+					.Item_Icon {
+						path,
+						circle,
+						ellipse {
+							stroke: $white;
+						}
+					}
+					.Item_Label {
+						span {
+							color: $white;
+						}
+					}
+				}
+
+				&_Icon {
+					min-width: em(20px);
+					height: em(20px);
+					transition: all $speed ease;
+				}
+
+				&_Label {
+					line-height: 100%;
+					margin-right: em(20px);
+					margin-left: em(8px);
+					transform: translateX(0);
+					transition: all $speed ease;
+					&_ShowFlap {
+						@include iflaptop {
+							transform: translateX(em(100px));
+						}
+						@include iftablet {
+							transform: translateX(em(100px));
+						}
+					}
+					span {
+						color: $dark-blue2;
+						font-family: $ProximaNova;
+						font-size: em(14px);
+						font-style: normal;
+						font-weight: 600;
+						opacity: 0.9;
+					}
+					@include iflaptop {
+					}
+					@include iftablet {
+					}
+					@include ifmobile {
+					}
+				}
+
+				&_Counter {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					min-width: em(16px);
+					height: em(16px);
+					border-radius: em(40px);
+					background: #d3dcfc;
+					margin-left: auto;
+					padding: em(1px);
+					transition: all $speed ease;
+					@include ifdesktop {
+						min-width: em(20px);
+						height: em(20px);
+					}
+					&_ShowFlap {
+						@include iflaptop {
+							z-index: 100;
+							position: absolute;
+							left: em(18px);
+							bottom: em(5px);
+						}
+						@include iftablet {
+							z-index: 100;
+							position: absolute;
+							left: em(18px);
+							bottom: em(5px);
+						}
+					}
+					span {
+						color: $dark-blue2;
+						font-family: $ProximaNova;
+						font-size: em(10px);
+						font-style: normal;
+						font-weight: 600;
+						line-height: initial;
+					}
+				}
+			}
+		}
+	}
+
+	&_SelectLanguage {
+		display: none;
+		width: max-content;
+		margin-top: auto;
+		margin-bottom: em(20px);
+		ul {
+			top: auto;
+			bottom: calc(100% + em(6px));
+		}
+		@include ifmobile {
+			display: block;
+		}
+	}
+
+	&_UserActions {
+		display: none;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		@include ifmobile {
+			display: flex;
+		}
+
+		.User {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			cursor: pointer;
+			margin-right: em(16px);
+			&_Icon {
+				width: em(24px);
+				height: em(24px);
+				margin-right: em(6px);
+			}
+
+			&_Name {
+				color: $dark-blue2;
+				font-family: $ProximaNova;
+				font-size: em(14px);
+				font-style: normal;
+				font-weight: 400;
+				line-height: 100%;
+				letter-spacing: 0.56px;
+				text-transform: uppercase;
+			}
+		}
+
+		.Logout {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			cursor: pointer;
+			width: em(24px);
+			height: em(24px);
+			path {
+				transition: all $speed ease;
+			}
+			&:hover {
+				path:nth-child(3) {
+					transform: translate(em(3px), 0);
+				}
+			}
+		}
+	}
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

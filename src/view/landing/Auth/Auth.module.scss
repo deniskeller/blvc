@@ -1,0 +1,81 @@
+.Auth {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_Background {
+    width: 100vw;
+    height: auto;
+  }
+
+  &_Content {
+    position: relative;
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(11px);
+    width: 100%;
+    max-width: em(691px);
+    padding: em(82px) em(95px) em(102px);
+
+    .Decor {
+      position: absolute;
+      top: em(83px);
+      right: em(-15px);
+      width: em(90px);
+      height: em(7px);
+      background: $red;
+    }
+
+    .Form {
+      display: flex;
+      flex-direction: column;
+
+      &_Title {
+        margin-bottom: em(55px);
+        h1 {
+          color: $white;
+          font-family: $Blacksword;
+          font-size: em(44px);
+          font-style: normal;
+          font-weight: 400;
+          line-height: 72%;
+        }
+      }
+
+      ul {
+        margin-bottom: em(62px);
+        li:not(:last-child) {
+          margin-bottom: em(39px);
+        }
+        .Password {
+          position: relative;
+          &_Input {
+            input {
+              padding-right: em(140px);
+            }
+          }
+          .Link {
+            position: absolute;
+            top: 50%;
+            right: em(16px);
+            transform: translate(0, -50%);
+            &:hover {
+              span {
+                color: #b80000;
+              }
+            }
+            span {
+              color: $white;
+              text-overflow: ellipsis;
+              font-size: em(12px);
+              font-style: normal;
+              font-weight: 400;
+              line-height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

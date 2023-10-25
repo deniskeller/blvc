@@ -1,0 +1,115 @@
+.Pagination {
+	width: 100%;
+	position: sticky;
+	z-index: 10;
+	bottom: 0;
+	border-radius: em(6px);
+	background: $white;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: em(10px) em(20px);
+	transition: all $speed ease;
+	margin: 0 auto;
+
+	@include iflaptop {
+		padding: em(10px) em(12px);
+	}
+
+	@include iftablet {
+		width: 97%;
+		margin-right: em(16px);
+		padding: em(10px) em(12px);
+	}
+	@include ifmobile {
+		width: 94%;
+		padding: em(7px) em(10px);
+	}
+
+	&_Scroll {
+		width: 97%;
+		bottom: em(30px);
+		@include iflaptop {
+			width: 92%;
+		}
+
+		@include iftablet {
+			width: 93%;
+			margin-right: em(32px);
+		}
+		@include ifmobile {
+			width: 90%;
+		}
+	}
+
+	&_Label {
+		@include iftablet {
+			display: flex;
+			flex-direction: column;
+		}
+		@include ifmobile {
+			display: none;
+		}
+		span {
+			color: $grey2;
+			font-family: $ProximaNova;
+			font-size: em(14px);
+			font-style: normal;
+			font-weight: 400;
+			line-height: 120%;
+			@include iftablet {
+				font-size: em(12px);
+			}
+			@include ifmobile {
+				font-size: em(12px);
+			}
+		}
+	}
+
+	&_Select {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		&_Label {
+			margin-right: em(12px);
+			@include ifmobile {
+				display: none;
+			}
+			span {
+				color: $grey2;
+				font-family: $ProximaNova;
+				font-size: em(14px);
+				font-style: normal;
+				font-weight: 400;
+				@include iftablet {
+					font-size: em(12px);
+				}
+				@include ifmobile {
+					font-size: em(12px);
+				}
+			}
+		}
+		&_Value {
+			min-width: em(60px);
+			ul {
+				top: auto;
+				bottom: calc(100% + 6px);
+			}
+		}
+		&_Value > div {
+			line-height: 100%;
+			padding: em(8px) em(10px);
+			span {
+				font-size: em(14px) !important;
+			}
+		}
+	}
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

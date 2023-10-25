@@ -1,0 +1,113 @@
+//default
+.Button {
+	font-size: 100%;
+	line-height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: max-content;
+	height: em(48px);
+	padding: em(19px) em(24px) em(17px);
+	@extend %button;
+	box-sizing: border-box;
+	border-radius: em(6px);
+	background: $blue;
+	backdrop-filter: blur(5px);
+	transition: all $speed ease;
+
+	&:hover {
+		background: #1d52ff;
+	}
+
+	&:active {
+		background: #5f84ff;
+	}
+
+	.Title {
+		color: $white;
+		font-family: $ProximaNova;
+		font-size: em(16px);
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+		text-transform: uppercase;
+	}
+
+	.Icon {
+		width: em(24px);
+		height: em(24px);
+	}
+}
+
+//size mini
+.Button_mini {
+	height: em(38px);
+	padding: em(15px) em(24px) em(13px);
+	.Title {
+		font-size: em(14px);
+	}
+}
+
+//secondary
+.Button_secondary {
+	background: #e7ecfb;
+	.Title {
+		color: #4570fd;
+	}
+
+	&:hover {
+		background: rgba(69, 112, 253, 0.15);
+	}
+
+	&:active {
+		background: rgba(69, 112, 253, 0.2);
+	}
+}
+
+//empty
+.Button_empty {
+	background: $white;
+	border: 1px solid #4570fd;
+	.Title {
+		color: #4570fd;
+	}
+
+	&:hover {
+		background: #e7ecfb;
+	}
+
+	&:active {
+		background: rgba(69, 112, 253, 0.2);
+	}
+}
+
+//destructive
+.Button_destructive {
+	background: #feeded;
+	.Title {
+		color: $red2;
+	}
+
+	&:hover {
+		background: rgba(255, 84, 84, 0.2);
+	}
+
+	&:active {
+		background: rgba(255, 84, 84, 0.3);
+	}
+}
+
+//disabled style
+.Button:disabled,
+.Button:disabled:hover,
+.Button:disabled:active {
+	cursor: not-allowed !important;
+	pointer-events: none !important;
+	opacity: 0.4 !important;
+}
+
+.IconPlus {
+	width: em(24px);
+	height: em(24px);
+	margin-right: 2px;
+}
