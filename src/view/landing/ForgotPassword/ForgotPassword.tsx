@@ -7,7 +7,6 @@ import Image from 'next/image';
 
 interface IFormData {
   email: string;
-  password: string;
 }
 
 const ForgotPassword: React.FC = () => {
