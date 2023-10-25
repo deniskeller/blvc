@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import s from './ForgotPassword.module.scss';
-import Image from 'next/image';
 
 interface IFormData {
   email: string;

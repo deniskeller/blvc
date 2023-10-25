@@ -1,19 +1,24 @@
-import { BaseButtonApp, BaseInputApp } from '@base/index';
+import { BaseButtonApp, BaseInputApp, BaseToast } from '@base/index';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import s from './Auth.module.scss';
-import Image from 'next/image';
+import toast from 'react-hot-toast';
 
 interface IFormData {
   email: string;
   password: string;
 }
 
+const test_login = {
+  email: 'test',
+  password: '123',
+};
+
 const Auth: React.FC = () => {
   const router = useRouter();
 
-  const [value, setValue] = React.useState<IFormData>({
+  const [value, setValue] = useState<IFormData>({
     email: '',
     password: '',
   });
@@ -22,14 +27,25 @@ const Auth: React.FC = () => {
     setValue((prev) => ({ ...prev, [key]: val }));
   };
 
+  const [error, setError] = useState(false);
   const submitFormHandler = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    alert('kek');
+    if (
+      value.email == test_login.email &&
+      value.password == test_login.password
+    ) {
+      setError(false);
+      alert('auth true');
+    } else {
+      setError(true);
+      setTimeout(() => {
+        toast.success('An error occurred during authorization. Try again', {
+          duration: 300000,
+          className: 'dashboard',
+        });
+      }, 500);
+    }
   };
-
-  useEffect(() => {
-    console.log('value: ', value);
-  }, [value]);
 
   return (
     <section
@@ -53,6 +69,7 @@ const Auth: React.FC = () => {
                 type="text"
                 value={value.email}
                 onChange={(val: string) => setNewValue(val, 'email')}
+                error={error}
               />
             </li>
 
@@ -65,6 +82,7 @@ const Auth: React.FC = () => {
                 autocomplete="new-password"
                 value={value.password}
                 onChange={(val: string) => setNewValue(val, 'password')}
+                error={error}
                 className={s.Password_Input}
               />
               <Link href="/forgot-password" className={s.Link}>
@@ -107,6 +125,8 @@ const Auth: React.FC = () => {
       <div className={s.Copyright}>
         <p>All rights reserved © 2023 © BLVC</p>
       </div>
+
+      <BaseToast />
     </section>
   );
 };
