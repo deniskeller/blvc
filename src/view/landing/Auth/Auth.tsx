@@ -32,15 +32,18 @@ const Auth: React.FC = () => {
   }, [value]);
 
   return (
-    <section className={s.Auth}>
-      <Image
+    <section
+      className={s.Auth}
+      style={{ backgroundImage: 'url(/pictures/images/auth-bg-min.jpg)' }}
+    >
+      {/* <Image
         src={'/pictures/images/auth-bg-min.jpg'}
         alt="auth background image"
         fill
         priority
         quality={100}
         className={s.Auth_Background}
-      />
+      /> */}
 
       <div className={s.Auth_Content}>
         <div className={s.Decor}></div>

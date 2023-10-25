@@ -4,6 +4,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include iftablet {
+    background-position: left;
+  }
+  @include iftablet-mini {
+    background-position: left;
+  }
+  @include ifmobile {
+    background-position: 19% 100%;
+  }
 
   &_Background {
     width: 100vw;
@@ -17,6 +30,17 @@
     width: 100%;
     max-width: em(691px);
     padding: em(82px) em(95px) em(102px);
+    @include iftablet {
+      max-width: em(600px);
+      padding: em(48px) em(50px);
+    }
+    @include iftablet-mini {
+      max-width: em(600px);
+      padding: em(48px) em(50px);
+    }
+    @include ifmobile {
+      padding: em(42px) em(20px) em(62px);
+    }
 
     .Decor {
       position: absolute;
@@ -25,6 +49,10 @@
       width: em(90px);
       height: em(7px);
       background: $red;
+      display: none;
+      @include ifdesktop {
+        display: block;
+      }
     }
 
     .Form {
@@ -34,6 +62,9 @@
 
       &_Title {
         margin-bottom: em(55px);
+        @include ifmobile {
+          margin-bottom: em(30px);
+        }
         h1 {
           color: $white;
           font-family: $Blacksword;
@@ -41,13 +72,23 @@
           font-style: normal;
           font-weight: 400;
           line-height: 72%;
+          @include ifmobile {
+            font-size: em(30px);
+            line-height: 106%;
+          }
         }
       }
 
       ul {
         margin-bottom: em(62px);
+        @include ifmobile {
+          margin-bottom: em(40px);
+        }
         li:not(:last-child) {
           margin-bottom: em(39px);
+          @include ifmobile {
+            margin-bottom: em(20px);
+          }
         }
         .Password {
           position: relative;
@@ -131,6 +172,22 @@
     position: absolute;
     left: em(70px);
     bottom: em(27px);
+    @include iflaptop {
+      left: em(50px);
+      bottom: em(50px);
+    }
+    @include iftablet {
+      left: em(40px);
+      bottom: em(40px);
+    }
+    @include iftablet-mini {
+      left: em(40px);
+      bottom: em(40px);
+    }
+    @include ifmobile {
+      left: em(30px);
+      bottom: em(30px);
+    }
     p {
       color: rgba(255, 255, 255, 0.4);
       font-size: em(12px);
@@ -139,4 +196,13 @@
       line-height: 133.333%;
     }
   }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include iftablet-mini {
+}
+@include ifmobile {
 }
