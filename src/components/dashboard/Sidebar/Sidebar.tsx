@@ -44,21 +44,6 @@ const Sidebar: React.FC<Props> = ({ pages, className = '' }) => {
     router.push('/auth');
   };
 
-  // const closeSidebar = useCallback(() => {
-  //   if (isVisible) {
-  //     dispatch(setVisibleSidebar({ visible: false }));
-  //   }
-  // }, [dispatch, isVisible, setVisibleSidebar]);
-
-  // useEffect(() => {
-  //   window.addEventListener('resize', () => {
-  //     closeSidebar();
-  //   });
-  //   return () => {
-  //     window.removeEventListener('resize', closeSidebar);
-  //   };
-  // }, [closeSidebar, isVisible]);
-
   return (
     <div className={`${s.Wrapper} ${isVisible ? s.Visible : ''} ${className}`}>
       <div className={s.Sidebar}>

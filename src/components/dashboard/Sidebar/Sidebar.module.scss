@@ -2,24 +2,23 @@
   display: flex;
   z-index: 1;
   border-right: 1px solid rgba(26, 26, 26, 0.1);
-  &.Visible {
-    transition: right 0.6s ease;
-    @include ifmobile {
-      right: 0;
-    }
-  }
 
   @include ifmobile {
     width: 100%;
     min-height: 100vh;
-    height: 100%;
     position: fixed;
-    z-index: 10000;
+    z-index: 1000;
     top: 0;
     right: -100%;
     background: $body;
     transition: right 0.6s ease;
     border-right: none;
+  }
+  &.Visible {
+    transition: right 0.6s ease;
+    @include ifmobile {
+      right: 0;
+    }
   }
 }
 
@@ -59,8 +58,8 @@
     width: 100%;
     top: 0;
     position: relative;
-    min-height: 100vh;
-    height: 100%;
+    height: 100vh;
+    max-height: 100vh;
     padding-top: 0;
     overflow: auto;
   }
