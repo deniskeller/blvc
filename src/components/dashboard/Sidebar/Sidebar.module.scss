@@ -57,7 +57,7 @@
   @include ifmobile {
     width: 100%;
     top: 0;
-    position: relative;
+    position: fixed;
     min-height: 100vh;
     max-height: 100%;
     padding-top: 0;
