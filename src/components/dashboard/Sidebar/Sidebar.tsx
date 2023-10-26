@@ -25,7 +25,7 @@ const Sidebar: React.FC<Props> = ({ pages, className = '' }) => {
   useEffect(() => {
     if (isVisible) {
       document.body.style.overflow = 'hidden';
-      document.body.style.height = '100vh';
+      document.body.style.height = '100%';
     } else {
       document.body.style.overflow = '';
       document.body.style.height = '';
