@@ -39,8 +39,8 @@ const Auth: React.FC = () => {
     } else {
       setError(true);
       setTimeout(() => {
-        toast.success('An error occurred during authorization. Try again', {
-          duration: 300000,
+        toast.error('An error occurred during authorization. Try again', {
+          duration: 3000,
           className: 'dashboard',
         });
       }, 500);
