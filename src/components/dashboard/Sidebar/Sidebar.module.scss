@@ -36,9 +36,6 @@
 
   &:hover {
     overflow: auto;
-    @include ifmobile {
-      overflow: hidden;
-    }
   }
   @include iflaptop {
     width: em(223px);

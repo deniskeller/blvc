@@ -22,6 +22,166 @@ const pages = [
     name: 'Merch store',
     path: '/dashboard/merch-store',
   },
+  // {
+  //   name: 'Vehicles',
+  //   path: '/dashboard/vehicles',
+  // },
+  // {
+  //   name: 'BLVC team',
+  //   path: '/dashboard/team',
+  // },
+  // {
+  //   name: 'Website forms',
+  //   path: '/dashboard/website-forms',
+  // },
+  // {
+  //   name: 'Merch store',
+  //   path: '/dashboard/merch-store',
+  // },
+  // {
+  //   name: 'Vehicles',
+  //   path: '/dashboard/vehicles',
+  // },
+  // {
+  //   name: 'BLVC team',
+  //   path: '/dashboard/team',
+  // },
+  // {
+  //   name: 'Website forms',
+  //   path: '/dashboard/website-forms',
+  // },
+  // {
+  //   name: 'Merch store',
+  //   path: '/dashboard/merch-store',
+  // },
+  // {
+  //   name: 'Vehicles',
+  //   path: '/dashboard/vehicles',
+  // },
+  // {
+  //   name: 'BLVC team',
+  //   path: '/dashboard/team',
+  // },
+  // {
+  //   name: 'Website forms',
+  //   path: '/dashboard/website-forms',
+  // },
+  // {
+  //   name: 'Merch store',
+  //   path: '/dashboard/merch-store',
+  // },
+  // {
+  //   name: 'Vehicles',
+  //   path: '/dashboard/vehicles',
+  // },
+  // {
+  //   name: 'BLVC team',
+  //   path: '/dashboard/team',
+  // },
+  // {
+  //   name: 'Website forms',
+  //   path: '/dashboard/website-forms',
+  // },
+  // {
+  //   name: 'Merch store',
+  //   path: '/dashboard/merch-store',
+  // },
+  // {
+  //   name: 'Vehicles',
+  //   path: '/dashboard/vehicles',
+  // },
+  // {
+  //   name: 'BLVC team',
+  //   path: '/dashboard/team',
+  // },
+  // {
+  //   name: 'Website forms',
+  //   path: '/dashboard/website-forms',
+  // },
+  // {
+  //   name: 'Merch store',
+  //   path: '/dashboard/merch-store',
+  // },
+  // {
+  //   name: 'Vehicles',
+  //   path: '/dashboard/vehicles',
+  // },
+  // {
+  //   name: 'BLVC team',
+  //   path: '/dashboard/team',
+  // },
+  // {
+  //   name: 'Website forms',
+  //   path: '/dashboard/website-forms',
+  // },
+  // {
+  //   name: 'Merch store',
+  //   path: '/dashboard/merch-store',
+  // },
+  // {
+  //   name: 'Vehicles',
+  //   path: '/dashboard/vehicles',
+  // },
+  // {
+  //   name: 'BLVC team',
+  //   path: '/dashboard/team',
+  // },
+  // {
+  //   name: 'Website forms',
+  //   path: '/dashboard/website-forms',
+  // },
+  // {
+  //   name: 'Merch store',
+  //   path: '/dashboard/merch-store',
+  // },
+  // {
+  //   name: 'Vehicles',
+  //   path: '/dashboard/vehicles',
+  // },
+  // {
+  //   name: 'BLVC team',
+  //   path: '/dashboard/team',
+  // },
+  // {
+  //   name: 'Website forms',
+  //   path: '/dashboard/website-forms',
+  // },
+  // {
+  //   name: 'Merch store',
+  //   path: '/dashboard/merch-store',
+  // },
+  // {
+  //   name: 'Vehicles',
+  //   path: '/dashboard/vehicles',
+  // },
+  // {
+  //   name: 'BLVC team',
+  //   path: '/dashboard/team',
+  // },
+  // {
+  //   name: 'Website forms',
+  //   path: '/dashboard/website-forms',
+  // },
+  // {
+  //   name: 'Merch store',
+  //   path: '/dashboard/merch-store',
+  // },
+  // {
+  //   name: 'Vehicles',
+  //   path: '/dashboard/vehicles',
+  // },
+  // {
+  //   name: 'BLVC team',
+  //   path: '/dashboard/team',
+  // },
+  // {
+  //   name: 'Website forms',
+  //   path: '/dashboard/website-forms',
+  // },
+  // {
+  //   name: 'Merch store',
+  //   path: '/dashboard/merch-store',
+  // },
 ];
 
 interface Props {
