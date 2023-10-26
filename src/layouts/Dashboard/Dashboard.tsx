@@ -7,20 +7,20 @@ import s from './Dashboard.module.scss';
 
 const pages = [
   {
-    name: 'Партнеры',
-    path: '/dashboard/admin/partners',
+    name: 'Vehicles',
+    path: '/dashboard/vehicles',
   },
   {
-    name: 'Команда',
-    path: '/dashboard/admin/team',
+    name: 'BLVC team',
+    path: '/dashboard/team',
   },
   {
-    name: 'Заказы',
-    path: '/dashboard/admin/orders',
+    name: 'Website forms',
+    path: '/dashboard/website-forms',
   },
   {
-    name: 'Каталог',
-    path: '/dashboard/admin/catalog',
+    name: 'Merch store',
+    path: '/dashboard/merch-store',
   },
 ];
 
@@ -36,7 +36,7 @@ const Dashboard: React.FC<Props> = ({ children }) => {
       <div className={s.Dashboard}>
         <Header />
         <div className={s.Dashboard_Body}>
-          {/* <Sidebar pages={pages} className={s.Sidebar} /> */}
+          <Sidebar pages={pages} className={s.Sidebar} />
           <div className={s.Content}>{children}</div>
         </div>
       </div>

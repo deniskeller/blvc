@@ -35,7 +35,7 @@ const Auth: React.FC = () => {
       value.password == test_login.password
     ) {
       setError(false);
-      alert('auth true');
+      router.push('/dashboard/vehicles');
     } else {
       setError(true);
       setTimeout(() => {

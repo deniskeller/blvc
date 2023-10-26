@@ -3,21 +3,54 @@
   top: 0;
   z-index: 1000;
   width: 100%;
+  background: $body;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   border-bottom: 1px solid rgba(26, 26, 26, 0.1);
-  padding: em(33px) em(70px);
+  padding: em(32px) em(70px);
   min-height: em(125px);
+  @include iflaptop {
+    padding: em(32px) em(40px);
+    min-height: em(90px);
+  }
+  @include iftablet {
+    padding: em(32px) em(20px);
+    min-height: em(90px);
+  }
+  @include iftablet-mini {
+    padding: em(32px) em(20px);
+    min-height: em(90px);
+  }
+  @include ifmobile {
+    padding: em(22px) em(20px);
+    min-height: em(74px);
+    align-items: center;
+  }
 
   &_Logo {
     transform: translate(0, em(15px));
+    @include iflaptop {
+      transform: translate(0, em(8px));
+    }
+    @include iftablet {
+      transform: translate(0, em(8px));
+    }
+    @include iftablet-mini {
+      transform: translate(0, em(8px));
+    }
+    @include ifmobile {
+      display: none !important;
+    }
   }
 
   &_User {
     display: flex;
     flex-direction: row;
     align-items: center;
+    @include ifmobile {
+      display: none;
+    }
     .UserIcon {
       width: em(27px);
       height: em(27px);
@@ -38,6 +71,36 @@
     }
     .Name {
       margin: 0 em(29px) 0 em(14px);
+    }
+  }
+  &_Title {
+    display: none;
+    align-items: center;
+    @include ifmobile {
+      display: flex;
+    }
+
+    .Logo {
+      width: em(110px);
+      height: em(29px);
+      margin-right: em(16px);
+    }
+    h1 {
+      color: $black;
+      font-family: $Blacksword;
+      font-size: em(32px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%;
+    }
+  }
+  &_Burger {
+    display: none;
+    cursor: pointer;
+    width: em(25px);
+    height: em(18px);
+    @include ifmobile {
+      display: block;
     }
   }
 }

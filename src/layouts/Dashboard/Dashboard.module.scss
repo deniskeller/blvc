@@ -1,54 +1,18 @@
 .Dashboard {
   position: relative;
-  background: rgba(26, 26, 26, 0.1);
+  background: $body;
   min-height: 100vh;
 
   &_Body {
-    display: grid;
-    grid-template-columns: em(170px) 1fr;
-    gap: 0 em(80px);
-    margin-left: em(50px);
-    margin-top: em(10px);
-    height: calc(100vh - em(130px));
-    position: relative;
-    @include iflaptop {
-      grid-template-columns: 1fr;
-      gap: 0;
-      margin-left: em(122px);
-      height: calc(100vh - em(98px));
-    }
-    @include iftablet {
-      grid-template-columns: 1fr;
-      gap: 0;
-      margin-left: em(106px);
-      height: calc(100vh - em(95px));
-    }
-    @include ifmobile {
-      grid-template-columns: 1fr;
-      gap: 0;
-      height: calc(100vh - em(64px));
-      margin-left: 0;
-    }
+    display: flex;
 
-    .Content {
-      position: relative;
-      overflow: auto;
-      height: 100%;
-      padding-left: em(20px);
-
-      //СТИЛИ ДЛЯ ЛИПКИХ ЭЛЕМЕНТОВ
-      // overflow: hidden;
-      // margin-top: em(-20px);
-
-      @include ifmobile {
-        padding-left: 0;
-      }
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      -ms-overflow-style: none; /* IE и Edge */
-      scrollbar-width: none; /* Firefox */
-    }
+    // .Content {
+    // -ms-overflow-style: none; /* IE и Edge */
+    // scrollbar-width: none; /* Firefox */
+    // &::-webkit-scrollbar {
+    //   display: none;
+    // }
+    // }
   }
 }
 

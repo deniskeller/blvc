@@ -1,8 +1,8 @@
-// import { store } from '@store/store';
+import { store } from '@store/store';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React, { useEffect } from 'react';
-// import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 import '../styles/globals.scss';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -21,9 +21,9 @@ export default function App({ Component, pageProps }: AppProps) {
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
         />
       </Head>
-      {/* <Provider store={store}> */}
-      {loading ? <Component {...pageProps} /> : <h1>Loading...</h1>}
-      {/* </Provider> */}
+      <Provider store={store}>
+        {loading ? <Component {...pageProps} /> : <h1>Loading...</h1>}
+      </Provider>
     </>
   );
 }

@@ -5,7 +5,7 @@ const MainPage = () => {
   return (
     <Dashboard>
       {/* <Main /> */}
-      <h1>Vehicles</h1>
+      <h1>team page</h1>
     </Dashboard>
   );
 };
