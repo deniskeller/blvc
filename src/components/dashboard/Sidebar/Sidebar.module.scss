@@ -11,7 +11,8 @@
 
   @include ifmobile {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     position: fixed;
     z-index: 10000;
     top: 0;
