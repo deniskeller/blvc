@@ -99,19 +99,61 @@ const Header = () => {
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 25 18"
+          viewBox="0 0 24 18"
           fill="none"
           className={s.Header_Burger}
           onClick={() => dispatch(setVisibleSidebar({ visible: !isVisible }))}
         >
-          <g filter="url(#filter0_i_11113_17245)">
+          <g filter="url(#filter0_i_10576_35437)">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
-              d="M24.8242 1C24.8242 1.55228 24.3765 2 23.8242 2H1.82422C1.27193 2 0.824219 1.55228 0.824219 1C0.824219 0.447715 1.27193 0 1.82422 0H23.8242C24.3765 0 24.8242 0.447715 24.8242 1ZM24.8242 9C24.8242 9.55229 24.3765 10 23.8242 10H1.82422C1.27193 10 0.824219 9.55229 0.824219 9C0.824219 8.44771 1.27193 8 1.82422 8H23.8242C24.3765 8 24.8242 8.44771 24.8242 9ZM23.8242 18C24.3765 18 24.8242 17.5523 24.8242 17C24.8242 16.4477 24.3765 16 23.8242 16H1.82422C1.27193 16 0.824219 16.4477 0.824219 17C0.824219 17.5523 1.27193 18 1.82422 18H23.8242Z"
+              d="M24 1C24 1.55228 23.5523 2 23 2H1C0.447715 2 0 1.55228 0 1C0 0.447715 0.447716 0 1 0H23C23.5523 0 24 0.447715 24 1ZM24 9C24 9.55229 23.5523 10 23 10H1C0.447715 10 0 9.55229 0 9C0 8.44771 0.447716 8 1 8H23C23.5523 8 24 8.44771 24 9ZM23 18C23.5523 18 24 17.5523 24 17C24 16.4477 23.5523 16 23 16H1C0.447716 16 0 16.4477 0 17C0 17.5523 0.447715 18 1 18H23Z"
               fill="#1A1A1A"
             />
           </g>
+          <defs>
+            <filter
+              id="filter0_i_10576_35437"
+              x="0"
+              y="0"
+              width="24"
+              height="18"
+              filterUnits="userSpaceOnUse"
+              colorInterpolationFilters="sRGB"
+            >
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha"
+              />
+              <feOffset />
+              <feGaussianBlur stdDeviation="0.727273" />
+              <feComposite
+                in2="hardAlpha"
+                operator="arithmetic"
+                k2="-1"
+                k3="1"
+              />
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+              />
+              <feBlend
+                mode="normal"
+                in2="shape"
+                result="effect1_innerShadow_10576_35437"
+              />
+            </filter>
+          </defs>
         </svg>
       </header>
     </>
