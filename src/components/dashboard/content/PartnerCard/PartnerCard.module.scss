@@ -1,0 +1,141 @@
+.PartnerCard {
+  cursor: pointer;
+  position: relative;
+  border-radius: em(4px);
+  border: 1px solid rgba(26, 26, 26, 0.2);
+  transition: box-shadow $speed ease;
+  overflow: hidden;
+  min-height: em(183px);
+  padding: em(40px) em(16px) em(16px);
+  &:hover {
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  &_Border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: em(8px);
+    border-top-right-radius: em(3px);
+    border-top-left-radius: em(3px);
+  }
+
+  &_Status {
+    position: absolute;
+    top: 0;
+    left: em(26px);
+    padding: em(6px) em(16px);
+    border-radius: 0 0 em(15px) em(15px);
+    background: $red3;
+
+    &::before,
+    &::after {
+      content: '';
+      width: em(10px);
+      height: em(10px);
+      position: absolute;
+      top: em(8px);
+      aspect-ratio: 1;
+    }
+
+    &::before {
+      left: em(-9px);
+      transform: rotate(90deg);
+    }
+    &::after {
+      right: em(-9px);
+    }
+
+    span {
+      display: flex;
+      text-transform: capitalize;
+      color: $white;
+      font-size: em(12px);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 120%;
+    }
+
+    &_Active {
+      &::before,
+      &::after {
+        background-image: radial-gradient(
+          circle at 100% 100%,
+          transparent em(10px),
+          $red3 em(10px)
+        );
+      }
+    }
+
+    &_Blocked {
+      &::before,
+      &::after {
+        background-image: radial-gradient(
+          circle at 100% 100%,
+          transparent em(10px),
+          #cdcdcd em(10px)
+        );
+      }
+    }
+
+    &_Invited {
+      &::before,
+      &::after {
+        background-image: radial-gradient(
+          circle at 100% 100%,
+          transparent em(10px),
+          #5a5a5a em(10px)
+        );
+      }
+    }
+  }
+
+  &_Image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+  }
+
+  &_Name {
+    margin-bottom: em(6px);
+    span {
+      color: $black;
+      font-size: em(16px);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 120%;
+    }
+  }
+  &_Jobtitle {
+    margin-bottom: em(16px);
+    span {
+      color: $black70;
+      font-size: em(12px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 133%;
+    }
+  }
+  &_Email {
+    margin-bottom: em(4px);
+    span {
+      color: $black70;
+      font-size: em(12px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 166.667%;
+    }
+  }
+  &_Phone {
+    span {
+      color: $black70;
+      font-size: em(12px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 166.667%;
+    }
+  }
+}

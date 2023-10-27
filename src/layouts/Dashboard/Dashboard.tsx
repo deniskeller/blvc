@@ -4,6 +4,7 @@ import Sidebar from 'components/dashboard/Sidebar/Sidebar';
 import { useRouter } from 'next/router';
 import React from 'react';
 import s from './Dashboard.module.scss';
+import Image from 'next/image';
 
 const pages = [
   {
@@ -195,9 +196,26 @@ const Dashboard: React.FC<Props> = ({ children }) => {
     <>
       <div className={s.Dashboard}>
         <Header />
-        <div className={s.Dashboard_Body}>
+
+        <div
+          className={s.Dashboard_Body}
+          // style={{
+          //   backgroundImage: 'url(/pictures/images/main-car-bg-min.png)',
+          // }}
+        >
           <Sidebar pages={pages} className={s.Sidebar} />
+
           <div className={s.Content}>{children}</div>
+
+          <div className={s.Background}>
+            <Image
+              src={'/pictures/images/main-car-bg-min.png'}
+              alt="background image"
+              width={1920}
+              height={808}
+              className={s.Background_Image}
+            />
+          </div>
         </div>
       </div>
       <BaseToast />

@@ -1,13 +1,12 @@
 import { Dashboard } from '@layouts/index';
-// import { Main } from '@view/landing';
+import { Team } from '@view/dashboard';
 
-const MainPage = () => {
+const TeamPage = () => {
   return (
     <Dashboard>
-      {/* <Main /> */}
-      <h1>team page</h1>
+      <Team />
     </Dashboard>
   );
 };
 
-export default MainPage;
+export default TeamPage;
