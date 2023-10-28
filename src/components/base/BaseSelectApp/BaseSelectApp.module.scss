@@ -168,8 +168,13 @@
 .Disabled {
   cursor: not-allowed;
   pointer-events: none;
-  background: #f4f4f5;
-  border: 1px solid rgba(26, 26, 26, 0.4) !important;
+  border-color: rgba(26, 26, 26, 0.4);
+  .SelectHeader_Chevron {
+    opacity: 0.4;
+  }
+  .Label {
+    opacity: 0.4;
+  }
   & p {
     color: rgba(26, 26, 26, 0.4) !important;
   }

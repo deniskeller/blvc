@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import s from './Team.module.scss';
 import { PartnerCard } from 'components/dashboard/content';
-import { InviteUserPopup, UserDetailsPopup } from 'components/dashboard/modals';
+import {
+  InviteUserPopup,
+  UserDetailsPopup,
+  UserDetailsSupervizorPopup,
+} from 'components/dashboard/modals';
 
 const partner_list = [
   {
@@ -66,6 +70,8 @@ for (let i = 1; i < 3; i++) {
 
 const Team: React.FC = () => {
   const [openedInviteUserPopup, setOpenedInviteUserPopup] = useState(false);
+  const [openedUserDetailsSupervizorPopup, setUserDetailsSupervizorPopup] =
+    useState(false);
   const [openedUserDetailsPopup, setUserDetailsPopup] = useState(false);
 
   return (
@@ -108,7 +114,7 @@ const Team: React.FC = () => {
               <PartnerCard
                 item={item}
                 key={index}
-                onClick={() => setUserDetailsPopup(true)}
+                onClick={() => setUserDetailsSupervizorPopup(true)}
               />
             );
           })}
@@ -136,7 +142,13 @@ const Team: React.FC = () => {
             <span>Invite user</span>
           </div>
 
-          <span style={{ cursor: 'pointer' }}>user Details 2</span>
+          {/* УДАЛИТЬ ссылку на модалку */}
+          <span
+            style={{ cursor: 'pointer' }}
+            onClick={() => setUserDetailsPopup(true)}
+          >
+            modal user Details 2
+          </span>
         </div>
       </section>
 
@@ -144,6 +156,13 @@ const Team: React.FC = () => {
         opened={openedInviteUserPopup}
         onClick={setOpenedInviteUserPopup}
         onClick2={() => alert('Invite user')}
+      />
+
+      <UserDetailsSupervizorPopup
+        opened={openedUserDetailsSupervizorPopup}
+        onClick={setUserDetailsSupervizorPopup}
+        onClick2={() => alert('Delete user?')}
+        onClick3={() => alert('Save changes')}
       />
 
       <UserDetailsPopup

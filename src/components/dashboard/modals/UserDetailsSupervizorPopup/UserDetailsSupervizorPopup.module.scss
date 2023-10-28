@@ -1,0 +1,36 @@
+.Title {
+  margin-bottom: em(36px);
+}
+
+.Form {
+  ul {
+    margin-bottom: em(32px);
+    .Form_Input:not(:last-child) {
+      margin-bottom: em(16px);
+    }
+  }
+
+  &_Buttons {
+    display: grid;
+    grid-template-columns: em(48px) 1fr;
+    gap: 0 em(16px);
+
+    .Delete {
+      width: em(44px);
+      height: em(44px);
+      padding: em(12px);
+      border-radius: em(33px);
+      svg {
+        width: em(24px);
+        height: em(24px);
+      }
+    }
+    .Button {
+      width: 100%;
+    }
+  }
+  .RemoveInvitation {
+    width: 100%;
+    color: #a61613;
+  }
+}

@@ -26,12 +26,6 @@ interface Props {
   ref?: MutableRefObject<null>;
   multiple?: boolean;
   withCounter?: boolean;
-  borderStyle?: 'default' | 'border-bottom';
-  borderColor?: 'default' | 'orange';
-  smallPadding?: boolean;
-  height?: number;
-  minWidth?: number;
-  noBackground?: boolean;
 }
 
 export interface ISelectItem {
@@ -107,7 +101,7 @@ const BaseSelectApp: React.FC<Props> = ({
             : ''
         } ${error ? s.SelectHeader_Error : ''} ${
           !withLabel ? s.SelectHeader_DefaultPadding : ''
-        }`}
+        } ${disabled ? s.Disabled : ''}`}
         onClick={toggling}
       >
         <p className={`${selectedOption?.length ? s.NotEmpty : ''}`}>

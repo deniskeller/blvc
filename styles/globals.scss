@@ -203,11 +203,6 @@ input[type='search']::-webkit-search-results-decoration {
   }
 }
 
-.react-tel-input:disabled {
-  transition: all $speed ease !important;
-  background: transparent !important;
-}
-
 .react-tel-input .form-control + div:before {
   $size: 12px;
   content: 'Phone';
@@ -225,4 +220,7 @@ input[type='search']::-webkit-search-results-decoration {
 }
 .react-tel-input .selected-flag .flag {
   margin-top: 0 !important;
+}
+.react-tel-input :disabled {
+  color: rgba(26, 26, 26, 0.6) !important;
 }

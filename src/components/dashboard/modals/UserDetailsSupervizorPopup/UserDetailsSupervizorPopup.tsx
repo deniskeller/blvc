@@ -6,7 +6,7 @@ import {
   BaseTitleApp,
 } from '@base/index';
 import React, { useState, useEffect } from 'react';
-import s from './UserDetailsPopup.module.scss';
+import s from './UserDetailsSupervizorPopup.module.scss';
 import { PhoneInput } from 'components/dashboard/content';
 
 interface Props {
@@ -39,7 +39,7 @@ const initialState = {
   status: [{ label: 'Blocked', value: 'Blocked' }],
 };
 
-const UserDetailsPopup: React.FC<Props> = ({
+const UserDetailsSupervizorPopup: React.FC<Props> = ({
   opened,
   onClick,
   onClick2,
@@ -125,7 +125,6 @@ const UserDetailsPopup: React.FC<Props> = ({
               label="Job title"
               value={value.job_title}
               onChange={(val: string) => setNewValue(val, 'job_title')}
-              disabled
             />
           </li>
 
@@ -146,14 +145,65 @@ const UserDetailsPopup: React.FC<Props> = ({
                 onClearHandler(e, 'status');
               }}
               onBlur={() => {}}
+              // multiple
+              // withCounter
+              // error
               withLabel
-              disabled
             />
           </li>
         </ul>
+
+        <div className={s.Form_Buttons}>
+          <BaseButtonApp
+            type="secondary"
+            className={s.Delete}
+            onClick={(e) => {
+              e.preventDefault();
+              onClick2(false);
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <g clipPath="url(#clip0_11156_27146)">
+                <path
+                  d="M9.5 9V18M14.5 9V18M8.5 4.5H2.5V4.75L2.74 5.8C3.90961 10.9169 4.49999 16.1491 4.5 21.398V22.5H19.5V21.398C19.5 16.149 20.09 10.918 21.26 5.8L21.5 4.75V4.5H15.5M8.5 4.5V4C8.5 3.54037 8.59053 3.08525 8.76642 2.66061C8.94231 2.23597 9.20012 1.85013 9.52513 1.52513C9.85013 1.20012 10.236 0.942313 10.6606 0.766422C11.0852 0.59053 11.5404 0.5 12 0.5C12.4596 0.5 12.9148 0.59053 13.3394 0.766422C13.764 0.942313 14.1499 1.20012 14.4749 1.52513C14.7999 1.85013 15.0577 2.23597 15.2336 2.66061C15.4095 3.08525 15.5 3.54037 15.5 4V4.5M8.5 4.5H15.5"
+                  stroke="#A61613"
+                  strokeWidth="1.5"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_11156_27146">
+                  <rect width="24" height="24" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </BaseButtonApp>
+
+          <BaseButtonApp
+            className={s.Button}
+            disabled={disabled}
+            onClick={submitHandler}
+          >
+            Save changes
+          </BaseButtonApp>
+        </div>
+
+        <BaseButtonApp
+          className={s.RemoveInvitation}
+          type="secondary"
+          onClick={(e) => {
+            e.preventDefault();
+            alert('Revoke invitation?');
+          }}
+        >
+          Revoke invitation
+        </BaseButtonApp>
       </form>
     </BasePopup>
   );
 };
 
-export default UserDetailsPopup;
+export default UserDetailsSupervizorPopup;
