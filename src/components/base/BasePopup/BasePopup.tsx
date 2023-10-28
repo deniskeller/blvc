@@ -33,7 +33,7 @@ const BasePopup: React.FC<Props> = ({
   useEffect(() => {
     if (opened) {
       document.body.style.overflow = 'hidden';
-      document.body.style.height = '100%';
+      document.body.style.height = '100vh';
     } else {
       document.body.style.overflow = '';
       document.body.style.height = '';
