@@ -2,7 +2,7 @@
 
 ///стили для InputPhone
 .react-tel-input {
-  font-size: initial !important;
+  font-size: 100% !important;
 }
 .react-tel-input .form-control {
   $size: 14px;
@@ -22,7 +22,7 @@
   transition: all $speed ease !important;
   color: #1a1a1a !important;
   font-family: $Mulish !important;
-  font-size: em(14px) !important;
+  font-size: em($size) !important;
   font-style: normal !important;
   font-weight: 400 !important;
   line-height: 100% !important;

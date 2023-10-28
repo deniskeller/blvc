@@ -56,10 +56,11 @@
     pointer-events: none;
     transition: all 0.3s ease;
     span {
+      $size: 14px;
       color: #1a1a1a;
       opacity: 0.6;
       font-family: 'Mulish', sans-serif;
-      font-size: em(14px);
+      font-size: em($size);
       font-style: normal;
       font-weight: 400;
       line-height: 100%;
