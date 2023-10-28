@@ -1,2 +1,3 @@
 export { default as InviteUserPopup } from './InviteUserPopup/InviteUserPopup';
+export { default as UserDetailsPopup } from './UserDetailsPopup/UserDetailsPopup';
 

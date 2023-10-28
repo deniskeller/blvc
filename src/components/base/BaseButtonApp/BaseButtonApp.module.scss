@@ -38,15 +38,16 @@
 
 //secondary
 .Button_secondary {
-  background: #e7ecfb;
-  color: #4570fd;
+  background: #efefef;
+  color: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(26, 26, 26, 0.2);
 
   &:hover {
-    background: rgba(69, 112, 253, 0.15);
+    border-color: #91110e;
   }
 
   &:active {
-    background: rgba(69, 112, 253, 0.2);
+    border-color: rgba(145, 17, 14, 0.8);
   }
 }
 

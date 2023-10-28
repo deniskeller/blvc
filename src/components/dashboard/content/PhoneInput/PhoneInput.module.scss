@@ -7,9 +7,14 @@
   &_Disabled {
     cursor: not-allowed;
     pointer-events: none;
-    background: #f7f7f8;
-    color: rgba(26, 26, 26, 0.5);
-    border-radius: em(6px);
+    // background: #f7f7f8;
+    // color: rgba(26, 26, 26, 0.5);
     transition: all $speed ease;
+
+    cursor: not-allowed;
+    pointer-events: none;
+    color: rgba(26, 26, 26, 0.4);
+    border-color: rgba(26, 26, 26, 0.4);
+    opacity: 0.4;
   }
 }

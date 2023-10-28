@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import s from './Team.module.scss';
 import { PartnerCard } from 'components/dashboard/content';
-import { InviteUserPopup } from 'components/dashboard/modals';
+import { InviteUserPopup, UserDetailsPopup } from 'components/dashboard/modals';
 
 const partner_list = [
   {
@@ -65,7 +65,8 @@ for (let i = 1; i < 3; i++) {
 }
 
 const Team: React.FC = () => {
-  const [opened, setOpened] = useState(false);
+  const [openedInviteUserPopup, setOpenedInviteUserPopup] = useState(false);
+  const [openedUserDetailsPopup, setUserDetailsPopup] = useState(false);
 
   return (
     <>
@@ -103,10 +104,19 @@ const Team: React.FC = () => {
 
         <div className={s.Content}>
           {partner_list?.map((item, index) => {
-            return <PartnerCard item={item} key={index} />;
+            return (
+              <PartnerCard
+                item={item}
+                key={index}
+                onClick={() => setUserDetailsPopup(true)}
+              />
+            );
           })}
 
-          <div className={s.AddPartner} onClick={() => setOpened(true)}>
+          <div
+            className={s.AddPartner}
+            onClick={() => setOpenedInviteUserPopup(true)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="15"
@@ -129,9 +139,16 @@ const Team: React.FC = () => {
       </section>
 
       <InviteUserPopup
-        opened={opened}
-        onClick={setOpened}
-        onClick2={() => alert('kek')}
+        opened={openedInviteUserPopup}
+        onClick={setOpenedInviteUserPopup}
+        onClick2={() => alert('Invite user')}
+      />
+
+      <UserDetailsPopup
+        opened={openedUserDetailsPopup}
+        onClick={setUserDetailsPopup}
+        onClick2={() => alert('Delete user?')}
+        onClick3={() => alert('Save changes')}
       />
     </>
   );

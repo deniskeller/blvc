@@ -45,7 +45,9 @@ const BaseInputApp: React.FC<Props> = ({
       <input
         value={value}
         type={type}
-        className={`${s.Input} ${error ? s.Error : ''}`}
+        className={`${s.Input} ${error ? s.Error : ''} ${
+          error && name == 'email' ? s.ErrorEmail : ''
+        }`}
         name={name}
         min={min}
         max={max}
@@ -63,6 +65,12 @@ const BaseInputApp: React.FC<Props> = ({
         <label className={`${s.Label} ${value ? s.NoEmpty : ''}`}>
           <span>{label}</span>
         </label>
+      ) : null}
+
+      {error && name == 'email' ? (
+        <div className={s.ErrorText}>
+          <span>Incorrect email</span>
+        </div>
       ) : null}
     </div>
   );

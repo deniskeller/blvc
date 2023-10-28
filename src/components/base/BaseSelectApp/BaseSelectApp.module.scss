@@ -1,195 +1,192 @@
 .SelectContainer {
-	position: relative;
-	min-width: max-content;
+  position: relative;
+  min-width: max-content;
 }
 
 .SelectedCounter {
-	color: $dark-blue2;
-	font-size: em(16px);
-	line-height: 100%;
-	font-family: $ProximaNova;
-	white-space: nowrap;
+  white-space: nowrap;
+  font-family: $Mulish;
+  font-size: em(14px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  color: #1a1a1a;
 }
 
 .SelectHeader {
-	position: relative;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	padding: em(10px) em(70px) em(10px) em(20px);
-	border-radius: em(6px);
-	border: 1px solid #e8e8ea;
-	line-height: 100%;
-	transition: 0.5s ease all;
-	-moz-transition: 0.5s ease all;
-	-webkit-transition: 0.5s ease all;
-	@include placeholder-color($grey2);
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: em(48px);
+  padding: em(23px) em(16px) em(10px) em(10px);
+  border-radius: 0;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.6);
+  line-height: 100%;
+  transition: all 0.3s ease;
+  @include placeholder-color(transparent);
 
-	&_Focus,
-	&:hover {
-		border: 1px solid #4570fd;
-	}
+  &_DefaultPadding {
+    padding: em(15px) em(16px) em(15px) em(10px);
+  }
 
-	p {
-		display: block;
-		font-weight: normal;
-		line-height: 100%;
-		width: max-content;
-		color: #0f1f4e;
-		font-size: em(16px);
-		line-height: 100%;
-		font-family: $ProximaNova;
-		white-space: nowrap;
-		color: rgba(26, 26, 26, 0.8);
+  p {
+    display: block;
+    width: max-content;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: 'Mulish', sans-serif;
+    font-size: em(14px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    color: #1a1a1a;
 
-		&:not(.NotEmpty) {
-			display: none;
-		}
-	}
+    &:not(.NotEmpty) {
+      display: none;
+    }
+  }
 
-	.NotEmpty {
-		color: $dark-blue2;
-		font-family: $ProximaNova;
-		font-size: em(16px);
-		font-style: normal;
-		font-weight: 400;
-		line-height: 100%;
-	}
+  .NotEmpty {
+    font-family: $Mulish;
+    font-size: em(14px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+  }
 
-	&_Chevron {
-		position: absolute;
-		right: em(20px);
-		top: 50%;
-		transform: translate(0, -50%);
-		width: em(14px);
-		height: em(14px);
-		margin-left: em(12px);
-		transition: all $speed ease;
-		&_Active {
-			transform: rotate(180deg) translate(0, 50%);
-		}
-	}
+  &_Error {
+    border-bottom: 1px solid $red3 !important;
+  }
+
+  &_Chevron {
+    position: absolute;
+    right: em(20px);
+    top: 50%;
+    transform: translate(0%, -50%);
+    width: em(11px);
+    height: em(6px);
+    margin-left: em(12px);
+    transition: all $speed ease;
+    &_Active {
+      transform: rotate(180deg) translate(0, 50%);
+    }
+  }
 }
 
 .SelectList {
-	position: absolute;
-	top: calc(100% + 6px);
-	left: 0;
-	z-index: 10000;
-	min-width: max-content;
-	width: auto;
-	min-width: 100%;
-	max-height: em(148px);
-	border-radius: em(4px);
-	background: $white;
-	overflow: auto;
-	box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.08),
-		0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 10000;
+  min-width: max-content;
+  width: auto;
+  min-width: 100%;
+  max-height: em(260px);
+  overflow: auto;
 
-	&::-webkit-scrollbar {
-		display: none;
-	}
-	-ms-overflow-style: none; /* IE и Edge */
-	scrollbar-width: none; /* Firefox */
+  border-radius: em(8px);
+  border: 1px solid #dedede;
+  background: #f7f7f8;
+  box-shadow: 0px 15px 12px -8px rgba(0, 0, 0, 0.05);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE и Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .ListItem {
-	list-style: none;
-	cursor: pointer;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-	padding: em(10px) em(20px);
-	min-width: max-content;
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: em(8px) em(44px) em(8px) em(24px);
+  min-width: max-content;
 
-	&:hover {
-		background-color: rgb(243, 244, 246, 1);
-	}
+  &:hover {
+    background-color: #fff;
+  }
 
-	// &_Active {
-	// 	background-color: rgb(243, 244, 246, 1);
-	// }
+  span {
+    margin-right: em(10px);
+  }
 
-	span {
-		margin-right: em(10px);
-	}
+  .ListItemTitle {
+    color: rgba(26, 26, 26, 0.6);
+    font-family: $Mulish;
+    font-size: em(16px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+  }
 
-	.ListItemTitle {
-		font-size: em(16px);
-		font-weight: 400;
-		font-family: $ProximaNova;
-		color: $dark-blue2;
-		font-style: normal;
-		line-height: 150%;
-	}
-
-	&_IconCheck {
-		width: em(20px);
-		height: em(20px);
-		margin-left: em(4px);
-		path {
-			fill: $dark-blue;
-		}
-	}
+  &_IconCheck {
+    position: absolute;
+    right: em(16px);
+    top: 50%;
+    transform: translate(0, -50%) rotate(-5.742deg);
+    width: em(26px);
+    height: em(16px);
+  }
 }
 
 .Label {
-	color: #6e7079;
-	font-family: $ProximaNova;
-	font-size: em(16px);
-	font-style: normal;
-	font-weight: 400;
-	line-height: 100%;
-	pointer-events: none;
-	transition: all 0.3s ease;
-	margin-right: auto;
+  $size: 14px;
+  position: absolute;
+  top: em(17px, $size);
+  left: em(10px, $size);
+  pointer-events: none;
+  margin-right: auto;
+  color: #1a1a1a;
+  opacity: 0.6;
+  font-family: 'Mulish', sans-serif;
+  font-size: em($size);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  transition: all 0.3s ease;
+  &_Focus {
+    $size: 12px;
+    top: 0;
+    left: em(10px, $size);
+    font-size: em($size);
+    display: block !important;
+  }
 }
 
 .Error {
-	border: 1px solid $red2 !important;
-}
-
-.ErrorText {
-	color: $red2;
-	font-family: $ProximaNova;
-	font-size: em(12px);
-	font-style: normal;
-	font-weight: 400;
-	line-height: 100%;
-	margin-top: em(2px);
+  border-bottom: 1px solid $red3 !important;
 }
 
 .Disabled {
-	cursor: not-allowed;
-	pointer-events: none;
-	background: #f4f4f5;
-	border: 1px solid #e5e7eb !important;
-	& p {
-		color: rgba(26, 26, 26, 0.5) !important;
-	}
-}
-
-.Select_mini {
-	.SelectHeader {
-		height: em(44px);
-	}
+  cursor: not-allowed;
+  pointer-events: none;
+  background: #f4f4f5;
+  border: 1px solid rgba(26, 26, 26, 0.4) !important;
+  & p {
+    color: rgba(26, 26, 26, 0.4) !important;
+  }
 }
 
 .ClearValue {
-	position: absolute;
-	right: em(40px);
-	top: 50%;
-	transform: translate(0, -50%);
-	width: em(20px);
-	height: em(20px);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 50%;
-	background: #e8e8ea;
-	svg {
-		width: em(14px);
-		height: em(14px);
-	}
+  position: absolute;
+  right: em(40px);
+  top: 50%;
+  transform: translate(0, -50%);
+  width: em(20px);
+  height: em(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #e8e8ea;
+  svg {
+    width: em(14px);
+    height: em(14px);
+  }
 }

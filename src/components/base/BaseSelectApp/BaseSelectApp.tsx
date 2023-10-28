@@ -12,6 +12,7 @@ import s from './BaseSelectApp.module.scss';
 
 interface Props {
   placeholder?: string;
+  withLabel?: boolean;
   type?: string;
   className?: string;
   error?: string | boolean;
@@ -40,6 +41,7 @@ export interface ISelectItem {
 
 const BaseSelectApp: React.FC<Props> = ({
   placeholder,
+  withLabel = false,
   className,
   type = 'default',
   options,
@@ -51,30 +53,16 @@ const BaseSelectApp: React.FC<Props> = ({
   value,
   multiple,
   withCounter,
-  borderStyle = 'default',
-  borderColor,
-  smallPadding,
-  height,
-  minWidth,
-  noBackground,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const selectedOption = value;
   const listRef = useRef<HTMLUListElement>(null);
-  const [labelWidth, setLabelWidth] = useState(0);
 
   useEffect(() => {
     if (!isOpen) {
       onBlur();
     }
   }, [isOpen, onBlur]);
-
-  useLayoutEffect(() => {
-    if (listRef.current) {
-      const { width } = listRef?.current?.getBoundingClientRect();
-      setLabelWidth(width * 1.1);
-    }
-  }, []);
 
   const selectContainerRef = React.useRef(null);
 
@@ -110,14 +98,6 @@ const BaseSelectApp: React.FC<Props> = ({
   return (
     <div
       className={`${s.SelectContainer} ${className}`}
-      style={{
-        minWidth: minWidth
-          ? minWidth
-          : !multiple
-          ? labelWidth * 1.15
-          : minWidth,
-        height,
-      }}
       ref={selectContainerRef}
     >
       <div
@@ -125,12 +105,9 @@ const BaseSelectApp: React.FC<Props> = ({
           selectedOption?.length && selectedOption[0].label !== placeholder
             ? s.NotEmpty
             : ''
-        } ${borderStyle ? s['SelectHeader_' + borderStyle] : ''} ${
-          borderColor ? s['SelectHeader_' + borderColor] : ''
-        } ${smallPadding ? s.SmallPadding : ''}  ${
-          noBackground ? s.NoBackground : ''
+        } ${error ? s.SelectHeader_Error : ''} ${
+          !withLabel ? s.SelectHeader_DefaultPadding : ''
         }`}
-        style={{ height, width: minWidth ? minWidth : 'initial', minWidth }}
         onClick={toggling}
       >
         <p className={`${selectedOption?.length ? s.NotEmpty : ''}`}>
@@ -145,9 +122,7 @@ const BaseSelectApp: React.FC<Props> = ({
 
         <label
           className={`${s.Label} ${
-            (!isOpen && selectedOption?.length) || selectedOption?.length
-              ? s.Label_Focus
-              : ''
+            selectedOption?.length && withLabel ? s.Label_Focus : ''
           }`}
           style={{
             display: placeholder && !selectedOption?.length ? 'block' : 'none',
@@ -156,7 +131,7 @@ const BaseSelectApp: React.FC<Props> = ({
           {placeholder}
         </label>
 
-        {value.length >= 1 ? (
+        {withCounter && value.length >= 1 ? (
           <div onClick={onClear} className={s.ClearValue}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -175,25 +150,18 @@ const BaseSelectApp: React.FC<Props> = ({
 
         <BaseIcon
           icon={ALL_ICONS.SELECT_CHEVRON_DASHBOARD}
-          viewBox="0 0 15 14"
+          viewBox="0 0 11 6"
           className={`${s.SelectHeader_Chevron} ${
             isOpen ? s.SelectHeader_Chevron_Active : ''
           }`}
         />
       </div>
 
-      {error ? <div className={s.ErrorText}>{error}</div> : ''}
-
       <ul
         className={s.SelectList}
         ref={listRef}
         style={{
           visibility: isOpen ? 'visible' : 'hidden',
-          minWidth: minWidth
-            ? minWidth
-            : !multiple
-            ? labelWidth * 1.15
-            : minWidth,
         }}
       >
         {options.map((option: ISelectItem) => {
@@ -211,7 +179,7 @@ const BaseSelectApp: React.FC<Props> = ({
               {selected && (
                 <BaseIcon
                   icon={ALL_ICONS.SELECT_CHECK}
-                  viewBox="0 0 24 24"
+                  viewBox="0 0 26 19"
                   className={s.ListItem_IconCheck}
                 />
               )}
