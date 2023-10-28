@@ -31,12 +31,10 @@
       visibility: hidden;
     }
 
-    &:focus {
-      & + .Label {
-        $size: 12px;
-        top: em(0px);
-        font-size: em($size);
-      }
+    &:focus + .Label {
+      $size: 12px;
+      top: em(0px);
+      font-size: em($size);
     }
 
     & + .NoEmpty {
@@ -61,7 +59,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 100%;
-    transition: font-size 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   .Error {
@@ -93,8 +91,15 @@
     .Input {
       color: #fff;
       border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      &:focus + .Label {
+        color: rgba(255, 255, 255, 0.6);
+      }
     }
     .Label {
+      color: #fff;
+    }
+
+    .NoEmpty {
       color: rgba(255, 255, 255, 0.6);
     }
   }
@@ -109,6 +114,7 @@
     border-color: rgba(26, 26, 26, 0.4);
 
     & + .Label {
+      opacity: 0.6;
       color: rgba(26, 26, 26, 0.4);
     }
   }
