@@ -224,3 +224,7 @@ input[type='search']::-webkit-search-results-decoration {
 .react-tel-input :disabled {
   color: rgba(26, 26, 26, 0.6) !important;
 }
+
+.form-control:disabled + div:before {
+  opacity: 0.4 !important;
+}
