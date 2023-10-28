@@ -63,7 +63,7 @@ const BaseInputApp: React.FC<Props> = ({
 
       {label ? (
         <label className={`${s.Label} ${value ? s.NoEmpty : ''}`}>
-          <span>{label}</span>
+          {label}
         </label>
       ) : null}
 
