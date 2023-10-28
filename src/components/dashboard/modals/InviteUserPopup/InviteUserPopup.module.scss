@@ -1,0 +1,12 @@
+.Title {
+  margin-bottom: em(36px);
+}
+
+.Form {
+  ul {
+    margin-bottom: em(32px);
+    li:not(:last-child) {
+      margin-bottom: em(16px);
+    }
+  }
+}

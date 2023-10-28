@@ -51,12 +51,13 @@
   .Label {
     display: flex;
     position: absolute;
-    top: em(15px);
-    left: em(9px);
+    top: em(17px);
+    left: em(10px);
     pointer-events: none;
     transition: all 0.3s ease;
     span {
-      color: rgba(26, 26, 26, 0.6);
+      color: #1a1a1a;
+      opacity: 0.6;
       font-family: 'Mulish', sans-serif;
       font-size: em(14px);
       font-style: normal;

@@ -1,112 +1,88 @@
 .Wrapper {
-	display: grid;
-	justify-items: center;
-	width: 100vw;
-	min-height: 100vh;
-	height: 100%;
-	overflow-y: auto;
-	padding: em(30px) 0;
-	position: fixed;
-	z-index: $popup;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	opacity: 0;
-	pointer-events: none;
-	transition: all $speed ease;
+  display: grid;
+  justify-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  overflow-y: auto;
+  padding: em(30px) 0;
+  position: fixed;
+  z-index: $popup;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all $speed ease;
 }
 
 .Overlay {
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	position: fixed;
-	opacity: 0.3;
-	background: #0f1f4e;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .Popup {
-	position: relative;
-	width: 100%;
-	max-width: em(588px);
-	height: max-content;
-	padding: em(24px) em(32px) em(32px);
-	margin: 0 auto;
-	background: $white;
-	margin-top: auto;
-	margin-bottom: auto;
+  position: relative;
+  width: 100%;
+  max-width: em(480px);
+  height: max-content;
+  padding: em(24px) em(32px) em(32px);
+  margin: 0 auto;
+  background: $body;
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: em(4px);
+  border: 1px solid #e4e4e7;
+  transform: scale(0.8);
+  transition: transform $speed ease;
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.08),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.06);
 
-	border-radius: em(10px);
-	border: 1px solid #e4e4e7;
-	box-shadow: 0px 4px 6px -2px rgba(0, 61, 140, 0.04),
-		0px -4px 6px -2px rgba(0, 61, 140, 0.04);
-	transform: scale(0.8);
-	transition: transform $speed ease;
-	@include ifmobile {
-		padding: em(28px) em(16px) em(24px);
-	}
+  @include ifmobile {
+    max-width: em(320px);
+    padding: em(24px) em(16px) em(32px);
+  }
 
-	&_Close {
-		cursor: pointer;
-		position: absolute;
-		top: em(16px);
-		right: em(16px);
-		width: em(40px);
-		height: em(40px);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border-radius: 50%;
-		background: rgba(195, 209, 228, 0.2);
-		@include ifmobile {
-			width: em(30px);
-			height: em(30px);
-		}
-		&:hover {
-			svg {
-				transform: rotate(90deg);
-			}
-		}
-		svg {
-			width: em(24px);
-			height: em(24px);
-			transition: transform $speed ease;
-			@include ifmobile {
-				width: em(18px);
-				height: em(18px);
-			}
-		}
-	}
+  &_Close {
+    cursor: pointer;
+    position: absolute;
+    top: em(30px);
+    right: em(24px);
+    width: em(24px);
+    height: em(24px);
+    transition: transform $speed ease;
+    &:hover {
+      transform: rotate(90deg);
+    }
+    svg {
+      width: em(24px);
+      height: em(24px);
+    }
+  }
 }
 
 .Popup_small {
-	max-width: em(462px);
+  max-width: em(462px);
 }
 
 .Popup_large {
-	max-width: em(880px);
-	@include iflaptop {
-		max-width: em(814px);
-	}
-	@include iftablet {
-		max-width: em(670px);
-	}
+  max-width: em(880px);
 }
 
 .Popup_confirm {
-	max-width: em(384px);
-	padding: em(24px);
-	@include ifmobile {
-		padding: em(24px) em(16px) em(24px);
-	}
+  max-width: em(384px);
+  padding: em(24px);
 }
 
 .Visible {
-	opacity: 1;
-	pointer-events: initial;
-	.Popup {
-		transform: scale(1);
-	}
+  opacity: 1;
+  pointer-events: initial;
+  .Popup {
+    transform: scale(1);
+  }
 }

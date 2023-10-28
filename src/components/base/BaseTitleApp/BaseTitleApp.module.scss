@@ -1,20 +1,21 @@
 .Title {
-	&_h1 {
-		color: $dark-blue2;
-		font-family: $ProximaNova;
-		font-size: em(20px);
-		font-style: normal;
-		font-weight: 600;
-		line-height: 160%;
-		text-transform: uppercase;
-		@include ifmobile {
-			font-size: em(16px);
-		}
-	}
-	&_h2 {
-		font-size: em(24px);
-		line-height: 133%;
-	}
+  &_h1 {
+    color: $black;
+    font-family: $Mulish;
+    font-size: em(20px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%;
+    text-transform: uppercase;
+    @include ifmobile {
+      font-size: em(16px);
+    }
+  }
+
+  &_h2 {
+    font-size: em(24px);
+    line-height: 133%;
+  }
 }
 
 @include iflaptop {

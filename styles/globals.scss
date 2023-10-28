@@ -1,1 +1,228 @@
 @import './../src/assets/scss/core.scss';
+
+///стили для InputPhone
+.react-tel-input {
+  font-size: initial !important;
+}
+.react-tel-input .form-control {
+  $size: 14px;
+  border-radius: 0 !important;
+  letter-spacing: inherit !important;
+  outline: none !important;
+  border: none !important;
+  width: 100% !important;
+  height: em(48px, $size) !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  @include placeholder-color(transparent !important);
+  padding: em(23px, $size) em(16px, $size) em(10px, $size) em(60px, $size) !important;
+  text-transform: uppercase !important;
+  background: transparent !important;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.6) !important;
+  transition: all $speed ease !important;
+  color: #1a1a1a !important;
+  font-family: $Mulish !important;
+  font-size: em(14px) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 100% !important;
+}
+
+.react-tel-input .country-list {
+  width: 100% !important;
+  margin: 0 !important;
+  min-height: em(246px) !important;
+  top: calc(100% + 4px) !important;
+  padding: em(24px) 0 !important;
+  border-radius: em(8px) !important;
+  border: 1px solid #dedede !important;
+  background: $body !important;
+  box-shadow: 0px 15px 12px -8px rgba(0, 0, 0, 0.05) !important;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.react-tel-input .country-list .search {
+  background: #222226 !important;
+}
+
+.react-tel-input .flag-dropdown {
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.react-tel-input .flag-dropdown.open {
+  width: 100% !important;
+}
+.react-tel-input .flag-dropdown.open .selected-flag {
+  background: none !important;
+}
+
+.react-tel-input .selected-flag {
+  padding: 0 0 0 em(10px) !important;
+}
+.react-tel-input .selected-flag:hover,
+.react-tel-input .selected-flag:focus {
+  background: none !important;
+}
+
+.react-tel-input .country-list .country:hover {
+  background: $white !important;
+}
+
+.react-tel-input .country-list .country .dial-code {
+  font-family: $Mulish !important;
+  font-weight: 400 !important;
+  font-size: em(16px) !important;
+  line-height: 150% !important;
+  color: rgba(26, 26, 26, 0.9) !important;
+  z-index: 10000 !important;
+}
+
+.react-tel-input .country-list .country.highlight {
+  background-image: url('/pictures/icons/selected.svg') !important;
+  background-position: 98% 50% !important;
+  background-size: auto !important;
+  background-repeat: no-repeat !important;
+  .country-name {
+    color: rgba(26, 26, 26, 0.9) !important;
+  }
+  .dial-code {
+    color: rgba(26, 26, 26, 0.9) !important;
+  }
+}
+
+.react-tel-input .country-list .country {
+  display: flex !important;
+  align-items: center !important;
+  padding: em(8px) em(24px) !important;
+  margin-bottom: em(8px) !important;
+}
+.react-tel-input .country-list .country:last-child {
+  margin-bottom: 0 !important;
+}
+
+.react-tel-input .country-list .country-name {
+  font-size: em(16px) !important;
+  font-weight: 400;
+  line-height: 160%;
+  font-family: $Mulish !important;
+  order: 1;
+  margin-left: em(10px) !important;
+}
+
+.react-tel-input .country-list .search-emoji {
+  background-image: url('/pictures/icons/search.svg') !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  width: 23px !important;
+  height: 23px !important;
+  display: inline-flex !important;
+  font-size: 0 !important;
+}
+
+.react-tel-input .country-list .search {
+  display: flex;
+  align-items: center;
+  padding: em(12px) em(16px) !important;
+  z-index: 1000000;
+  border-radius: em(6px) !important;
+  background: $white !important;
+  border: 1px solid #d1d5db !important;
+  margin: 0 em(20px) 0;
+  box-shadow: 0px em(-120px) 0 em(120px) $body;
+}
+
+.react-tel-input .country-list .search-box {
+  width: 100% !important;
+  border: none !important;
+  border-radius: 0 !important;
+  margin-left: em(12px) !important;
+  outline: none !important;
+  font-weight: 400 !important;
+  font-size: em(16px) !important;
+  line-height: 100% !important;
+  background: none !important;
+  color: #1a1a1a !important;
+  padding: 0 !important;
+  font-family: $Mulish !important;
+  @include placeholder-color(#6e7079 !important);
+}
+
+.react-tel-input .country-list .flag {
+  margin-right: em(12px) !important;
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  display: none !important;
+}
+
+.react-tel-input .form-control.phone-input-error {
+  border-color: $red3 !important;
+}
+.react-tel-input .selected-flag .arrow {
+  width: em(15px) !important;
+  height: em(15px) !important;
+  background-image: url('/pictures/icons/chevron-down.svg') !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  border: none !important;
+  margin: 0 !important;
+  left: em(24px) !important;
+  top: em(7px) !important;
+  transform: translate(0, -50%) !important;
+  transition: all $speed ease-in-out;
+}
+
+.react-tel-input .selected-flag .up {
+  transform: translate(0, -50%) rotate(180deg) !important;
+}
+
+.react-tel-input .form-control + div:before {
+  display: none;
+}
+
+.react-tel-input .country-list .no-entries-message {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: em(20px) !important;
+  span {
+    font-weight: 400 !important;
+    font-size: em(16px) !important;
+    color: #1a1a1a !important;
+    font-family: $Mulish !important;
+  }
+}
+
+.react-tel-input:disabled {
+  transition: all $speed ease !important;
+  background: transparent !important;
+}
+
+.react-tel-input .form-control + div:before {
+  $size: 12px;
+  content: 'Phone';
+  position: absolute !important;
+  top: 0 !important;
+  left: em(10px, $size) !important;
+  display: block !important;
+  color: #1a1a1a;
+  opacity: 0.6;
+  font-family: 'Mulish', sans-serif;
+  font-size: em($size);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+}
+.react-tel-input .selected-flag .flag {
+  margin-top: 0 !important;
+}
