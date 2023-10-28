@@ -105,8 +105,8 @@
   .Input:disabled:focus {
     cursor: not-allowed;
     pointer-events: none;
-    color: rgba(26, 26, 26, 0.4);
-    border-color: rgba(26, 26, 26, 0.4);
+    // color: rgba(26, 26, 26, 0.4);
+    // border-color: rgba(26, 26, 26, 0.4);
 
     & + .Label {
       color: rgba(26, 26, 26, 0.4);
