@@ -135,6 +135,8 @@ const Team: React.FC = () => {
 
             <span>Invite user</span>
           </div>
+
+          <span style={{ cursor: 'pointer' }}>user Details 2</span>
         </div>
       </section>
 
