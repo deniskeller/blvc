@@ -7,5 +7,27 @@
     .Form_Input:not(:last-child) {
       margin-bottom: em(16px);
     }
+    .Form_Input {
+      position: relative;
+      .Edit,
+      .Save {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        right: em(10px);
+        width: em(22px);
+        height: em(22px);
+        path {
+          transition: all $speed ease;
+        }
+        &:hover {
+          path {
+            stroke-opacity: 1;
+            fill-opacity: 1;
+          }
+        }
+      }
+    }
   }
 }

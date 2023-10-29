@@ -213,6 +213,7 @@ const Dashboard: React.FC<Props> = ({ children }) => {
               alt="background image"
               width={1920}
               height={808}
+              priority
               className={s.Background_Image}
             />
           </div>

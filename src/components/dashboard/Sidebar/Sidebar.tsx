@@ -23,7 +23,6 @@ const Sidebar: React.FC<Props> = ({ pages, className = '' }) => {
   const { setVisibleSidebar } = sidebarSlice.actions;
 
   useEffect(() => {
-    console.log('isVisible: ', isVisible);
     if (isVisible) {
       document.body.style.overflow = 'hidden';
       document.body.style.height = '100%';

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import s from './Team.module.scss';
 import { PartnerCard } from 'components/dashboard/content';
 import {
+  EnterNewEmailPopup,
   InviteUserPopup,
   UserDetailsPopup,
   UserDetailsSupervizorPopup,
@@ -73,6 +74,7 @@ const Team: React.FC = () => {
   const [openedUserDetailsSupervizorPopup, setUserDetailsSupervizorPopup] =
     useState(false);
   const [openedUserDetailsPopup, setUserDetailsPopup] = useState(false);
+  const [openedEnterNewEmailPopup, setEnterNewEmailPopup] = useState(false);
 
   return (
     <>
@@ -152,24 +154,32 @@ const Team: React.FC = () => {
         </div>
       </section>
 
+      {/* ДОБАВЛЕНИЕ ПАРТНЕРА */}
       <InviteUserPopup
         opened={openedInviteUserPopup}
         onClick={setOpenedInviteUserPopup}
         onClick2={() => alert('Invite user')}
       />
-
+      {/* ДЕТАЛИ ЮЗЕРА СУПЕРВАЙЗЕР */}
       <UserDetailsSupervizorPopup
         opened={openedUserDetailsSupervizorPopup}
         onClick={setUserDetailsSupervizorPopup}
         onClick2={() => alert('Delete user?')}
         onClick3={() => alert('Save changes')}
       />
-
+      {/* ДЕТАЛИ ЮЗЕРА  */}
       <UserDetailsPopup
         opened={openedUserDetailsPopup}
         onClick={setUserDetailsPopup}
-        onClick2={() => alert('Delete user?')}
+        onClick2={() => setEnterNewEmailPopup(true)}
         onClick3={() => alert('Save changes')}
+      />
+
+      {/* ИЗМЕНЕНИЕ ЕМЕЙЛА */}
+      <EnterNewEmailPopup
+        opened={openedEnterNewEmailPopup}
+        onClick={setEnterNewEmailPopup}
+        onClick2={() => {}}
       />
     </>
   );

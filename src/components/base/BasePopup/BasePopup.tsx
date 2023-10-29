@@ -5,6 +5,7 @@ import s from './BasePopup.module.scss';
 
 interface Props {
   children: ReactNode | ReactNode[];
+  className?: string;
   size?: string;
   type?: string;
   opened: boolean;
@@ -13,6 +14,7 @@ interface Props {
 
 const BasePopup: React.FC<Props> = ({
   children,
+  className = '',
   opened,
   onClick,
   size = '',
@@ -59,9 +61,9 @@ const BasePopup: React.FC<Props> = ({
         <div className={s.Overlay} onClick={() => onClick(false)}></div>
 
         <div
-          className={`${s.Popup} ${size ? s['Popup_' + size] : ''} ${
-            type ? s['Popup_' + type] : ''
-          }`}
+          className={`${s.Popup} ${className} ${
+            size ? s['Popup_' + size] : ''
+          } ${type ? s['Popup_' + type] : ''}`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
