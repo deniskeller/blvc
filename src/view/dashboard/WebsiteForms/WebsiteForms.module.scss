@@ -1,0 +1,37 @@
+.WebsiteForms {
+  padding: em(65px) em(70px) em(65px) em(60px);
+  @include iflaptop {
+  }
+  @include iftablet {
+  }
+  @include iftablet-mini {
+  }
+  @include ifmobile {
+  }
+
+  .Header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: em(33px);
+    @include ifmobile {
+      display: none;
+    }
+    &_Title {
+      color: $black;
+      font-family: $Blacksword;
+      font-size: em(32px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%;
+    }
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include iftablet-mini {
+}
+@include ifmobile {
+}

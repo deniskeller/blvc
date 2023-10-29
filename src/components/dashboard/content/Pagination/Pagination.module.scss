@@ -1,115 +1,137 @@
 .Pagination {
-	width: 100%;
-	position: sticky;
-	z-index: 10;
-	bottom: 0;
-	border-radius: em(6px);
-	background: $white;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-	padding: em(10px) em(20px);
-	transition: all $speed ease;
-	margin: 0 auto;
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+  background: $body;
+  width: 100%;
+  min-height: em(70px);
+  padding: em(15px) em(70px);
+  @include iflaptop {
+    padding: em(15px) em(40px);
+  }
+  @include iftablet {
+    padding: em(15px) em(20px);
+  }
+  @include iftablet-mini {
+    padding: em(15px) em(20px);
+  }
+  @include ifmobile {
+    padding: em(15px) em(20px);
+  }
 
-	@include iflaptop {
-		padding: em(10px) em(12px);
-	}
+  .Copyright {
+    margin-right: em(132px);
+    @include iflaptop {
+      max-width: em(110px);
+      margin-right: em(108px);
+    }
+    @include iftablet {
+      max-width: em(91px);
+      margin-right: em(68px);
+    }
+    @include iftablet-mini {
+      max-width: em(91px);
+      margin-right: 0;
+    }
+    @include ifmobile {
+      display: none;
+    }
+    p {
+      color: $base400light;
+      font-size: em(12px);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 133.333%; /* 133.333% */
+      @include iftablet {
+        font-size: em(10px);
+      }
+      @include iftablet-mini {
+        font-size: em(10px);
+      }
+    }
+  }
 
-	@include iftablet {
-		width: 97%;
-		margin-right: em(16px);
-		padding: em(10px) em(12px);
-	}
-	@include ifmobile {
-		width: 94%;
-		padding: em(7px) em(10px);
-	}
+  .ShowCounter {
+    margin-right: em(20px);
+    @include iftablet-mini {
+      display: none;
+    }
+    @include ifmobile {
+      display: none;
+    }
+    p {
+      color: $base200light;
+      font-size: em(14px);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 142.857%;
+      @include iftablet {
+        font-size: em(12px);
+      }
+    }
+  }
 
-	&_Scroll {
-		width: 97%;
-		bottom: em(30px);
-		@include iflaptop {
-			width: 92%;
-		}
+  .Select {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: em(20px);
+    @include iftablet-mini {
+      margin-left: 0;
+    }
+    @include ifmobile {
+      margin-left: em(30px);
+    }
+    &_Label {
+      margin-right: em(12px);
+      span {
+        color: $base300light;
+        font-size: em(14px);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        @include iftablet {
+          font-size: em(12px);
+        }
+        @include iftablet-mini {
+          font-size: em(12px);
+        }
+        @include ifmobile {
+          display: none;
+        }
+      }
+    }
 
-		@include iftablet {
-			width: 93%;
-			margin-right: em(32px);
-		}
-		@include ifmobile {
-			width: 90%;
-		}
-	}
-
-	&_Label {
-		@include iftablet {
-			display: flex;
-			flex-direction: column;
-		}
-		@include ifmobile {
-			display: none;
-		}
-		span {
-			color: $grey2;
-			font-family: $ProximaNova;
-			font-size: em(14px);
-			font-style: normal;
-			font-weight: 400;
-			line-height: 120%;
-			@include iftablet {
-				font-size: em(12px);
-			}
-			@include ifmobile {
-				font-size: em(12px);
-			}
-		}
-	}
-
-	&_Select {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		&_Label {
-			margin-right: em(12px);
-			@include ifmobile {
-				display: none;
-			}
-			span {
-				color: $grey2;
-				font-family: $ProximaNova;
-				font-size: em(14px);
-				font-style: normal;
-				font-weight: 400;
-				@include iftablet {
-					font-size: em(12px);
-				}
-				@include ifmobile {
-					font-size: em(12px);
-				}
-			}
-		}
-		&_Value {
-			min-width: em(60px);
-			ul {
-				top: auto;
-				bottom: calc(100% + 6px);
-			}
-		}
-		&_Value > div {
-			line-height: 100%;
-			padding: em(8px) em(10px);
-			span {
-				font-size: em(14px) !important;
-			}
-		}
-	}
+    &_Value {
+      min-width: em(40px);
+      & > div {
+        height: em(30px);
+        padding: em(6px) 0 em(6px) em(2px);
+        svg {
+          right: 0;
+        }
+      }
+      ul {
+        top: auto;
+        left: auto;
+        right: 0;
+        bottom: calc(100% + 6px);
+        min-width: em(120px);
+      }
+    }
+  }
 }
 
 @include iflaptop {
 }
 @include iftablet {
+}
+@include iftablet-mini {
 }
 @include ifmobile {
 }

@@ -7,9 +7,21 @@ interface Props {
   className?: string;
 }
 
+interface IFormData {
+  select: ISelectItem[];
+}
+
+interface ISelectItem {
+  label: string;
+  value: string;
+}
+
+const initialState = {
+  select: [{ value: '20', label: '20' }],
+};
+
 const Pagination: React.FC<Props> = ({ className = '' }) => {
   //отображаемое количество
-  const [value, setValue] = useState('20');
 
   const [itemOffset, setItemOffset] = useState(0);
   const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
@@ -22,11 +34,24 @@ const Pagination: React.FC<Props> = ({ className = '' }) => {
     setItemOffset(newOffset);
   };
 
+  const [value, setValue] = useState<IFormData>(initialState);
+
+  const setNewValue = (value: ISelectItem | ISelectItem[], prop: string) => {
+    setValue((prev) => ({ ...prev, [prop]: value }));
+  };
+
+  useEffect(() => {
+    console.log('value: ', value);
+  }, [value]);
+
   return (
     <div className={`${s.Pagination} ${className}`}>
-      <div className={s.Pagination_Label}>
-        <span>Показано результатов:&nbsp;</span>
-        <span>10 из 20</span>
+      <div className={s.Copyright}>
+        <p>All rights reserved © 2023 © BLVC</p>
+      </div>
+
+      <div className={s.ShowCounter}>
+        <p>Showing results:&nbsp;10&nbsp;of&nbsp;99</p>
       </div>
 
       <ReactPaginate
@@ -38,8 +63,10 @@ const Pagination: React.FC<Props> = ({ className = '' }) => {
             className="prev-btn"
           >
             <path
-              d="M7.5 4.16699L13.3333 10.0003L7.5 15.8337"
-              stroke="#B4B5BC"
+              d="M6.65983 4.16536L12.4932 9.9987L6.65983 15.832"
+              stroke="#1A1A1A"
+              strokeOpacity="0.6"
+              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
@@ -57,8 +84,10 @@ const Pagination: React.FC<Props> = ({ className = '' }) => {
             className="next-btn"
           >
             <path
-              d="M12.5003 15.8337L6.66699 10.0003L12.5003 4.16699"
-              stroke="#B4B5BC"
+              d="M12.4925 15.8346L6.65918 10.0013L12.4925 4.16797"
+              stroke="#1A1A1A"
+              strokeOpacity="0.6"
+              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
@@ -78,22 +107,26 @@ const Pagination: React.FC<Props> = ({ className = '' }) => {
         renderOnZeroPageCount={null}
       />
 
-      <div className={s.Pagination_Select}>
-        <div className={s.Pagination_Select_Label}>
-          <span>Показывать по</span>
+      <div className={s.Select}>
+        <div className={s.Select_Label}>
+          <span>Show</span>
         </div>
 
-        {/* <BaseSelectApp
-          defaultValue={value}
+        <BaseSelectApp
+          value={value.select}
           options={[
             { value: '5', label: '5' },
             { value: '10', label: '10' },
             { value: '20', label: '20' },
             { value: '50', label: '50' },
           ]}
-          onChange={(val: string) => setValue(val)}
-          className={s.Pagination_Select_Value}
-        /> */}
+          onChange={(val: ISelectItem[] | ISelectItem) =>
+            setNewValue(val, 'select')
+          }
+          onClear={() => {}}
+          onBlur={() => {}}
+          className={s.Select_Value}
+        />
       </div>
     </div>
   );

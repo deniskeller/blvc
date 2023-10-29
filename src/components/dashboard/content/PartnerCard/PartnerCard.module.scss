@@ -2,7 +2,7 @@
   cursor: pointer;
   position: relative;
   border-radius: em(4px);
-  border: 1px solid rgba(26, 26, 26, 0.2);
+  border: 1px solid $base200light;
   transition: box-shadow $speed ease;
   overflow: hidden;
   min-height: em(183px);

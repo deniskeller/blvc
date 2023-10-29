@@ -21,7 +21,7 @@
     transition: transform $speed ease;
   }
   &_Label {
-    color: rgba(26, 26, 26, 0.3);
+    color: $base300light;
     font-size: em(14px);
     font-style: normal;
     font-weight: 500;
@@ -33,7 +33,7 @@
 .Description {
   margin-bottom: em(32px);
   p {
-    color: rgba(26, 26, 26, 0.4);
+    color: $base400light;
     font-size: em(14px);
     font-style: normal;
     font-weight: 500;
@@ -57,7 +57,7 @@
     .RepeatSending {
       margin-top: em(32px);
       p {
-        color: rgba(26, 26, 26, 0.3);
+        color: $base300light;
         text-align: center;
         font-size: em(14px);
         font-style: normal;
