@@ -12,8 +12,8 @@ import { PhoneInput } from 'components/dashboard/content';
 interface Props {
   opened: boolean;
   onClick: (value: boolean) => void;
-  onClick2?: (ev: React.MouseEvent<SVGSVGElement>) => void;
-  onClick3: (value: boolean) => void;
+  onClick2: (ev: React.MouseEvent<SVGSVGElement>) => void;
+  onClick3: (ev: React.MouseEvent<SVGSVGElement>) => void;
 }
 
 interface IFormData {
@@ -148,6 +148,7 @@ const UserDetailsPopup: React.FC<Props> = ({
                 viewBox="0 0 22 22"
                 fill="none"
                 className={s.Save}
+                onClick={onClick3}
               >
                 <path
                   fillRule="evenodd"

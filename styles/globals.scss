@@ -228,3 +228,52 @@ input[type='search']::-webkit-search-results-decoration {
 .form-control:disabled + div:before {
   opacity: 0.4 !important;
 }
+
+// КОД ВАРИФИКАЦИИ ИЗМЕНЕНИЯ ТЕЛЕФОНА
+.VerificationCode {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .Input {
+    $size: 29px;
+    width: 100%;
+    max-width: em(43px, $size) !important;
+    height: em(48px, $size) !important;
+    padding: em(10px, $size) em(12px, $size) !important;
+    background: none !important;
+    outline: none !important;
+    border: none !important;
+    position: relative !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.6) !important;
+    transition: all 0.3s ease !important;
+    @include placeholder-color(transparent);
+    text-align: center !important;
+    flex-grow: initial;
+    flex-basis: initial;
+    color: $black !important;
+    text-overflow: ellipsis !important;
+    font-family: $Mulish !important;
+    font-size: em($size) !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 100% !important;
+  }
+
+  .Error {
+    border-color: $red3 !important;
+  }
+
+  // .Inactive {
+  //   border-color: $red3 !important;
+  // }
+  // .Selected {
+  //   border-color: blue !important;
+  // }
+}
+.vi__wrapper {
+  width: 100%;
+}

@@ -4,6 +4,7 @@ import { PartnerCard } from 'components/dashboard/content';
 import {
   EnterNewEmailPopup,
   InviteUserPopup,
+  PhoneVerificationCodePopup,
   UserDetailsPopup,
   UserDetailsSupervizorPopup,
 } from 'components/dashboard/modals';
@@ -75,6 +76,8 @@ const Team: React.FC = () => {
     useState(false);
   const [openedUserDetailsPopup, setUserDetailsPopup] = useState(false);
   const [openedEnterNewEmailPopup, setEnterNewEmailPopup] = useState(false);
+  const [openedPhoneVerificationCodePopup, setPhoneVerificationCodePopup] =
+    useState(false);
 
   return (
     <>
@@ -172,13 +175,20 @@ const Team: React.FC = () => {
         opened={openedUserDetailsPopup}
         onClick={setUserDetailsPopup}
         onClick2={() => setEnterNewEmailPopup(true)}
-        onClick3={() => alert('Save changes')}
+        onClick3={() => setPhoneVerificationCodePopup(true)}
       />
 
       {/* ИЗМЕНЕНИЕ ЕМЕЙЛА */}
       <EnterNewEmailPopup
         opened={openedEnterNewEmailPopup}
         onClick={setEnterNewEmailPopup}
+        onClick2={() => {}}
+      />
+
+      {/* ПРОВЕРОЧНЫЙ КОД */}
+      <PhoneVerificationCodePopup
+        opened={openedPhoneVerificationCodePopup}
+        onClick={setPhoneVerificationCodePopup}
         onClick2={() => {}}
       />
     </>

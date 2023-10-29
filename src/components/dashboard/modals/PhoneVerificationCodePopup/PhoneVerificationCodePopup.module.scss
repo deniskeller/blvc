@@ -1,0 +1,78 @@
+.Popup svg {
+  display: none;
+}
+
+.Back {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: em(32px);
+  width: max-content;
+  &:hover {
+    .Back_Icon {
+      transform: translate(em(-3px), 0);
+    }
+  }
+  &_Icon {
+    display: flex !important;
+    width: em(60px);
+    margin-right: em(12px);
+    transition: transform $speed ease;
+  }
+  &_Label {
+    color: rgba(26, 26, 26, 0.3);
+    font-size: em(14px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 142.857%;
+    letter-spacing: -0.21px;
+  }
+}
+
+.Description {
+  margin-bottom: em(32px);
+  p {
+    color: rgba(26, 26, 26, 0.4);
+    font-size: em(14px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 171.429%; /* 171.429% */
+  }
+}
+
+.Form {
+  &_VerificationCode {
+    .Error {
+      margin-top: em(10px);
+      p {
+        color: rgba(26, 26, 26, 0.6);
+        font-size: em(11px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%; /* 11px */
+      }
+    }
+
+    .RepeatSending {
+      margin-top: em(32px);
+      p {
+        color: rgba(26, 26, 26, 0.3);
+        text-align: center;
+        font-size: em(14px);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 171.429%; /* 171.429% */
+        span {
+          color: $red3;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &_Button {
+    margin-top: em(32px);
+    width: 100%;
+  }
+}
