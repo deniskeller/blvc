@@ -89,7 +89,7 @@ const PhoneVerificationCodePopup: React.FC<Props> = ({
             </div>
           ) : null}
 
-          {repeatSending ? (
+          {repeatSending && !error ? (
             <div className={s.RepeatSending}>
               <p>
                 Didn’t get the code?&nbsp;

@@ -230,6 +230,10 @@ input[type='search']::-webkit-search-results-decoration {
 }
 
 // КОД ВАРИФИКАЦИИ ИЗМЕНЕНИЯ ТЕЛЕФОНА
+.vi__wrapper {
+  width: 100%;
+}
+
 .VerificationCode {
   width: 100%;
   display: flex;
@@ -254,26 +258,22 @@ input[type='search']::-webkit-search-results-decoration {
     text-align: center !important;
     flex-grow: initial;
     flex-basis: initial;
-    color: $black !important;
+    color: rgba(26, 26, 26, 0.8) !important;
     text-overflow: ellipsis !important;
     font-family: $Mulish !important;
     font-size: em($size) !important;
     font-style: normal !important;
     font-weight: 700 !important;
     line-height: 100% !important;
+
+    @include ifmobile {
+      $size: 29px;
+      max-width: em(22px, $size) !important;
+      padding: em(10px, $size) em(2px, $size) !important;
+    }
   }
 
   .Error {
     border-color: $red3 !important;
   }
-
-  // .Inactive {
-  //   border-color: $red3 !important;
-  // }
-  // .Selected {
-  //   border-color: blue !important;
-  // }
-}
-.vi__wrapper {
-  width: 100%;
 }
