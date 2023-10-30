@@ -40,9 +40,9 @@ const Pagination: React.FC<Props> = ({ className = '' }) => {
     setValue((prev) => ({ ...prev, [prop]: value }));
   };
 
-  useEffect(() => {
-    console.log('value: ', value);
-  }, [value]);
+  // useEffect(() => {
+  //   console.log('value: ', value);
+  // }, [value]);
 
   return (
     <div className={`${s.Pagination} ${className}`}>
