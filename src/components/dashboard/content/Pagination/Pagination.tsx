@@ -55,6 +55,58 @@ const Pagination: React.FC<Props> = ({ className = '' }) => {
       </div>
 
       <ReactPaginate
+        breakLabel="..."
+        nextLabel={
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="none"
+            className="prev-btn"
+          >
+            <path
+              d="M6.65983 4.16536L12.4932 9.9987L6.65983 15.832"
+              stroke="#1A1A1A"
+              strokeOpacity="0.6"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        }
+        previousLabel={
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="none"
+            className="next-btn"
+          >
+            <path
+              d="M12.4925 15.8346L6.65918 10.0013L12.4925 4.16797"
+              stroke="#1A1A1A"
+              strokeOpacity="0.6"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        }
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        renderOnZeroPageCount={null}
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        containerClassName="pagination"
+        activeClassName="active"
+      />
+
+      {/* <ReactPaginate
         nextLabel={
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -104,8 +156,8 @@ const Pagination: React.FC<Props> = ({ className = '' }) => {
         breakLinkClassName="page-link"
         containerClassName="pagination"
         activeClassName="active"
-        // renderOnZeroPageCount={null}
-      />
+        renderOnZeroPageCount={null}
+      /> */}
 
       <div className={s.Select}>
         <div className={s.Select_Label}>
