@@ -75,7 +75,7 @@ const Pagination: React.FC<Props> = ({ className = '' }) => {
         onPageChange={handlePageClick}
         pageRangeDisplayed={1}
         marginPagesDisplayed={3}
-        pageCount={5}
+        pageCount={pageCount}
         previousLabel={
           <svg
             xmlns="http://www.w3.org/2000/svg"

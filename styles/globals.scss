@@ -369,72 +369,72 @@ input[type='search']::-webkit-search-results-decoration {
 }
 
 //СТИЛИ ПАГИНАЦИИ
-.pagination {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  .page-item.active {
-    border-radius: em(6px);
-    background: #ebeff9;
-    a {
-      color: $red3;
-    }
-  }
-  li {
-    font-size: 100%;
-    cursor: pointer;
-    display: flex;
-    width: em(24px);
-    height: em(24px);
-    margin: 0 em(4px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @include iflaptop {
-    }
-    @include iftablet {
-      margin: 0 em(1px);
-    }
-    @include ifmobile {
-      margin: 0 em(1px);
-    }
-  }
-  li a {
-    user-select: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    color: $grey;
-    text-align: center;
-    font-size: em(12px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: initial;
-  }
-  li:first-child {
-    margin-right: em(16px);
-    @include iftablet {
-      margin-right: em(8px);
-    }
-    @include ifmobile {
-      margin-right: em(8px);
-    }
-  }
-  li:last-child {
-    margin-left: em(16px);
-    @include iftablet {
-      margin-left: em(8px);
-    }
-    @include ifmobile {
-      margin-left: em(8px);
-    }
-  }
+// .pagination {
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   .page-item.active {
+//     border-radius: em(6px);
+//     background: #ebeff9;
+//     a {
+//       color: $red3;
+//     }
+//   }
+//   li {
+//     font-size: 100%;
+//     cursor: pointer;
+//     display: flex;
+//     width: em(24px);
+//     height: em(24px);
+//     margin: 0 em(4px);
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     @include iflaptop {
+//     }
+//     @include iftablet {
+//       margin: 0 em(1px);
+//     }
+//     @include ifmobile {
+//       margin: 0 em(1px);
+//     }
+//   }
+//   li a {
+//     user-select: none;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     width: 100%;
+//     height: 100%;
+//     color: $grey;
+//     text-align: center;
+//     font-size: em(12px);
+//     font-style: normal;
+//     font-weight: 400;
+//     line-height: initial;
+//   }
+//   li:first-child {
+//     margin-right: em(16px);
+//     @include iftablet {
+//       margin-right: em(8px);
+//     }
+//     @include ifmobile {
+//       margin-right: em(8px);
+//     }
+//   }
+//   li:last-child {
+//     margin-left: em(16px);
+//     @include iftablet {
+//       margin-left: em(8px);
+//     }
+//     @include ifmobile {
+//       margin-left: em(8px);
+//     }
+//   }
 
-  .prev-btn,
-  .next-btn {
-    width: em(20px);
-    height: em(20px);
-  }
-}
+//   .prev-btn,
+//   .next-btn {
+//     width: em(20px);
+//     height: em(20px);
+//   }
+// }
