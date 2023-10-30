@@ -75,7 +75,7 @@ const Pagination: React.FC<Props> = ({ className = '' }) => {
         onPageChange={handlePageClick}
         pageRangeDisplayed={1}
         marginPagesDisplayed={3}
-        pageCount={pageCount}
+        pageCount={5}
         previousLabel={
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +104,7 @@ const Pagination: React.FC<Props> = ({ className = '' }) => {
         breakLinkClassName="page-link"
         containerClassName="pagination"
         activeClassName="active"
-        renderOnZeroPageCount={null}
+        // renderOnZeroPageCount={null}
       />
 
       <div className={s.Select}>
