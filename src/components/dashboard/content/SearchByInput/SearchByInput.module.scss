@@ -55,6 +55,18 @@
     @include placeholder-color(transparent);
     padding: em(15px) em(12px);
 
+    &::before {
+      display: block;
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      left: 0;
+      width: 1px;
+      height: em(22px);
+      background: $base100light;
+    }
+
     p {
       display: block;
       width: max-content;

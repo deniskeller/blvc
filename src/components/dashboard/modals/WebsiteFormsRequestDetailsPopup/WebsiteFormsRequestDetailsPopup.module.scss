@@ -1,0 +1,21 @@
+.Title {
+  margin-bottom: em(36px);
+}
+
+.Form {
+  ul {
+    margin-bottom: em(32px);
+    li:not(:last-child) {
+      margin-bottom: em(16px);
+    }
+  }
+
+  &_Buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 em(16px);
+    .Button {
+      width: 100%;
+    }
+  }
+}

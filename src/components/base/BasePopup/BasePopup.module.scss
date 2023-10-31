@@ -15,6 +15,13 @@
   opacity: 0;
   pointer-events: none;
   transition: all $speed ease;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE и Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .Overlay {
@@ -51,8 +58,8 @@
   &_Close {
     cursor: pointer;
     position: absolute;
-    top: em(30px);
-    right: em(24px);
+    top: em(26px);
+    right: em(28px);
     width: em(24px);
     height: em(24px);
     transition: transform $speed ease;
@@ -62,6 +69,10 @@
     svg {
       width: em(24px);
       height: em(24px);
+    }
+    @include ifmobile {
+      top: em(24px);
+      right: em(12px);
     }
   }
 }

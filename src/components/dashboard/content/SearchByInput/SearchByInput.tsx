@@ -1,12 +1,13 @@
 import { BaseIcon } from '@base/index';
 import { ALL_ICONS } from '@constants/icons';
 import useOnClickOutside from '@hooks/useOnClickOutside';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './SearchByInput.module.scss';
 
 interface Props {
   label?: string;
   className?: string;
+  searchValue?: string;
   initialValue?: string;
   options: ISelectItem[];
   onSelect: (value: string) => void;
@@ -22,13 +23,14 @@ const SearchByInput: React.FC<Props> = ({
   label,
   className,
   initialValue,
+  searchValue,
   options,
   onSelect,
   onChange,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
-  const [value, setValue] = useState('');
+
   const [selectedOption, setSelectedOption] = useState(initialValue);
   const selectContainerRef = React.useRef(null);
 
@@ -54,7 +56,7 @@ const SearchByInput: React.FC<Props> = ({
             <path
               d="M18.4509 17.4509L22.5423 21.5423M12.465 19.9299C7.78989 19.9299 4 16.1401 4 11.465C4 6.78989 7.78989 3 12.465 3C17.1401 3 20.9299 6.78989 20.9299 11.465C20.9299 16.1401 17.1401 19.9299 12.465 19.9299Z"
               stroke={isFocus ? '#A61613' : '#1A1A1A'}
-              strokeOpacity={!value && !isFocus ? '0.6' : '1'}
+              strokeOpacity={!searchValue && !isFocus ? '0.6' : '1'}
               strokeWidth="1.5"
             />
           </g>
@@ -67,6 +69,7 @@ const SearchByInput: React.FC<Props> = ({
       </div>
 
       <input
+        value={searchValue}
         type="text"
         placeholder="Search"
         className={s.SearchByInput_Input}

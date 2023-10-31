@@ -1,4 +1,7 @@
 .WebsiteForms {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   .Header {
     display: flex;
     flex-direction: row;
@@ -77,61 +80,82 @@
     }
   }
 
-  .Table {
-    position: relative;
-    overflow: auto;
-    padding: 0 0 em(126px) em(60px);
-    @include iftablet {
-      padding: 0 0 em(100px) em(20px);
-    }
-    @include iftablet-mini {
-      padding: 0 0 em(100px) em(10px);
-    }
-    @include ifmobile {
-      padding: 0 0 em(100px) em(20px);
-    }
-  }
   .EmptyCart {
-    border-radius: em(10px);
-    background: $white;
-    box-shadow: 0px 4px 6px -2px rgba(0, 61, 140, 0.04),
-      0px -4px 6px -2px rgba(0, 61, 140, 0.04);
+    position: relative;
+    height: 100%;
+    padding: em(100px);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    height: em(400px);
-    padding: em(20px);
-
-    &_Icon {
-      width: em(80px);
-      height: em(80px);
-      margin-bottom: em(16px);
+    @include ifmobile {
+      padding: em(156px);
     }
 
-    &_Title {
-      text-align: center;
-      margin-bottom: em(8px);
-      p {
-        color: $grey;
-        font-size: em(16px);
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
+    &_Decor {
+      position: relative;
+      width: em(308px);
+      height: em(356px);
+      @include iflaptop {
+        width: em(231px);
+        height: em(267px);
       }
-    }
-    &_Subtitle {
-      text-align: center;
-      p {
-        color: $grey;
-        font-size: em(16px);
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        span {
-          cursor: pointer;
-          color: $red;
+      @include iftablet {
+        width: em(231px);
+        height: em(267px);
+      }
+      @include iftablet-mini {
+        width: em(231px);
+        height: em(267px);
+      }
+      @include ifmobile {
+        width: em(173px);
+        height: em(200px);
+      }
+      .Icon {
+        width: inherit;
+        height: inherit;
+      }
+
+      .Title {
+        text-align: center;
+        position: absolute;
+        top: em(160px);
+        left: em(-110px);
+        @include iflaptop {
+          top: em(120px);
+          left: em(-83px);
+        }
+        @include iftablet {
+          top: em(120px);
+          left: em(-83px);
+        }
+        @include iftablet-mini {
+          top: em(120px);
+          left: em(-83px);
+        }
+        @include ifmobile {
+          top: em(90px);
+          left: em(-62px);
+        }
+        p {
+          color: #aeaeae;
+          font-family: $Blacksword;
+          font-size: em(64px);
+          font-style: normal;
+          font-weight: 400;
+          white-space: nowrap;
+          @include iflaptop {
+            font-size: em(48px);
+          }
+          @include iftablet {
+            font-size: em(48px);
+          }
+          @include iftablet-mini {
+            font-size: em(48px);
+          }
+          @include ifmobile {
+            font-size: em(36px);
+          }
         }
       }
     }
@@ -156,6 +180,21 @@
     @include ifmobile {
       width: max-content;
       padding-right: em(20px);
+    }
+  }
+
+  .Table {
+    position: relative;
+    overflow: auto;
+    padding: 0 0 em(126px) em(60px);
+    @include iftablet {
+      padding: 0 0 em(100px) em(20px);
+    }
+    @include iftablet-mini {
+      padding: 0 0 em(100px) em(10px);
+    }
+    @include ifmobile {
+      padding: 0 0 em(100px) em(20px);
     }
   }
 
