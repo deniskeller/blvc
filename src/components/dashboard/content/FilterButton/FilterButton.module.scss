@@ -1,0 +1,50 @@
+.Button {
+  font-size: 100%;
+  line-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  height: em(44px);
+  padding: em(12px) em(12px) em(12px) em(16px);
+  @extend %button;
+  box-sizing: border-box;
+  backdrop-filter: blur(5px);
+  transition: all $speed ease;
+  border-radius: 2px;
+  border: 1px solid;
+  background: $body;
+
+  @include ifmobile {
+    height: em(35px);
+    padding: em(8px) em(12px) em(8px) em(16px);
+  }
+
+  span {
+    display: flex;
+    text-align: center;
+    font-family: $Mulish;
+    font-size: em(14px);
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #454545;
+    letter-spacing: 1.4px;
+    line-height: 100%;
+  }
+
+  svg {
+    width: em(20px);
+    height: em(24px);
+    margin-left: em(10px);
+  }
+}
+
+//disabled style
+.Button:disabled,
+.Button:disabled:hover,
+.Button:disabled:active {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  opacity: 0.4 !important;
+}

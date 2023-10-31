@@ -4,4 +4,5 @@ export { default as PhoneInput } from './PhoneInput/PhoneInput';
 export { default as Logo } from './Logo/Logo';
 export { default as ResetFilterButton } from './ResetFilterButton/ResetFilterButton';
 export { default as SearchByInput } from './SearchByInput/SearchByInput';
+export { default as FilterButton } from './FilterButton/FilterButton';
 

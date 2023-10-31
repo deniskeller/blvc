@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import s from './WebsiteForms.module.scss';
 import { InviteUserPopup } from 'components/dashboard/modals';
 import {
+  FilterButton,
   Pagination,
   ResetFilterButton,
   SearchByInput,
@@ -109,7 +110,7 @@ const WebsiteForms: React.FC = () => {
             ]}
             onSelect={(val: string) => setNewValue(val, 'sortBy')}
             onChange={(val: string) => setNewValue(val, 'search')}
-            className={s.Search}
+            className={s.Filters_Search}
           />
 
           <BaseSelectApp
@@ -126,8 +127,10 @@ const WebsiteForms: React.FC = () => {
             }
             onClear={() => {}}
             onBlur={() => {}}
-            className={s.Forms}
+            className={s.Filters_Forms}
           />
+
+          <FilterButton className={s.Filters_Mobile} counter={1} />
 
           <ResetFilterButton />
         </div>

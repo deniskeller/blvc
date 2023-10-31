@@ -30,24 +30,50 @@
   .Filters {
     display: flex;
     flex-direction: row;
+    align-items: flex-end;
     padding: 0 em(60px);
     margin-bottom: em(32px);
     @include iftablet {
+      justify-content: space-between;
       padding: 0 em(20px);
     }
     @include iftablet-mini {
+      justify-content: space-between;
       padding: 0 em(10px);
     }
     @include ifmobile {
-      padding: 0 em(20px);
+      justify-content: space-between;
+      padding: em(30px) em(20px) 0 em(20px);
+      margin-bottom: em(20px);
     }
 
-    .Search,
-    .Forms {
+    &_Search,
+    &_Forms {
       margin-right: em(35px);
+      @include iftablet {
+        display: none;
+      }
+      @include iftablet-mini {
+        display: none;
+      }
+      @include ifmobile {
+        display: none;
+      }
     }
-    .Forms {
+    &_Forms {
       min-width: em(224px);
+    }
+    &_Mobile {
+      display: none;
+      @include iftablet {
+        display: flex;
+      }
+      @include iftablet-mini {
+        display: flex;
+      }
+      @include ifmobile {
+        display: flex;
+      }
     }
   }
 
