@@ -5,4 +5,5 @@ export { default as Logo } from './Logo/Logo';
 export { default as ResetFilterButton } from './ResetFilterButton/ResetFilterButton';
 export { default as SearchByInput } from './SearchByInput/SearchByInput';
 export { default as FilterButton } from './FilterButton/FilterButton';
+export { default as VehiclesCard } from './VehiclesCard/VehiclesCard';
 

@@ -149,6 +149,7 @@ const WebsiteForms: React.FC = () => {
 
           <ResetFilterButton onClick={() => setPartners([])} />
         </div>
+
         {partners?.length == 0 ? (
           <div className={s.EmptyCart}>
             <div className={s.EmptyCart_Decor}>
