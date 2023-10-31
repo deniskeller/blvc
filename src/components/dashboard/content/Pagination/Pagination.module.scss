@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-top: 1px solid rgba(26, 26, 26, 0.1);
+  border-top: 1px solid $base100light;
   background: $body;
   width: 100vw;
   min-height: em(70px);

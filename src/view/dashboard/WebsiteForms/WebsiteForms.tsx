@@ -21,7 +21,7 @@ const partner_list = [
     id: 2,
     date: '28/08/2023',
     form: 'Contact us',
-    full_name: 'Adam Courtney',
+    full_name: 'Thomassdfsdf Fergussonsdfsdf sdfgdfgfdgfd',
     email: 'marianewman@gmail.com',
     status: 'Completed',
   },
@@ -29,7 +29,7 @@ const partner_list = [
     id: 3,
     date: '28/08/2023',
     form: 'Contact us',
-    full_name: 'Max Bowell',
+    full_name: 'Thomas Fergusson',
     email: 'marianewman@gmail.com',
     status: 'In progress',
   },
@@ -40,7 +40,7 @@ let partner = {
   id: 4,
   date: '28/08/2023',
   form: 'Contact us',
-  full_name: 'Max Bowell',
+  full_name: 'Thomas Fergusson',
   email: 'marianewman@gmail.com',
   status: 'In progress',
 };
@@ -86,6 +86,12 @@ const WebsiteForms: React.FC = () => {
   // }, [filters]);
 
   const [partners, setPartners] = useState(partner_list);
+
+  const computedStatusBackground = (status: string) => {
+    if (status == 'Incoming') return '#338AF3';
+    if (status == 'Completed') return '#217C51';
+    if (status == 'In progress') return '#0052B4';
+  };
 
   return (
     <>
@@ -230,17 +236,17 @@ const WebsiteForms: React.FC = () => {
                         </div>
 
                         <div className={s.TBody_Row_Column}>
-                          <span className={s.Status}>
-                            {item.status}&nbsp;
-                            <span
-                              style={{
-                                fontFamily: 'Inter, sans-serif',
-                                fontSize: 'inherit',
-                              }}
-                            >
-                              ₽
-                            </span>
-                          </span>
+                          <span
+                            className={s.Marker}
+                            style={{
+                              background: computedStatusBackground(item.status),
+                            }}
+                          ></span>
+                          <span className={s.Status}>{item.status}</span>
+
+                          <div className={s.New}>
+                            <span>New</span>
+                          </div>
                         </div>
                       </div>
                     );

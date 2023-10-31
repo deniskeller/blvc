@@ -39,7 +39,7 @@
 //secondary
 .Button_secondary {
   background: #efefef;
-  color: rgba(26, 26, 26, 0.8);
+  color: $base800light;
   border: 1px solid $base200light;
 
   &:hover {

@@ -258,7 +258,7 @@ input[type='search']::-webkit-search-results-decoration {
     text-align: center !important;
     flex-grow: initial;
     flex-basis: initial;
-    color: rgba(26, 26, 26, 0.8) !important;
+    color: $base800light !important;
     text-overflow: ellipsis !important;
     font-family: $Mulish !important;
     font-size: em($size) !important;

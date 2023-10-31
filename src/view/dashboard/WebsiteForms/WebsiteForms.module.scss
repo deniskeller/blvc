@@ -3,13 +3,16 @@
     display: flex;
     flex-direction: row;
     padding: em(65px) em(60px) 0 em(60px);
-    margin-bottom: em(33px);
+    margin-bottom: em(32px);
 
     @include iflaptop {
+      padding: em(46px) em(60px) 0 em(60px);
     }
     @include iftablet {
+      padding: em(46px) em(20px) 0 em(20px);
     }
     @include iftablet-mini {
+      padding: em(46px) em(10px) 0 em(10px);
     }
     @include ifmobile {
       display: none;
@@ -29,14 +32,14 @@
     flex-direction: row;
     padding: 0 em(60px);
     margin-bottom: em(32px);
-
-    @include iflaptop {
-    }
     @include iftablet {
+      padding: 0 em(20px);
     }
     @include iftablet-mini {
+      padding: 0 em(10px);
     }
     @include ifmobile {
+      padding: 0 em(20px);
     }
 
     .Search,
@@ -52,14 +55,14 @@
     position: relative;
     overflow: auto;
     padding: 0 0 em(126px) em(60px);
-
-    @include iflaptop {
-    }
     @include iftablet {
+      padding: 0 0 em(100px) em(20px);
     }
     @include iftablet-mini {
+      padding: 0 0 em(100px) em(10px);
     }
     @include ifmobile {
+      padding: 0 0 em(100px) em(20px);
     }
   }
   .EmptyCart {
@@ -110,37 +113,66 @@
 
   .ScrollWrapper {
     overflow: auto;
-    width: max-content;
+    width: 100%;
     position: relative;
-    padding-right: em(60px);
+    padding-right: em(70px);
+    @include iflaptop {
+      padding-right: em(39px);
+    }
+    @include iftablet {
+      width: max-content;
+      padding-right: em(20px);
+    }
+    @include iftablet-mini {
+      width: max-content;
+      padding-right: em(10px);
+    }
+    @include ifmobile {
+      width: max-content;
+      padding-right: em(20px);
+    }
   }
 
   .THead {
     display: grid;
     grid-template-columns:
-      minmax(em(160px), 1fr) minmax(em(193px), 1fr) minmax(em(220px), 1fr) minmax(
-        em(289px),
+      minmax(em(292px), 1fr) minmax(em(292px), 1fr) minmax(em(292px), 1fr) minmax(
+        em(292px),
         1fr
       )
-      minmax(em(204px), 1fr) minmax(em(190px), 1fr)
-      minmax(em(244px), 1fr);
-    margin-bottom: em(16px);
-    border-radius: em(6px);
+      minmax(em(286px), 1fr);
+    @include iflaptop {
+      grid-template-columns: em(204px) em(204px) em(204px) em(260px) em(251px);
+    }
+    @include iftablet {
+      grid-template-columns: em(126px) em(140px) em(174px) em(260px) em(212px);
+    }
+    @include iftablet-mini {
+      grid-template-columns: em(126px) em(140px) em(174px) em(260px) em(212px);
+    }
+    @include ifmobile {
+      grid-template-columns: em(126px) em(140px) em(174px) em(260px) em(212px);
+    }
 
     &_Column {
       display: flex;
       flex-direction: row;
+      justify-content: space-between;
       align-items: center;
-      padding: em(12px) em(16px);
-      height: em(46px);
+      padding: em(14px) em(16px);
+      height: em(50px);
+      border-top: 1px solid $base100light;
+      border-left: 1px solid $base100light;
+      border-bottom: 1px solid $base100light;
+      &:last-child {
+        border-right: 1px solid $base100light;
+      }
       span {
-        vertical-align: middle;
-        font-size: em(12px);
+        color: rgba(26, 26, 26, 0.5);
+        font-size: em(14px);
         font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
+        font-weight: 500;
+        line-height: 120%;
       }
 
       .IconSortBy {
@@ -158,61 +190,84 @@
   }
 
   .TBody {
-    margin-bottom: em(16px);
     display: grid;
     grid-template-columns: 1fr;
-    gap: em(3px) 0;
 
     &_Row {
+      border-bottom: 1px solid $base100light;
       cursor: pointer;
+      transition: background $speed ease;
       display: grid;
       grid-template-columns:
-        minmax(em(160px), 1fr) minmax(em(193px), 1fr) minmax(em(220px), 1fr) minmax(
-          em(289px),
+        minmax(em(292px), 1fr) minmax(em(292px), 1fr) minmax(em(292px), 1fr) minmax(
+          em(292px),
           1fr
         )
-        minmax(em(204px), 1fr) minmax(em(190px), 1fr)
-        minmax(em(244px), 1fr);
-      background: $white;
-      border-radius: em(6px);
-      box-shadow: 0px 4px 6px -2px rgba(0, 61, 140, 0.04),
-        0px -4px 6px -2px rgba(0, 61, 140, 0.04);
+        minmax(em(286px), 1fr);
+      &:hover {
+        background: rgba(253, 253, 253, 0.4);
+      }
+
+      @include iflaptop {
+        grid-template-columns: em(204px) em(204px) em(204px) em(260px) em(251px);
+      }
+      @include iftablet {
+        grid-template-columns: em(126px) em(140px) em(174px) em(260px) em(212px);
+      }
+      @include iftablet-mini {
+        grid-template-columns: em(126px) em(140px) em(174px) em(260px) em(212px);
+      }
+      @include ifmobile {
+        grid-template-columns: em(126px) em(140px) em(174px) em(260px) em(212px);
+      }
 
       &_Column {
-        min-height: em(46px);
-        padding: em(10px) em(16px);
+        position: relative;
+        min-height: em(50px);
+        padding: em(5px) em(16px);
         display: flex;
         align-items: center;
+        border-left: 1px solid $base100light;
+        &:last-child {
+          border-right: 1px solid $base100light;
+        }
 
-        .RegisterDate,
-        .CompanyName,
-        .Boss,
+        .Date,
+        .Form,
+        .Name,
         .Email,
-        .ActiveOrders,
-        .TotalOrders {
-          color: $grey;
-          font-variant-numeric: lining-nums proportional-nums;
+        .Status {
+          color: $base800light;
           font-size: em(14px);
           font-style: normal;
           font-weight: 400;
-          line-height: normal;
-          -webkit-line-clamp: 1;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
+          line-height: 114.286%; /* 114.286% */
+
+          // -webkit-line-clamp: 1;
+          // display: -webkit-box;
+          // -webkit-box-orient: vertical;
+          // overflow: hidden;
         }
-        .Status {
-          font-size: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: em(26px);
-          padding: em(3px) em(12px);
-          border-radius: em(46px);
+        .Marker {
+          width: em(8px);
+          height: em(8px);
+          flex-shrink: 0;
+          border-radius: 50%;
+          margin-right: em(8px);
+        }
+        .New {
+          line-height: 100%;
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translate(0, -50%) rotate(-90deg);
           span {
-            font-size: em(14px);
+            display: flex;
+            color: $red3;
+            font-family: $Mulish;
+            font-size: em(12px);
             font-style: normal;
-            font-weight: 600;
+            font-weight: 500;
             line-height: 100%;
           }
         }
