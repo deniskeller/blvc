@@ -18,7 +18,7 @@
   padding: em(23px, $size) em(16px, $size) em(10px, $size) em(60px, $size) !important;
   text-transform: uppercase !important;
   background: transparent !important;
-  border-bottom: 1px solid rgba(26, 26, 26, 0.6) !important;
+  border-bottom: 1px solid $base600light !important;
   transition: all $speed ease !important;
   color: #1a1a1a !important;
   font-family: $Mulish !important;
@@ -222,7 +222,7 @@ input[type='search']::-webkit-search-results-decoration {
   margin-top: 0 !important;
 }
 .react-tel-input :disabled {
-  color: rgba(26, 26, 26, 0.6) !important;
+  color: $base600light !important;
 }
 
 .form-control:disabled + div:before {
@@ -252,7 +252,7 @@ input[type='search']::-webkit-search-results-decoration {
     box-shadow: none !important;
     background: transparent !important;
     border-radius: 0 !important;
-    border-bottom: 1px solid rgba(26, 26, 26, 0.6) !important;
+    border-bottom: 1px solid $base600light !important;
     transition: all 0.3s ease !important;
     @include placeholder-color(transparent);
     text-align: center !important;

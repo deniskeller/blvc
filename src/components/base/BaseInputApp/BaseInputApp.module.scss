@@ -15,7 +15,7 @@
     box-shadow: none;
     background: transparent;
     border-radius: 0;
-    border-bottom: 1px solid rgba(26, 26, 26, 0.6);
+    border-bottom: 1px solid $base600light;
     transition: all 0.3s ease;
     @include placeholder-color(transparent);
     padding: em(23px, $size) em(16px, $size) em(10px, $size) em(10px, $size);

@@ -21,7 +21,7 @@
   height: em(48px);
   padding: em(23px) em(16px) em(10px) em(10px);
   border-radius: 0;
-  border-bottom: 1px solid rgba(26, 26, 26, 0.6);
+  border-bottom: 1px solid $base600light;
   line-height: 100%;
   transition: all 0.3s ease;
   @include placeholder-color(transparent);
@@ -84,6 +84,7 @@
   min-width: 100%;
   max-height: em(260px);
   overflow: auto;
+  padding: em(24px) 0;
 
   border-radius: em(8px);
   border: 1px solid #dedede;
@@ -113,9 +114,9 @@
   }
 
   .ListItemTitle {
-    color: rgba(26, 26, 26, 0.6);
+    color: $base600light;
     font-family: $Mulish;
-    font-size: em(16px);
+    font-size: em(14px);
     font-style: normal;
     font-weight: 400;
     line-height: 160%;

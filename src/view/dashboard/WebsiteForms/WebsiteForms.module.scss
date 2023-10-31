@@ -1,18 +1,16 @@
 .WebsiteForms {
-  padding: em(65px) em(70px) em(65px) em(60px);
-  @include iflaptop {
-  }
-  @include iftablet {
-  }
-  @include iftablet-mini {
-  }
-  @include ifmobile {
-  }
-
   .Header {
     display: flex;
     flex-direction: row;
+    padding: em(65px) em(60px) 0 em(60px);
     margin-bottom: em(33px);
+
+    @include iflaptop {
+    }
+    @include iftablet {
+    }
+    @include iftablet-mini {
+    }
     @include ifmobile {
       display: none;
     }
@@ -23,6 +21,202 @@
       font-style: normal;
       font-weight: 400;
       line-height: 100%;
+    }
+  }
+
+  .Filters {
+    display: flex;
+    flex-direction: row;
+    padding: 0 em(60px);
+    margin-bottom: em(32px);
+
+    @include iflaptop {
+    }
+    @include iftablet {
+    }
+    @include iftablet-mini {
+    }
+    @include ifmobile {
+    }
+
+    .Search,
+    .Forms {
+      margin-right: em(35px);
+    }
+    .Forms {
+      min-width: em(224px);
+    }
+  }
+
+  .Table {
+    position: relative;
+    overflow: auto;
+    padding: 0 0 em(126px) em(60px);
+
+    @include iflaptop {
+    }
+    @include iftablet {
+    }
+    @include iftablet-mini {
+    }
+    @include ifmobile {
+    }
+  }
+  .EmptyCart {
+    border-radius: em(10px);
+    background: $white;
+    box-shadow: 0px 4px 6px -2px rgba(0, 61, 140, 0.04),
+      0px -4px 6px -2px rgba(0, 61, 140, 0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: em(400px);
+    padding: em(20px);
+
+    &_Icon {
+      width: em(80px);
+      height: em(80px);
+      margin-bottom: em(16px);
+    }
+
+    &_Title {
+      text-align: center;
+      margin-bottom: em(8px);
+      p {
+        color: $grey;
+        font-size: em(16px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+    }
+    &_Subtitle {
+      text-align: center;
+      p {
+        color: $grey;
+        font-size: em(16px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        span {
+          cursor: pointer;
+          color: $red;
+        }
+      }
+    }
+  }
+
+  .ScrollWrapper {
+    overflow: auto;
+    width: max-content;
+    position: relative;
+    padding-right: em(60px);
+  }
+
+  .THead {
+    display: grid;
+    grid-template-columns:
+      minmax(em(160px), 1fr) minmax(em(193px), 1fr) minmax(em(220px), 1fr) minmax(
+        em(289px),
+        1fr
+      )
+      minmax(em(204px), 1fr) minmax(em(190px), 1fr)
+      minmax(em(244px), 1fr);
+    margin-bottom: em(16px);
+    border-radius: em(6px);
+
+    &_Column {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: em(12px) em(16px);
+      height: em(46px);
+      span {
+        vertical-align: middle;
+        font-size: em(12px);
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+      }
+
+      .IconSortBy {
+        cursor: pointer;
+        width: em(20px);
+        height: em(20px);
+        margin-left: 2px;
+        &:hover {
+          path {
+            stroke: $black;
+          }
+        }
+      }
+    }
+  }
+
+  .TBody {
+    margin-bottom: em(16px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: em(3px) 0;
+
+    &_Row {
+      cursor: pointer;
+      display: grid;
+      grid-template-columns:
+        minmax(em(160px), 1fr) minmax(em(193px), 1fr) minmax(em(220px), 1fr) minmax(
+          em(289px),
+          1fr
+        )
+        minmax(em(204px), 1fr) minmax(em(190px), 1fr)
+        minmax(em(244px), 1fr);
+      background: $white;
+      border-radius: em(6px);
+      box-shadow: 0px 4px 6px -2px rgba(0, 61, 140, 0.04),
+        0px -4px 6px -2px rgba(0, 61, 140, 0.04);
+
+      &_Column {
+        min-height: em(46px);
+        padding: em(10px) em(16px);
+        display: flex;
+        align-items: center;
+
+        .RegisterDate,
+        .CompanyName,
+        .Boss,
+        .Email,
+        .ActiveOrders,
+        .TotalOrders {
+          color: $grey;
+          font-variant-numeric: lining-nums proportional-nums;
+          font-size: em(14px);
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          -webkit-line-clamp: 1;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        .Status {
+          font-size: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: em(26px);
+          padding: em(3px) em(12px);
+          border-radius: em(46px);
+          span {
+            font-size: em(14px);
+            font-style: normal;
+            font-weight: 600;
+            line-height: 100%;
+          }
+        }
+      }
     }
   }
 }

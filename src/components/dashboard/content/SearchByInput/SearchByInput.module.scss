@@ -1,0 +1,156 @@
+.SearchByInput {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid $base600light;
+
+  &_IconSearch {
+    height: em(22px);
+    padding: 0 em(14px) 0 em(12px);
+    svg {
+      width: inherit;
+      height: inherit;
+    }
+  }
+
+  &_Input {
+    $size: 14px;
+    width: em(77px, $size);
+    height: em(48px, $size);
+    background: none;
+    outline: none;
+    border: none;
+    position: relative;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    @include placeholder-color($base600light);
+    padding: em(15px, $size) em(14px, $size) em(15px, $size) em(12px, $size);
+
+    text-overflow: ellipsis;
+    font-family: 'Mulish', sans-serif;
+    font-size: em($size);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    color: #1a1a1a;
+
+    &:focus {
+      width: em(300px);
+    }
+  }
+
+  &_Select {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    line-height: 100%;
+    width: em(127px);
+    height: em(48px);
+    border-radius: 0;
+    transition: all $speed ease;
+    @include placeholder-color(transparent);
+    padding: em(15px) em(12px);
+
+    p {
+      display: block;
+      width: max-content;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: #1a1a1a;
+      font-family: $Mulish;
+      font-size: em(14px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: 100%;
+      letter-spacing: -0.24px;
+    }
+  }
+
+  &_Select_Focus {
+    border-color: #4570fd;
+  }
+}
+
+.SelectList {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 10000;
+  width: max-content;
+  min-width: em(204px);
+  max-height: em(260px);
+  overflow: auto;
+  padding: em(24px) 0;
+  border-radius: em(8px);
+  border: 1px solid #dedede;
+  background: #f7f7f8;
+  box-shadow: 0px 15px 12px -8px rgba(0, 0, 0, 0.05);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE и Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.SelectList::-webkit-scrollbar {
+  display: none;
+}
+
+.ListItem {
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: em(8px) em(44px) em(8px) em(24px);
+  min-width: max-content;
+
+  &:hover {
+    background-color: #fff;
+  }
+
+  .ListItemTitle {
+    line-height: 150%;
+    font-size: em(14px);
+    font-family: $Mulish;
+    color: $base600light;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  &_Active {
+    .ListItemTitle {
+      color: $black;
+    }
+  }
+
+  &_IconCheck {
+    position: absolute;
+    right: em(16px);
+    top: 50%;
+    transform: translate(0, -50%) rotate(-5.742deg);
+    width: em(26px);
+    height: em(16px);
+  }
+}
+
+.Chevron {
+  position: absolute;
+  right: em(20px);
+  top: 50%;
+  transform: translate(0%, -50%);
+  width: em(11px);
+  height: em(6px);
+  margin-left: em(12px);
+  transition: all $speed ease;
+  &_Active {
+    transform: rotate(180deg) translate(0, 50%);
+  }
+}
