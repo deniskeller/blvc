@@ -207,53 +207,76 @@
   .EmptyCart {
     position: relative;
     height: 100%;
-    padding: em(156px);
+    padding: em(160px) 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    @include iflaptop {
+    }
+    @include iftablet {
+    }
+    @include iftablet-mini {
+      padding: em(200px) 0;
+    }
+    @include ifmobile {
+      padding: em(113px) 0;
+    }
 
     &_Decor {
       position: relative;
-      width: em(453px);
-      height: em(156px);
+      width: em(440px);
+      height: em(190px);
       @include iftablet {
-        width: em(340px);
-        height: em(117px);
+        width: em(328.928px);
+        height: em(142.104px);
       }
       @include iftablet-mini {
-        width: em(340px);
-        height: em(117px);
+        width: em(328.928px);
+        height: em(142.104px);
       }
       @include ifmobile {
-        width: em(255px);
-        height: em(88px);
+        width: em(246.696px);
+        height: em(106.579px);
       }
       .Icon {
-        width: inherit;
-        height: inherit;
+        width: em(223px);
+        height: em(153px);
+        transform: rotate(8.119deg);
+        position: absolute;
+        bottom: em(25px);
+        left: 0;
+        @include iflaptop {
+          width: em(223px);
+          height: em(153px);
+          left: em(74px);
+          bottom: em(26px);
+        }
+        @include iftablet {
+          width: em(167.148px);
+          height: em(114.95px);
+          bottom: 14px;
+          left: 0px;
+        }
+        @include iftablet-mini {
+          width: em(167.148px);
+          height: em(114.95px);
+          bottom: 14px;
+          left: 0px;
+        }
+        @include ifmobile {
+          width: em(125.361px);
+          height: em(86.215px);
+          bottom: 10px;
+          left: 0px;
+        }
       }
 
       .Title {
         text-align: center;
         position: absolute;
-        bottom: em(-25px);
-        right: em(-17px);
-        @include iflaptop {
-          bottom: em(-25px);
-          right: em(-17px);
-        }
-        @include iftablet {
-          bottom: em(-25px);
-          right: em(-17px);
-        }
-        @include iftablet-mini {
-          bottom: em(-25px);
-          right: em(-17px);
-        }
-        @include ifmobile {
-          bottom: em(-25px);
-          right: em(-17px);
-        }
+        top: 0;
+        right: 0;
+
         p {
           color: #aeaeae;
           font-family: $Blacksword;
