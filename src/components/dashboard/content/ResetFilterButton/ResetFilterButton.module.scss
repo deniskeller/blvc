@@ -13,7 +13,7 @@
   transition: all $speed ease;
   background: transparent;
 
-  color: rgba(26, 26, 26, 0.9);
+  color: $base900light;
   font-family: $Mulish;
   font-size: em(16px);
   font-style: normal;
@@ -27,7 +27,7 @@
   }
 
   &:active {
-    color: rgba(26, 26, 26, 0.9);
+    color: $base900light;
     opacity: 0.7;
   }
 

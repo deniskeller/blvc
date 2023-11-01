@@ -1,5 +1,6 @@
 import {
   BaseButtonApp,
+  BaseIcon,
   BaseInputApp,
   BasePopup,
   BaseSelectApp,
@@ -8,11 +9,12 @@ import {
 import React, { useState, useEffect } from 'react';
 import s from './UserDetailsPopup.module.scss';
 import { PhoneInput } from 'components/dashboard/content';
+import { ALL_ICONS } from '@constants/icons';
 
 interface Props {
   opened: boolean;
   onClick: (value: boolean) => void;
-  onClick2: (ev: React.MouseEvent<SVGSVGElement>) => void;
+  onClick2: (e: React.SyntheticEvent) => void;
   onClick3: (ev: React.MouseEvent<SVGSVGElement>) => void;
 }
 
@@ -90,28 +92,12 @@ const UserDetailsPopup: React.FC<Props> = ({
               // disabled
             />
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="22"
-              height="22"
+            <BaseIcon
               viewBox="0 0 22 22"
-              fill="none"
+              icon={ALL_ICONS.EDIT}
               className={s.Edit}
               onClick={onClick2}
-            >
-              <g clipPath="url(#clip0_11199_15769)">
-                <path
-                  d="M9.16667 20.625H21.0833M3.20833 14.6667L16.5 1.375C17.594 1.375 18.6432 1.8096 19.4168 2.58318C20.1904 3.35677 20.625 4.40598 20.625 5.5L7.33333 18.7917H6.41667C4.60717 18.7917 3.32108 19.327 1.815 20.3317L1.375 20.625L1.66833 20.185C2.67392 18.678 3.20833 17.3919 3.20833 15.5833V14.6667Z"
-                  stroke="#1A1A1A"
-                  strokeOpacity="0.6"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_11199_15769">
-                  <rect width="22" height="22" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
+            />
           </li>
 
           <li className={s.Form_Input}>
@@ -122,26 +108,12 @@ const UserDetailsPopup: React.FC<Props> = ({
             />
 
             {phone == 'edit' ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
+              <BaseIcon
                 viewBox="0 0 22 22"
-                fill="none"
+                icon={ALL_ICONS.EDIT}
                 className={s.Edit}
                 onClick={() => setPhone('save')}
-              >
-                <g clipPath="url(#clip0_11199_15769)">
-                  <path
-                    d="M9.16667 20.625H21.0833M3.20833 14.6667L16.5 1.375C17.594 1.375 18.6432 1.8096 19.4168 2.58318C20.1904 3.35677 20.625 4.40598 20.625 5.5L7.33333 18.7917H6.41667C4.60717 18.7917 3.32108 19.327 1.815 20.3317L1.375 20.625L1.66833 20.185C2.67392 18.678 3.20833 17.3919 3.20833 15.5833V14.6667Z"
-                    stroke="#1A1A1A"
-                    strokeOpacity="0.6"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_11199_15769">
-                    <rect width="22" height="22" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
+              />
             ) : phone == 'save' ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"

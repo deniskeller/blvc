@@ -78,7 +78,7 @@
   font-weight: 400 !important;
   font-size: em(16px) !important;
   line-height: 150% !important;
-  color: rgba(26, 26, 26, 0.9) !important;
+  color: $base900light !important;
   z-index: 10000 !important;
 }
 
@@ -88,10 +88,10 @@
   background-size: auto !important;
   background-repeat: no-repeat !important;
   .country-name {
-    color: rgba(26, 26, 26, 0.9) !important;
+    color: $base900light !important;
   }
   .dial-code {
-    color: rgba(26, 26, 26, 0.9) !important;
+    color: $base900light !important;
   }
 }
 

@@ -1,0 +1,346 @@
+.VehiclesCard {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  border-radius: 2px;
+  background: $white;
+  box-shadow: 0px 2px 25px 0px rgba(145, 17, 14, 0.1);
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 0%;
+    height: em(5px);
+    background: $red3;
+    transition: width $speed ease;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+    .Change,
+    .Delete {
+      transform: translate(0);
+    }
+    .Info .Info_Request {
+      transform: translate(0);
+    }
+  }
+
+  .Change,
+  .Delete {
+    position: absolute;
+    z-index: 1;
+
+    border-radius: 50%;
+    background: rgba(31, 31, 31, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: em(42px);
+    height: em(42px);
+    top: em(20px);
+    transform: translate(0, -200%);
+    transition: all $speed ease;
+    &_Icon {
+      width: em(22px);
+      height: em(22px);
+      path {
+        stroke: $white;
+        stroke-opacity: 1;
+      }
+    }
+  }
+  .Change {
+    right: em(74px);
+  }
+  .Delete {
+    right: em(20px);
+  }
+
+  .Border {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: em(8px);
+  }
+
+  .Status {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: em(26px);
+    padding: em(6px) em(16px);
+    border-radius: 0 0 em(15px) em(15px);
+    background: #1a1a1a;
+
+    &::before,
+    &::after {
+      content: '';
+      width: em(10px);
+      height: em(10px);
+      position: absolute;
+      top: em(8px);
+      aspect-ratio: 1;
+    }
+
+    &::before {
+      left: em(-9px);
+      transform: rotate(90deg);
+    }
+    &::after {
+      right: em(-9px);
+    }
+
+    span {
+      display: flex;
+      text-transform: capitalize;
+      color: $white;
+      font-size: em(12px);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 120%;
+    }
+
+    &_Hidden {
+      &::before,
+      &::after {
+        background-image: radial-gradient(
+          circle at 100% 100%,
+          transparent em(10px),
+          #5a5a5a em(10px)
+        );
+      }
+    }
+
+    &_Published {
+      &::before,
+      &::after {
+        background-image: radial-gradient(
+          circle at 100% 100%,
+          transparent em(10px),
+          #1a1a1a em(10px)
+        );
+      }
+    }
+  }
+
+  .Image {
+    position: relative;
+    width: 100%;
+    height: em(272px);
+    @include iflaptop {
+      height: em(208px);
+    }
+    @include iftablet {
+      height: em(208px);
+    }
+    @include iftablet-mini {
+      height: em(208px);
+    }
+    @include ifmobile {
+      height: em(248px);
+    }
+    .Availability {
+      position: absolute;
+      z-index: 1;
+      bottom: em(16px);
+      left: em(18px);
+      border-radius: 2px;
+      background: rgba(26, 26, 26, 0.6);
+      padding: em(7px) em(17px);
+      span {
+        display: flex;
+        color: $body;
+        font-size: em(12px);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 110%; /* 16.622px */
+        opacity: 0.7;
+        @include ifdesktop {
+          font-size: em(15px);
+        }
+      }
+    }
+  }
+
+  .Info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: em(19px) em(9px) em(25px);
+    @include ifdesktop {
+      padding: em(20px) em(25px) em(25px);
+    }
+
+    &_Name {
+      margin-bottom: em(7px);
+      span {
+        overflow: hidden;
+        color: $base900light;
+        text-overflow: ellipsis;
+        // font-family: Granville;
+        font-size: em(16px);
+
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%; /* 26.505px */
+        text-transform: uppercase;
+        @include ifdesktop {
+          font-size: em(22px);
+        }
+      }
+    }
+
+    &_Tags {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: em(3px) em(3px);
+      margin-bottom: em(11px);
+      .Tag {
+        display: flex;
+        align-items: center;
+        padding: em(3px) em(6px);
+        border-radius: 1px;
+        background: #f2f2f2;
+        line-height: 100%;
+        span {
+          display: flex;
+          color: $base600light;
+          font-size: em(11px);
+          font-style: normal;
+          font-weight: 700;
+          line-height: 110%;
+          opacity: 0.7;
+        }
+      }
+    }
+
+    &_TotalPrice,
+    &_MonthlyPayment {
+      position: relative;
+      width: max-content;
+      .Tooltip {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        right: em(-20px);
+        width: em(13px);
+        height: em(13px);
+        &:hover {
+          svg path {
+            stroke-opacity: 1;
+            stroke: $red3;
+          }
+          & + .Popup {
+            opacity: 1;
+            pointer-events: initial;
+          }
+        }
+
+        &_Icon {
+          position: absolute;
+          width: inherit;
+          height: inherit;
+        }
+      }
+      .Popup {
+        position: absolute;
+        left: 4px;
+        bottom: calc(100% + em(6px));
+        border-radius: em(4px);
+        border: 1px solid $base200light;
+        background: $white;
+        padding: em(16px);
+        width: max-content;
+        max-width: em(290px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity $speed ease;
+        @include iflaptop {
+          max-width: em(234px);
+        }
+        @include iftablet {
+          max-width: em(240px);
+        }
+        @include iftablet-mini {
+          max-width: em(250px);
+        }
+        @include ifmobile {
+          max-width: em(296px);
+        }
+        p {
+          color: $black;
+          font-family: $Mulish;
+          font-size: em(12px);
+          font-style: normal;
+          font-weight: 400;
+          line-height: 140%; /* 16.8px */
+        }
+      }
+    }
+
+    &_TotalPrice {
+      margin-bottom: em(16px);
+      line-height: 100%;
+      span {
+        display: flex;
+        overflow: hidden;
+        color: $base600light;
+        text-overflow: ellipsis;
+        // font-family: Granville;
+        font-size: em(13px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 110%;
+      }
+    }
+
+    &_MonthlyPayment {
+      line-height: 100%;
+      span {
+        display: flex;
+        color: $base900light;
+        // font-family: Granville;
+        font-size: em(19px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+      }
+    }
+
+    &_Request {
+      position: absolute;
+      right: em(25px);
+      bottom: em(25px);
+      width: max-content;
+      border-bottom: 1px solid $base600light;
+      transform: translate(200%, 0);
+      transition: all $speed ease;
+      span {
+        color: $red;
+        font-size: em(16px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%; /* 20.8px */
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include iftablet-mini {
+}
+@include ifmobile {
+}
