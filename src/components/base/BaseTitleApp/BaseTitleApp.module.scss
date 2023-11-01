@@ -13,8 +13,15 @@
   }
 
   &_h2 {
-    font-size: em(24px);
-    line-height: 133%;
+    font-size: em(16px);
+    color: $base800light;
+    font-family: $Mulish;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 150% */
+    @include ifmobile {
+      font-size: em(14px);
+    }
   }
 }
 

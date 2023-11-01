@@ -1,0 +1,32 @@
+.Popup {
+  max-width: em(454px);
+  @include ifmobile {
+    max-width: em(320px);
+  }
+}
+.Title {
+  margin-bottom: em(12px);
+  @include ifmobile {
+    max-width: em(227px);
+  }
+}
+
+.Subtitle {
+  margin-bottom: em(24px);
+  p {
+    color: $base400light;
+    font-size: em(14px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 171.429%; /* 171.429% */
+  }
+}
+
+.Buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 em(16px);
+  .Button {
+    width: 100%;
+  }
+}

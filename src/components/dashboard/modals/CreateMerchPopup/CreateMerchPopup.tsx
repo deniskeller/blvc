@@ -52,7 +52,7 @@ const CreateMerchPopup: React.FC<Props> = ({ opened, onClick, onClick2 }) => {
   };
 
   return (
-    <BasePopup opened={opened} onClick={onClick} className={s.Popup}>
+    <BasePopup opened={opened} onClick={onClick2} className={s.Popup}>
       <BaseTitleApp className={s.Title}>Create product</BaseTitleApp>
 
       <form className={s.Form}>
@@ -206,7 +206,7 @@ const CreateMerchPopup: React.FC<Props> = ({ opened, onClick, onClick2 }) => {
             className={s.Button}
             onClick={(e) => {
               e.preventDefault();
-              onClick(false);
+              onClick2(true);
             }}
           >
             Cancel

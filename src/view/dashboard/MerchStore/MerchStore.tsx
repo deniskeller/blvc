@@ -6,7 +6,10 @@ import {
   Pagination,
   ResetFilterButton,
 } from 'components/dashboard/content';
-import { CreateMerchPopup } from 'components/dashboard/modals';
+import {
+  ConfirmLeavePagePopup,
+  CreateMerchPopup,
+} from 'components/dashboard/modals';
 import { BaseButtonApp, BaseSelectApp } from '@base/index';
 
 const merch_list = [
@@ -67,10 +70,14 @@ const initialFiltersState = {
 };
 
 const MerchStore: React.FC = () => {
+  //ДОБАВЛЕНИЕ ТОВАРА
   const [openedCreateMerchPopup, setOpenedCreateMerchPopup] = useState(false);
-
+  // ПОДТВЕРЖДЕНИЕ ЗАКРЫТИЕ МОДАЛКИ ДОБАВЛЕНИЯ ТОВАРА
+  const [openedConfirmLeavePagePopup, setOpenedConfirmLeavePagePopup] =
+    useState(false);
+  // стили инпута поиска
   const [isFocus, setIsFocus] = useState(false);
-
+  // фильтры
   const [filters, setFilters] = useState<FiltersState>(initialFiltersState);
   const setNewValue = (
     value: FilterItem | FilterItem[] | string,
@@ -79,7 +86,14 @@ const MerchStore: React.FC = () => {
     setFilters((prev) => ({ ...prev, [prop]: value }));
   };
 
+  // товары
   const [merchList, setMerchList] = useState(merch_list);
+
+  // обработка покидания страницы
+  const confirmLeavePageHandler = () => {
+    setOpenedConfirmLeavePagePopup(false);
+    setOpenedCreateMerchPopup(false);
+  };
 
   return (
     <>
@@ -218,12 +232,17 @@ const MerchStore: React.FC = () => {
         )}
         {merchList?.length != 0 ? <Pagination /> : null}
       </section>
-
       {/* ДОБАВЛЕНИЕ ТОВАРА */}
       <CreateMerchPopup
         opened={openedCreateMerchPopup}
         onClick={setOpenedCreateMerchPopup}
-        onClick2={() => alert('Invite user')}
+        onClick2={() => setOpenedConfirmLeavePagePopup(true)}
+      />
+      {/* ПОДТВЕРЖДЕНИЕ ЗАКРЫТИЕ МОДАЛКИ ДОБАВЛЕНИЯ ТОВАРА */}
+      <ConfirmLeavePagePopup
+        opened={openedConfirmLeavePagePopup}
+        onClick={setOpenedConfirmLeavePagePopup}
+        onClick2={confirmLeavePageHandler}
       />
     </>
   );

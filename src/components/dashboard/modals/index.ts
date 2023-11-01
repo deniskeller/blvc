@@ -6,4 +6,5 @@ export { default as PhoneVerificationCodePopup } from './PhoneVerificationCodePo
 export { default as WebsiteFormsParametersPopup } from './WebsiteFormsParametersPopup/WebsiteFormsParametersPopup';
 export { default as WebsiteFormsRequestDetailsPopup } from './WebsiteFormsRequestDetailsPopup/WebsiteFormsRequestDetailsPopup';
 export { default as CreateMerchPopup } from './CreateMerchPopup/CreateMerchPopup';
+export { default as ConfirmLeavePagePopup } from './ConfirmLeavePagePopup/ConfirmLeavePagePopup';
 
