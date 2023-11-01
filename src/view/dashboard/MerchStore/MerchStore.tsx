@@ -6,7 +6,7 @@ import {
   Pagination,
   ResetFilterButton,
 } from 'components/dashboard/content';
-import { InviteUserPopup } from 'components/dashboard/modals';
+import { CreateMerchPopup } from 'components/dashboard/modals';
 import { BaseButtonApp, BaseSelectApp } from '@base/index';
 
 const merch_list = [
@@ -67,7 +67,7 @@ const initialFiltersState = {
 };
 
 const MerchStore: React.FC = () => {
-  const [openedInviteUserPopup, setOpenedInviteUserPopup] = useState(false);
+  const [openedCreateMerchPopup, setOpenedCreateMerchPopup] = useState(false);
 
   const [isFocus, setIsFocus] = useState(false);
 
@@ -155,7 +155,7 @@ const MerchStore: React.FC = () => {
 
           <BaseButtonApp
             className={s.Filters_AddCar}
-            onClick={() => alert('add car')}
+            onClick={() => setOpenedCreateMerchPopup(true)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -219,10 +219,10 @@ const MerchStore: React.FC = () => {
         {merchList?.length != 0 ? <Pagination /> : null}
       </section>
 
-      {/* ДОБАВЛЕНИЕ ПАРТНЕРА */}
-      <InviteUserPopup
-        opened={openedInviteUserPopup}
-        onClick={setOpenedInviteUserPopup}
+      {/* ДОБАВЛЕНИЕ ТОВАРА */}
+      <CreateMerchPopup
+        opened={openedCreateMerchPopup}
+        onClick={setOpenedCreateMerchPopup}
         onClick2={() => alert('Invite user')}
       />
     </>
