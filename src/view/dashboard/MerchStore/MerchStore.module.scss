@@ -1,0 +1,289 @@
+.MerchStore {
+  .Header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: em(33px);
+    padding: em(65px) em(70px) 0 em(60px);
+    @include iflaptop {
+      padding: em(47px) em(70px) 0 em(60px);
+    }
+    @include iftablet {
+      padding: em(47px) em(20px) 0 em(20px);
+    }
+    @include iftablet-mini {
+      padding: em(47px) em(20px) 0 em(20px);
+    }
+    @include ifmobile {
+      padding: em(30px) em(19px) 0 em(19px);
+    }
+    @include ifmobile {
+      display: none;
+    }
+    &_Icon {
+      width: em(110px);
+      height: em(29px);
+      margin-right: em(16px);
+    }
+    &_Title {
+      color: $black;
+      font-family: $Blacksword;
+      font-size: em(32px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%;
+    }
+  }
+
+  .Filters {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: em(40px);
+    padding: 0 em(70px) 0 em(60px);
+    @include iflaptop {
+      padding: 0 em(70px) 0 em(60px);
+    }
+    @include iftablet {
+      justify-content: flex-end;
+      margin-bottom: em(34px);
+      padding: 0 em(20px) 0 em(20px);
+    }
+    @include iftablet-mini {
+      justify-content: flex-end;
+      margin-bottom: em(34px);
+      padding: 0 em(20px) 0 em(20px);
+    }
+    @include ifmobile {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: em(20px);
+      padding: em(30px) em(19px) 0 em(19px);
+    }
+
+    &_Search {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border-bottom: 1px solid $base600light;
+
+      &_IconSearch {
+        height: em(22px);
+        padding: 0 em(14px) 0 em(12px);
+        svg {
+          width: inherit;
+          height: inherit;
+        }
+      }
+
+      &_Input {
+        $size: 14px;
+        width: em(153px, $size);
+        height: em(48px, $size);
+        background: none;
+        outline: none;
+        border: none;
+        position: relative;
+        box-shadow: none;
+        background: transparent;
+        border-radius: 0;
+        transition: all 0.3s ease;
+        @include placeholder-color($base600light);
+        padding: em(15px, $size) em(14px, $size) em(15px, $size) em(12px, $size);
+
+        text-overflow: ellipsis;
+        font-family: 'Mulish', sans-serif;
+        font-size: em($size);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 100%;
+        color: #1a1a1a;
+        @include iflaptop {
+          width: em(132px, $size);
+        }
+        @include iftablet {
+        }
+        @include iftablet-mini {
+        }
+        @include ifmobile {
+        }
+      }
+    }
+
+    &_Search,
+    &_Forms {
+      margin-right: em(35px);
+      @include iftablet {
+        display: none;
+      }
+      @include iftablet-mini {
+        display: none;
+      }
+      @include ifmobile {
+        display: none;
+      }
+    }
+
+    &_Forms {
+      min-width: em(224px);
+    }
+
+    &_Reset {
+      @include iftablet {
+        display: none;
+      }
+      @include iftablet-mini {
+        display: none;
+      }
+      @include ifmobile {
+        display: none;
+      }
+    }
+
+    &_AddCar {
+      width: em(240px);
+      margin-left: auto;
+      svg {
+        width: em(14px);
+        height: em(14px);
+        margin-right: em(10px);
+      }
+
+      @include iftablet {
+        width: em(140px);
+        margin-left: em(16px);
+      }
+      @include iftablet-mini {
+        width: em(140px);
+        margin-left: em(16px);
+      }
+      @include ifmobile {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    &_Mobile {
+      display: none;
+      @include iftablet {
+        display: flex;
+      }
+      @include iftablet-mini {
+        display: flex;
+      }
+      @include ifmobile {
+        display: flex;
+      }
+    }
+  }
+
+  .Content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: em(22px) em(22px);
+    padding: 0 em(60px) em(126px) em(60px);
+    @include iflaptop {
+      grid-template-columns: repeat(4, 1fr);
+      gap: em(22px) em(17px);
+      padding: 0 em(60px) em(126px) em(60px);
+    }
+    @include iftablet {
+      grid-template-columns: repeat(3, 1fr);
+      gap: em(10px) em(10px);
+      padding: 0 em(20px) em(100px) em(20px);
+    }
+    @include iftablet-mini {
+      grid-template-columns: repeat(2, 1fr);
+      gap: em(22px) em(22px);
+      padding: 0 em(20px) em(100px) em(20px);
+    }
+    @include ifmobile {
+      grid-template-columns: 1fr;
+      gap: em(22px) 0;
+      padding: 0 em(20px) em(100px) em(20px);
+    }
+  }
+
+  .EmptyCart {
+    position: relative;
+    height: 100%;
+    padding: em(156px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_Decor {
+      position: relative;
+      width: em(453px);
+      height: em(156px);
+      @include iftablet {
+        width: em(340px);
+        height: em(117px);
+      }
+      @include iftablet-mini {
+        width: em(340px);
+        height: em(117px);
+      }
+      @include ifmobile {
+        width: em(255px);
+        height: em(88px);
+      }
+      .Icon {
+        width: inherit;
+        height: inherit;
+      }
+
+      .Title {
+        text-align: center;
+        position: absolute;
+        bottom: em(-25px);
+        right: em(-17px);
+        @include iflaptop {
+          bottom: em(-25px);
+          right: em(-17px);
+        }
+        @include iftablet {
+          bottom: em(-25px);
+          right: em(-17px);
+        }
+        @include iftablet-mini {
+          bottom: em(-25px);
+          right: em(-17px);
+        }
+        @include ifmobile {
+          bottom: em(-25px);
+          right: em(-17px);
+        }
+        p {
+          color: #aeaeae;
+          font-family: $Blacksword;
+          font-size: em(64px);
+          font-style: normal;
+          font-weight: 400;
+          white-space: nowrap;
+          @include iflaptop {
+            font-size: em(48px);
+          }
+          @include iftablet {
+            font-size: em(48px);
+          }
+          @include iftablet-mini {
+            font-size: em(48px);
+          }
+          @include ifmobile {
+            font-size: em(36px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include iftablet-mini {
+}
+@include ifmobile {
+}

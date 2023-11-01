@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
-import s from './VehiclesCard.module.scss';
+import s from './MerchCard.module.scss';
 import { ALL_ICONS } from '@constants/icons';
 import { BaseIcon } from '@base/index';
 
@@ -11,8 +11,7 @@ interface IItem {
   availability: boolean;
   name: string;
   tags: string[];
-  total_price: string;
-  monthly_payment: string;
+  price: string;
 }
 
 interface Props {
@@ -21,17 +20,8 @@ interface Props {
   onClick?: (e: React.SyntheticEvent) => void;
 }
 
-const VehiclesCard: React.FC<Props> = ({ item, onClick }) => {
-  const {
-    id,
-    status,
-    image,
-    availability,
-    name,
-    tags,
-    total_price,
-    monthly_payment,
-  } = item as IItem;
+const MerchCard: React.FC<Props> = ({ item, onClick }) => {
+  const { id, status, image, availability, name, tags, price } = item as IItem;
 
   const computedDecorStyle = (status: string) => {
     if (status == 'hidden') return 'Hidden';
@@ -44,7 +34,7 @@ const VehiclesCard: React.FC<Props> = ({ item, onClick }) => {
   };
 
   return (
-    <div className={s.VehiclesCard} onClick={onClick}>
+    <div className={s.MerchCard} onClick={onClick}>
       <div
         className={s.Border}
         style={{
@@ -102,42 +92,8 @@ const VehiclesCard: React.FC<Props> = ({ item, onClick }) => {
           })}
         </div>
 
-        <div className={s.Info_TotalPrice}>
-          <span>Total price from {total_price}</span>
-
-          <div className={s.Tooltip}>
-            <BaseIcon
-              viewBox="0 0 13 13"
-              icon={ALL_ICONS.TOOLTIP}
-              className={s.Tooltip_Icon}
-            />
-          </div>
-
-          <div className={s.Popup}>
-            <p>
-              Further information on the official fuel consumption and the
-              official specific CO₂
-            </p>
-          </div>
-        </div>
-
-        <div className={s.Info_MonthlyPayment}>
-          <span>{monthly_payment}/month</span>
-
-          <div className={s.Tooltip}>
-            <BaseIcon
-              viewBox="0 0 13 13"
-              icon={ALL_ICONS.TOOLTIP}
-              className={s.Tooltip_Icon}
-            />
-          </div>
-
-          <div className={s.Popup}>
-            <p>
-              Further information on the official fuel consumption and the
-              official specific CO₂
-            </p>
-          </div>
+        <div className={s.Info_Price}>
+          <span>{price}</span>
         </div>
 
         <div className={s.Info_Details}>
@@ -148,4 +104,4 @@ const VehiclesCard: React.FC<Props> = ({ item, onClick }) => {
   );
 };
 
-export default VehiclesCard;
+export default MerchCard;

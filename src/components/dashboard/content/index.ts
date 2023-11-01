@@ -6,4 +6,5 @@ export { default as ResetFilterButton } from './ResetFilterButton/ResetFilterBut
 export { default as SearchByInput } from './SearchByInput/SearchByInput';
 export { default as FilterButton } from './FilterButton/FilterButton';
 export { default as VehiclesCard } from './VehiclesCard/VehiclesCard';
+export { default as MerchCard } from './MerchCard/MerchCard';
 

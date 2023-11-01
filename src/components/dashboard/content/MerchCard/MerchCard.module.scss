@@ -1,4 +1,4 @@
-.VehiclesCard {
+.MerchCard {
   cursor: pointer;
   overflow: hidden;
   position: relative;
@@ -133,18 +133,9 @@
   .Image {
     position: relative;
     width: 100%;
-    height: em(272px);
-    @include iflaptop {
-      height: em(208px);
-    }
-    @include iftablet {
-      height: em(208px);
-    }
-    @include iftablet-mini {
-      height: em(208px);
-    }
+    height: em(274px);
     @include ifmobile {
-      height: em(248px);
+      height: em(320px);
     }
     .Availability {
       position: absolute;
@@ -173,32 +164,20 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: em(19px) em(9px) em(25px);
-    @include ifdesktop {
-      padding: em(20px) em(25px) em(25px);
-    }
+    padding: em(20px) em(20px) em(10px);
 
     &_Name {
-      margin-bottom: em(7px);
+      margin-bottom: em(10px);
       span {
-        overflow: hidden;
-        color: $base900light;
-        text-overflow: ellipsis;
-        // font-family: Granville;
         font-size: em(16px);
-
-        font-style: normal;
-        font-weight: 400;
-        line-height: 120%; /* 26.505px */
-        text-transform: uppercase;
+        color: #58617b;
+        font-weight: 600;
+        line-height: 110%;
 
         -webkit-line-clamp: 1; /* Число отображаемых строк */
         display: -webkit-box; /* Включаем флексбоксы */
         -webkit-box-orient: vertical; /* Вертикальная ориентация */
         overflow: hidden;
-        @include ifdesktop {
-          font-size: em(22px);
-        }
       }
     }
 
@@ -206,124 +185,45 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      gap: em(3px) em(3px);
-      margin-bottom: em(11px);
+      gap: em(4px) em(4px);
+      margin-bottom: em(8px);
       .Tag {
         display: flex;
         align-items: center;
-        padding: em(3px) em(6px);
+        padding: em(4px) em(6px);
         border-radius: 1px;
         background: #f2f2f2;
         line-height: 100%;
         span {
           display: flex;
-          color: $base600light;
-          font-size: em(11px);
+          color: $base900light;
+          font-size: em(14px);
           font-style: normal;
-          font-weight: 700;
+          font-weight: 600;
           line-height: 110%;
           opacity: 0.7;
         }
       }
     }
 
-    &_TotalPrice,
-    &_MonthlyPayment {
-      position: relative;
-      width: max-content;
-      .Tooltip {
-        position: absolute;
-        top: 50%;
-        transform: translate(0, -50%);
-        right: em(-20px);
-        width: em(13px);
-        height: em(13px);
-        &:hover {
-          svg path {
-            stroke-opacity: 1;
-            stroke: $red3;
-          }
-          & + .Popup {
-            opacity: 1;
-            pointer-events: initial;
-          }
-        }
-
-        &_Icon {
-          position: absolute;
-          width: inherit;
-          height: inherit;
-        }
-      }
-      .Popup {
-        position: absolute;
-        left: 4px;
-        bottom: calc(100% + em(6px));
-        border-radius: em(4px);
-        border: 1px solid $base200light;
-        background: $white;
-        padding: em(16px);
-        width: max-content;
-        max-width: em(290px);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity $speed ease;
-        @include iflaptop {
-          max-width: em(234px);
-        }
-        @include iftablet {
-          max-width: em(240px);
-        }
-        @include iftablet-mini {
-          max-width: em(250px);
-        }
-        @include ifmobile {
-          max-width: em(296px);
-        }
-        p {
-          color: $black;
-          font-family: $Mulish;
-          font-size: em(12px);
-          font-style: normal;
-          font-weight: 400;
-          line-height: 140%; /* 16.8px */
-        }
-      }
-    }
-
-    &_TotalPrice {
-      margin-bottom: em(16px);
-      line-height: 100%;
-      span {
-        display: flex;
-        overflow: hidden;
-        color: $base600light;
-        text-overflow: ellipsis;
-        // font-family: Granville;
-        font-size: em(13px);
-        font-style: normal;
-        font-weight: 400;
-        line-height: 110%;
-      }
-    }
-
-    &_MonthlyPayment {
+    &_Price {
       line-height: 100%;
       span {
         display: flex;
         color: $base900light;
         // font-family: Granville;
-        font-size: em(19px);
+        font-style: normal;
+        font-size: em(24px);
         font-style: normal;
         font-weight: 400;
-        line-height: 120%;
+        line-height: 114.5%; /* 27.48px */
       }
     }
 
     &_Details {
       position: absolute;
       right: em(25px);
-      bottom: em(25px);
+      bottom: em(14px);
       width: max-content;
       border-bottom: 1px solid $base600light;
       transform: translate(200%, 0);
