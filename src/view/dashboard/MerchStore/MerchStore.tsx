@@ -192,7 +192,7 @@ const MerchStore: React.FC = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            Add car
+            Add product
           </BaseButtonApp>
         </div>
 

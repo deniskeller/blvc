@@ -9,6 +9,7 @@ import {
 import React, { useState, useEffect } from 'react';
 import s from './CreateMerchPopup.module.scss';
 import toast from 'react-hot-toast';
+import { UploadMerchPhoto } from 'components/dashboard/content';
 
 interface Props {
   opened: boolean;
@@ -162,7 +163,9 @@ const CreateMerchPopup: React.FC<Props> = ({ opened, onClick, onClick2 }) => {
             />
           </li>
 
-          <li></li>
+          <li>
+            <UploadMerchPhoto />
+          </li>
 
           <li>
             <ul className={s.Row2}>

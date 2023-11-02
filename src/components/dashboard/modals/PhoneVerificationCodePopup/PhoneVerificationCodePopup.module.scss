@@ -3,31 +3,7 @@
 }
 
 .Back {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: pointer;
   margin-bottom: em(32px);
-  width: max-content;
-  &:hover {
-    .Back_Icon {
-      transform: translate(em(-3px), 0);
-    }
-  }
-  &_Icon {
-    display: flex !important;
-    width: em(60px);
-    margin-right: em(12px);
-    transition: transform $speed ease;
-  }
-  &_Label {
-    color: $base300light;
-    font-size: em(14px);
-    font-style: normal;
-    font-weight: 500;
-    line-height: 142.857%;
-    letter-spacing: -0.21px;
-  }
 }
 
 .Description {

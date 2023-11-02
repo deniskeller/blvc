@@ -12,6 +12,7 @@ import {
 } from 'components/dashboard/modals';
 import { BaseButtonApp, BaseSelectApp } from '@base/index';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/router';
 
 const vehicles_list = [
   {
@@ -74,6 +75,7 @@ const initialFiltersState = {
 };
 
 const Vehicles: React.FC = () => {
+  const router = useRouter();
   const [openedInviteUserPopup, setOpenedInviteUserPopup] = useState(false);
 
   // ПОДТВЕРЖДЕНИЕ УДАЛЕНИЯ ТОВАРА
@@ -166,7 +168,7 @@ const Vehicles: React.FC = () => {
 
           <BaseButtonApp
             className={s.Filters_AddCar}
-            onClick={() => alert('add car')}
+            onClick={() => router.push('/dashboard/create-vehicle')}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -219,7 +221,7 @@ const Vehicles: React.FC = () => {
                     item={item}
                     key={index}
                     onClick={() => alert('go to Details')}
-                    onClick2={() => alert('Change?')}
+                    onClick2={() => router.push('/dashboard/edit-vehicle')}
                     onClick3={() => setOpenedConfirmDeleteItemPopup(true)}
                   />
                 );

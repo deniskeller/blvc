@@ -2,6 +2,7 @@ import { BaseButtonApp, BaseInputApp, BasePopup } from '@base/index';
 import React, { useState, useEffect } from 'react';
 import s from './EnterNewEmailPopup.module.scss';
 import toast from 'react-hot-toast';
+import { StepBack } from 'components/dashboard/content';
 
 interface Props {
   opened: boolean;
@@ -26,25 +27,7 @@ const EnterNewEmailPopup: React.FC<Props> = ({ opened, onClick, onClick2 }) => {
 
   return (
     <BasePopup opened={opened} onClick={onClick} className={s.Popup}>
-      <div className={s.Back} onClick={() => onClick(false)}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="60"
-          height="10"
-          viewBox="0 0 60 10"
-          fill="none"
-          className={s.Back_Icon}
-        >
-          <path
-            opacity="0.5"
-            d="M-3.8147e-06 5L7.5 9.33013V0.669873L-3.8147e-06 5ZM60 4.25L6.75 4.25V5.75L60 5.75V4.25Z"
-            fill="#1A1A1A"
-            fillOpacity="0.3"
-          />
-        </svg>
-
-        <span className={s.Back_Label}>Back</span>
-      </div>
+      <StepBack onClick={() => onClick(false)} className={s.Back} />
 
       <div className={s.Description}>
         <p>Please enter a new email address</p>
