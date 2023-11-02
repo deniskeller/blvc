@@ -7,10 +7,12 @@ import {
   ResetFilterButton,
 } from 'components/dashboard/content';
 import {
+  ConfirmDeleteItemPopup,
   ConfirmLeavePagePopup,
   CreateMerchPopup,
 } from 'components/dashboard/modals';
 import { BaseButtonApp, BaseSelectApp } from '@base/index';
+import toast from 'react-hot-toast';
 
 const merch_list = [
   {
@@ -75,6 +77,10 @@ const MerchStore: React.FC = () => {
   // ПОДТВЕРЖДЕНИЕ ЗАКРЫТИЕ МОДАЛКИ ДОБАВЛЕНИЯ ТОВАРА
   const [openedConfirmLeavePagePopup, setOpenedConfirmLeavePagePopup] =
     useState(false);
+  // ПОДТВЕРЖДЕНИЕ УДАЛЕНИЯ ТОВАРА
+  const [openedConfirmDeleteItemPopup, setOpenedConfirmDeleteItemPopup] =
+    useState(false);
+
   // стили инпута поиска
   const [isFocus, setIsFocus] = useState(false);
   // фильтры
@@ -223,7 +229,9 @@ const MerchStore: React.FC = () => {
                   <MerchCard
                     item={item}
                     key={index}
-                    // onClick={() => alert('go to carrent page')}
+                    onClick={() => alert('go to Details')}
+                    onClick2={() => alert('Change?')}
+                    onClick3={() => setOpenedConfirmDeleteItemPopup(true)}
                   />
                 );
               })}
@@ -238,11 +246,27 @@ const MerchStore: React.FC = () => {
         onClick={setOpenedCreateMerchPopup}
         onClick2={() => setOpenedConfirmLeavePagePopup(true)}
       />
+
       {/* ПОДТВЕРЖДЕНИЕ ЗАКРЫТИЕ МОДАЛКИ ДОБАВЛЕНИЯ ТОВАРА */}
       <ConfirmLeavePagePopup
         opened={openedConfirmLeavePagePopup}
         onClick={setOpenedConfirmLeavePagePopup}
         onClick2={confirmLeavePageHandler}
+      />
+
+      {/* ПОДТВЕРЖДЕНИЕ УДАЛЕНИЯ ТОВАРА */}
+      <ConfirmDeleteItemPopup
+        opened={openedConfirmDeleteItemPopup}
+        onClick={setOpenedConfirmDeleteItemPopup}
+        onClick2={() => {
+          setOpenedConfirmDeleteItemPopup(false);
+          setTimeout(() => {
+            toast.success('Item has been deleted', {
+              duration: 3000,
+              className: 'dashboard',
+            });
+          }, 500);
+        }}
       />
     </>
   );

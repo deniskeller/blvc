@@ -19,9 +19,16 @@ interface Props {
   item: IItem;
   type?: string;
   onClick?: (e: React.SyntheticEvent) => void;
+  onClick2?: (e: React.SyntheticEvent) => void;
+  onClick3?: (e: React.SyntheticEvent) => void;
 }
 
-const VehiclesCard: React.FC<Props> = ({ item, onClick }) => {
+const VehiclesCard: React.FC<Props> = ({
+  item,
+  onClick,
+  onClick2,
+  onClick3,
+}) => {
   const {
     id,
     status,
@@ -44,7 +51,7 @@ const VehiclesCard: React.FC<Props> = ({ item, onClick }) => {
   };
 
   return (
-    <div className={s.VehiclesCard} onClick={onClick}>
+    <div className={s.VehiclesCard}>
       <div
         className={s.Border}
         style={{
@@ -61,7 +68,7 @@ const VehiclesCard: React.FC<Props> = ({ item, onClick }) => {
         <span>{status}</span>
       </div>
 
-      <div className={s.Change}>
+      <div className={s.Change} onClick={onClick2}>
         <BaseIcon
           viewBox="0 0 22 22"
           icon={ALL_ICONS.EDIT}
@@ -69,7 +76,7 @@ const VehiclesCard: React.FC<Props> = ({ item, onClick }) => {
         />
       </div>
 
-      <div className={s.Delete}>
+      <div className={s.Delete} onClick={onClick3}>
         <BaseIcon
           viewBox="0 0 24 24"
           icon={ALL_ICONS.DELETE}
@@ -140,7 +147,7 @@ const VehiclesCard: React.FC<Props> = ({ item, onClick }) => {
           </div>
         </div>
 
-        <div className={s.Info_Details}>
+        <div className={s.Info_Details} onClick={onClick}>
           <span>Details</span>
         </div>
       </div>

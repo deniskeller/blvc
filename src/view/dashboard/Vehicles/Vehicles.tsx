@@ -6,8 +6,12 @@ import {
   ResetFilterButton,
   VehiclesCard,
 } from 'components/dashboard/content';
-import { InviteUserPopup } from 'components/dashboard/modals';
+import {
+  ConfirmDeleteItemPopup,
+  InviteUserPopup,
+} from 'components/dashboard/modals';
 import { BaseButtonApp, BaseSelectApp } from '@base/index';
+import toast from 'react-hot-toast';
 
 const vehicles_list = [
   {
@@ -71,6 +75,10 @@ const initialFiltersState = {
 
 const Vehicles: React.FC = () => {
   const [openedInviteUserPopup, setOpenedInviteUserPopup] = useState(false);
+
+  // ПОДТВЕРЖДЕНИЕ УДАЛЕНИЯ ТОВАРА
+  const [openedConfirmDeleteItemPopup, setOpenedConfirmDeleteItemPopup] =
+    useState(false);
 
   const [isFocus, setIsFocus] = useState(false);
 
@@ -210,7 +218,9 @@ const Vehicles: React.FC = () => {
                   <VehiclesCard
                     item={item}
                     key={index}
-                    onClick={() => alert('go to carrent page')}
+                    onClick={() => alert('go to Details')}
+                    onClick2={() => alert('Change?')}
+                    onClick3={() => setOpenedConfirmDeleteItemPopup(true)}
                   />
                 );
               })}
@@ -225,6 +235,21 @@ const Vehicles: React.FC = () => {
         opened={openedInviteUserPopup}
         onClick={setOpenedInviteUserPopup}
         onClick2={() => alert('Invite user')}
+      />
+
+      {/* ПОДТВЕРЖДЕНИЕ УДАЛЕНИЯ ТОВАРА */}
+      <ConfirmDeleteItemPopup
+        opened={openedConfirmDeleteItemPopup}
+        onClick={setOpenedConfirmDeleteItemPopup}
+        onClick2={() => {
+          setOpenedConfirmDeleteItemPopup(false);
+          setTimeout(() => {
+            toast.success('Item has been deleted', {
+              duration: 3000,
+              className: 'dashboard',
+            });
+          }, 500);
+        }}
       />
     </>
   );

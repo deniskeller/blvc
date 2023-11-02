@@ -18,9 +18,11 @@ interface Props {
   item: IItem;
   type?: string;
   onClick?: (e: React.SyntheticEvent) => void;
+  onClick2?: (e: React.SyntheticEvent) => void;
+  onClick3?: (e: React.SyntheticEvent) => void;
 }
 
-const MerchCard: React.FC<Props> = ({ item, onClick }) => {
+const MerchCard: React.FC<Props> = ({ item, onClick, onClick2, onClick3 }) => {
   const { id, status, image, availability, name, tags, price } = item as IItem;
 
   const computedDecorStyle = (status: string) => {
@@ -34,7 +36,7 @@ const MerchCard: React.FC<Props> = ({ item, onClick }) => {
   };
 
   return (
-    <div className={s.MerchCard} onClick={onClick}>
+    <div className={s.MerchCard}>
       <div
         className={s.Border}
         style={{
@@ -51,7 +53,7 @@ const MerchCard: React.FC<Props> = ({ item, onClick }) => {
         <span>{status}</span>
       </div>
 
-      <div className={s.Change}>
+      <div className={s.Change} onClick={onClick2}>
         <BaseIcon
           viewBox="0 0 22 22"
           icon={ALL_ICONS.EDIT}
@@ -59,7 +61,7 @@ const MerchCard: React.FC<Props> = ({ item, onClick }) => {
         />
       </div>
 
-      <div className={s.Delete}>
+      <div className={s.Delete} onClick={onClick3}>
         <BaseIcon
           viewBox="0 0 24 24"
           icon={ALL_ICONS.DELETE}
@@ -96,7 +98,7 @@ const MerchCard: React.FC<Props> = ({ item, onClick }) => {
           <span>{price}</span>
         </div>
 
-        <div className={s.Info_Details}>
+        <div className={s.Info_Details} onClick={onClick}>
           <span>Details</span>
         </div>
       </div>

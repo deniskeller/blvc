@@ -53,6 +53,15 @@
         stroke-opacity: 1;
       }
     }
+    &:hover {
+      background: #cacaca;
+      .Change_Icon,
+      .Delete_Icon {
+        path {
+          stroke: $red;
+        }
+      }
+    }
   }
   .Change {
     right: em(74px);
