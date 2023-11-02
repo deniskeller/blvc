@@ -6,11 +6,7 @@ import {
   Pagination,
   ResetFilterButton,
 } from 'components/dashboard/content';
-import {
-  ConfirmDeleteItemPopup,
-  ConfirmLeavePagePopup,
-  CreateMerchPopup,
-} from 'components/dashboard/modals';
+import { ConfirmPopup, CreateMerchPopup } from 'components/dashboard/modals';
 import { BaseButtonApp, BaseSelectApp } from '@base/index';
 import toast from 'react-hot-toast';
 
@@ -248,14 +244,18 @@ const MerchStore: React.FC = () => {
       />
 
       {/* ПОДТВЕРЖДЕНИЕ ЗАКРЫТИЕ МОДАЛКИ ДОБАВЛЕНИЯ ТОВАРА */}
-      <ConfirmLeavePagePopup
+      <ConfirmPopup
+        title="Are you sure you want to leave this window?"
+        subtitle="If you close the window before the product is published, all data will be deleted."
         opened={openedConfirmLeavePagePopup}
         onClick={setOpenedConfirmLeavePagePopup}
         onClick2={confirmLeavePageHandler}
       />
 
       {/* ПОДТВЕРЖДЕНИЕ УДАЛЕНИЯ ТОВАРА */}
-      <ConfirmDeleteItemPopup
+      <ConfirmPopup
+        success_btn_title="delete"
+        title="Do you want to delete this item?"
         opened={openedConfirmDeleteItemPopup}
         onClick={setOpenedConfirmDeleteItemPopup}
         onClick2={() => {

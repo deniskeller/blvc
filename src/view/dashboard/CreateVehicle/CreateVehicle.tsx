@@ -3,6 +3,8 @@ import s from './CreateVehicle.module.scss';
 import { useRouter } from 'next/router';
 import { StepBack } from 'components/dashboard/content';
 import { BaseInputApp, BaseSelectApp } from '@base/index';
+import { ConfirmPopup } from 'components/dashboard/modals';
+import toast from 'react-hot-toast';
 
 interface IFormData {
   name: string;
@@ -56,6 +58,7 @@ const initialState = {
 const CreateVehicle: React.FC = () => {
   const router = useRouter();
 
+  //СТЕЙТЫ ПОЛЕЙ
   const [value, setValue] = useState<IFormData>(initialState);
   const setNewValue = (
     value: ISelectItem | ISelectItem[] | string,
@@ -64,10 +67,31 @@ const CreateVehicle: React.FC = () => {
     setValue((prev) => ({ ...prev, [prop]: value }));
   };
 
+  // ПОДТВЕРЖДЕНИЕ УХОДА СО СТРАНИЦЫ
+  const [openedConfirmLeavePagePopup, setOpenedConfirmLeavePagePopup] =
+    useState(false);
+
+  // ПОДТВЕРЖДЕНИЕ ПУБЛИКАЦИИ
+  const [openedConfirmPublishProduct, setOpenedConfirmPublishProduct] =
+    useState(false);
+
+  // ПОДТВЕРЖДЕНИЕ СОХРАНЕНИЯ
+  const [openedConfirmSaveProduct, setOpenedConfirmSaveProduct] =
+    useState(false);
+
+  // обработка покидания страницы
+  const confirmLeavePageHandler = () => {
+    setOpenedConfirmLeavePagePopup(false);
+    router.back();
+  };
+
   return (
     <>
       <section className={s.CreateVehicle}>
-        <StepBack onClick={() => router.back()} className={s.Back} />
+        <StepBack
+          onClick={() => setOpenedConfirmLeavePagePopup(true)}
+          className={s.Back}
+        />
 
         <form className={s.Body}>
           <div className={s.Inputs}>
@@ -322,7 +346,10 @@ const CreateVehicle: React.FC = () => {
 
           <div className={s.Image}>
             <div className={s.Image_Navbar}>
-              <div className={s.Save}>
+              <div
+                className={s.Save}
+                onClick={() => setOpenedConfirmSaveProduct(true)}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 25 24"
@@ -349,7 +376,10 @@ const CreateVehicle: React.FC = () => {
                 </svg>
               </div>
 
-              <div className={s.Publish}>
+              <div
+                className={s.Publish}
+                onClick={() => setOpenedConfirmPublishProduct(true)}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 25 24"
@@ -415,6 +445,51 @@ const CreateVehicle: React.FC = () => {
           </div>
         </form>
       </section>
+
+      {/* ПОДТВЕРЖДЕНИЕ УХОДА СО СТРАНИЦЫ */}
+      <ConfirmPopup
+        title="Are you sure you want to leave this page?"
+        subtitle="If you close the window before the vehicle is published, all data will be deleted."
+        opened={openedConfirmLeavePagePopup}
+        onClick={setOpenedConfirmLeavePagePopup}
+        onClick2={confirmLeavePageHandler}
+      />
+
+      {/* ПОДТВЕРЖДЕНИЕ ПУБЛИКАЦИИ */}
+      <ConfirmPopup
+        title="Do you want to publish this vehicle?"
+        success_btn_title="Publish"
+        opened={openedConfirmPublishProduct}
+        onClick={setOpenedConfirmPublishProduct}
+        onClick2={(e) => {
+          e.preventDefault();
+          setOpenedConfirmPublishProduct(false);
+          setTimeout(() => {
+            toast.success('Vehicle has been successfully published', {
+              duration: 3000,
+              className: 'dashboard',
+            });
+          }, 500);
+        }}
+      />
+
+      {/* ПОДТВЕРЖДЕНИЕ СОХРАНЕНИЯ */}
+      <ConfirmPopup
+        title="Do you want to save this vehicle?"
+        success_btn_title="Save"
+        opened={openedConfirmSaveProduct}
+        onClick={setOpenedConfirmSaveProduct}
+        onClick2={(e) => {
+          e.preventDefault();
+          setOpenedConfirmSaveProduct(false);
+          setTimeout(() => {
+            toast.success('Vehicle has been saved as a draft', {
+              duration: 3000,
+              className: 'dashboard',
+            });
+          }, 500);
+        }}
+      />
     </>
   );
 };

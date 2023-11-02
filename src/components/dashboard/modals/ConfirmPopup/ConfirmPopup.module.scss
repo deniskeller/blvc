@@ -5,14 +5,13 @@
   }
 }
 .Title {
-  margin-bottom: em(12px);
   @include ifmobile {
     max-width: em(227px);
   }
 }
 
 .Subtitle {
-  margin-bottom: em(24px);
+  margin-top: em(12px);
   p {
     color: $base400light;
     font-size: em(14px);
@@ -26,6 +25,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0 em(16px);
+  margin-top: em(24px);
   .Button {
     width: 100%;
   }

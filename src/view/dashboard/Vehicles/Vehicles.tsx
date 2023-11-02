@@ -8,6 +8,7 @@ import {
 } from 'components/dashboard/content';
 import {
   ConfirmDeleteItemPopup,
+  ConfirmPopup,
   InviteUserPopup,
 } from 'components/dashboard/modals';
 import { BaseButtonApp, BaseSelectApp } from '@base/index';
@@ -240,7 +241,9 @@ const Vehicles: React.FC = () => {
       />
 
       {/* ПОДТВЕРЖДЕНИЕ УДАЛЕНИЯ ТОВАРА */}
-      <ConfirmDeleteItemPopup
+      <ConfirmPopup
+        title="Do you want to delete this item?"
+        success_btn_title="delete"
         opened={openedConfirmDeleteItemPopup}
         onClick={setOpenedConfirmDeleteItemPopup}
         onClick2={() => {
