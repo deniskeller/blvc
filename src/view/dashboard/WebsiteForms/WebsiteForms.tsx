@@ -7,10 +7,9 @@ import {
 import {
   FilterButton,
   Pagination,
-  ResetFilterButton,
   SearchByInput,
 } from 'components/dashboard/content';
-import { BaseSelectApp } from '@base/index';
+import { BaseButtonApp, BaseSelectApp } from '@base/index';
 import toast from 'react-hot-toast';
 
 const partner_list = [
@@ -147,7 +146,9 @@ const WebsiteForms: React.FC = () => {
             onClick={() => setWebsiteFormsParametersPopup(true)}
           />
 
-          <ResetFilterButton onClick={() => setPartners([])} />
+          <BaseButtonApp type="empty" onClick={() => setPartners([])}>
+            default
+          </BaseButtonApp>
         </div>
 
         {partners?.length == 0 ? (

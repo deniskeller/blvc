@@ -164,10 +164,13 @@ const MerchStore: React.FC = () => {
             // onClick={() => setWebsiteFormsParametersPopup(true)}
           />
 
-          <ResetFilterButton
+          <BaseButtonApp
+            type="empty"
             className={s.Filters_Reset}
             onClick={() => setMerchList([])}
-          />
+          >
+            default
+          </BaseButtonApp>
 
           <BaseButtonApp
             className={s.Filters_AddCar}
