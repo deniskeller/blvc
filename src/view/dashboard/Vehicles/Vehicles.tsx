@@ -3,14 +3,9 @@ import s from './Vehicles.module.scss';
 import {
   FilterButton,
   Pagination,
-  ResetFilterButton,
   VehiclesCard,
 } from 'components/dashboard/content';
-import {
-  ConfirmDeleteItemPopup,
-  ConfirmPopup,
-  InviteUserPopup,
-} from 'components/dashboard/modals';
+import { ConfirmPopup, InviteUserPopup } from 'components/dashboard/modals';
 import { BaseButtonApp, BaseSelectApp } from '@base/index';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/router';

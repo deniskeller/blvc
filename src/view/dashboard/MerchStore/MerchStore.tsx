@@ -4,7 +4,6 @@ import {
   FilterButton,
   MerchCard,
   Pagination,
-  ResetFilterButton,
 } from 'components/dashboard/content';
 import { ConfirmPopup, CreateMerchPopup } from 'components/dashboard/modals';
 import { BaseButtonApp, BaseSelectApp } from '@base/index';
