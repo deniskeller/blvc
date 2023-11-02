@@ -1,7 +1,243 @@
 .CreateVehicle {
   padding: em(22px) em(69px) em(72px) em(69px);
-
-  &_Back {
-    margin-bottom: em(22px);
+  @include iflaptop {
+    padding: em(15px) em(41px) em(51px) em(35px);
   }
+  @include iftablet {
+    padding: em(15px) em(26px) em(65px) em(12px);
+  }
+  @include iftablet-mini {
+    padding: em(15px) em(20px) em(41px) em(12px);
+  }
+  @include ifmobile {
+    padding: em(17px) em(20px) em(68px) em(20px);
+  }
+
+  .Back {
+    margin-bottom: em(30px);
+    @include iflaptop {
+      margin-bottom: em(38px);
+    }
+    @include iftablet {
+      margin-bottom: em(30px);
+    }
+    @include iftablet-mini {
+      margin-bottom: em(30px);
+    }
+    @include ifmobile {
+      margin-bottom: em(22px);
+    }
+  }
+
+  .Body {
+    display: grid;
+    grid-template-columns: 1fr em(484px);
+    gap: 0 em(30px);
+    @include iftablet {
+      grid-template-columns: 1fr;
+      gap: em(30px) 0;
+    }
+    @include iftablet-mini {
+      grid-template-columns: 1fr;
+      gap: em(30px) 0;
+    }
+    @include ifmobile {
+      grid-template-columns: 1fr;
+      gap: em(30px) 0;
+    }
+
+    .Inputs {
+      &_Title {
+        margin-bottom: em(38px);
+        @include iflaptop {
+          margin-bottom: em(28px);
+        }
+        @include iftablet {
+        }
+        @include iftablet-mini {
+        }
+        @include ifmobile {
+        }
+        h1 {
+          color: $black;
+          font-family: $Blacksword;
+          font-size: em(32px);
+          font-style: normal;
+          font-weight: 400;
+          line-height: 100%; /* 100% */
+        }
+      }
+
+      &_Content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: em(35px) 0;
+        .Block {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: em(16px) em(25px);
+          @include iflaptop {
+            grid-template-columns: 1fr 1fr;
+          }
+          @include iftablet {
+            grid-template-columns: 1fr 1fr;
+          }
+          @include iftablet-mini {
+            grid-template-columns: 1fr 1fr;
+            gap: em(16px) em(10px);
+          }
+          @include ifmobile {
+            grid-template-columns: 1fr;
+            gap: em(16px) 0;
+          }
+        }
+
+        .Subtitle {
+          width: 100%;
+          border-bottom: 1px solid #cacaca;
+          padding-bottom: em(10px);
+          margin-bottom: em(16px);
+          p {
+            color: $base900light;
+            font-size: em(16px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 110%; /* 17.6px */
+          }
+        }
+      }
+    }
+
+    .Image {
+      display: flex;
+      flex-direction: column;
+      &_Navbar {
+        display: flex;
+        flex-direction: row;
+        align-self: flex-end;
+        margin-bottom: em(30px);
+        @include iftablet {
+          order: 1;
+          margin-bottom: 0;
+          align-self: center;
+        }
+        @include iftablet-mini {
+          order: 1;
+          margin-bottom: 0;
+          align-self: center;
+        }
+        @include ifmobile {
+          order: 1;
+          margin-bottom: 0;
+          align-self: center;
+        }
+        .Save,
+        .Publish {
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          width: em(48px);
+          height: em(48px);
+          border-radius: 33px;
+          border: 1px solid $base200light;
+          svg {
+            width: em(24px);
+            height: em(24px);
+          }
+        }
+        .Publish {
+          background: $red;
+          border-color: $red;
+          transform: rotate(180deg);
+          margin-left: em(25px);
+          svg path {
+            stroke: $white;
+          }
+
+          &:hover {
+            background: #ab0300;
+          }
+          &:active {
+            background: #bc3533;
+          }
+        }
+      }
+
+      &_Title {
+        width: 100%;
+        border-bottom: 1px solid #cacaca;
+        padding-bottom: em(10px);
+        margin-bottom: em(16px);
+        p {
+          color: $base900light;
+          font-size: em(16px);
+          font-style: normal;
+          font-weight: 700;
+          line-height: 110%; /* 17.6px */
+        }
+      }
+
+      &_Subtitle {
+        margin-bottom: em(16px);
+        p {
+          color: $base800light;
+          font-size: em(14px);
+          font-style: normal;
+          font-weight: 400;
+          line-height: 100%; /* 14px */
+          opacity: 0.6;
+        }
+      }
+
+      //ПЕРЕДЕЛАТЬ В КОМПОНЕТН
+      &_Upload {
+        background: grey;
+        height: em(410px);
+        margin-bottom: em(10px);
+      }
+
+      &_Tooltip {
+        position: relative;
+        padding: em(8px) em(8px) 0 em(40px);
+        @include iftablet {
+          margin-bottom: em(66px);
+        }
+        @include iftablet-mini {
+          margin-bottom: em(30px);
+        }
+        @include ifmobile {
+          margin-bottom: em(46px);
+          padding: em(8px) em(8px) 0 em(32px);
+        }
+        .Icon {
+          position: absolute;
+          top: em(8px);
+          left: em(8px);
+          width: em(24px);
+          height: em(24px);
+          @include ifmobile {
+            left: 0;
+          }
+        }
+        p {
+          color: $base400light;
+          font-size: em(12px);
+          font-style: normal;
+          font-weight: 700;
+          line-height: 166.667%; /* 166.667% */
+        }
+      }
+    }
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include iftablet-mini {
+}
+@include ifmobile {
 }
