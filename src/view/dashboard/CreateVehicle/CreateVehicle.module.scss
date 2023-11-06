@@ -179,23 +179,17 @@
         }
       }
 
-      &_Subtitle {
-        margin-bottom: em(16px);
-        p {
-          color: $base800light;
-          font-size: em(14px);
-          font-style: normal;
-          font-weight: 400;
-          line-height: 100%; /* 14px */
-          opacity: 0.6;
-        }
-      }
-
       //ПЕРЕДЕЛАТЬ В КОМПОНЕТН
       &_Upload {
-        background: grey;
-        height: em(410px);
         margin-bottom: em(10px);
+        @include iftablet {
+          max-width: em(484px);
+        }
+        @include iftablet-mini {
+          max-width: em(484px);
+        }
+        @include ifmobile {
+        }
       }
 
       &_Tooltip {

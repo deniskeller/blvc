@@ -1,0 +1,217 @@
+.UploadPhoto {
+  &_Label {
+    margin-bottom: em(16px);
+    P {
+      color: rgba(26, 26, 26, 0.8);
+      font-size: em(14px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%; /* 14px */
+    }
+  }
+
+  &_Container {
+    display: flex;
+    flex-direction: column;
+
+    .Uploader {
+      display: flex;
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+      min-height: em(362px);
+      margin-bottom: em(16px);
+      @include ifmobile {
+        min-height: em(240px);
+      }
+      &:hover {
+        .Uploader_Actions {
+          opacity: 1;
+          pointer-events: initial;
+          transform: translate(0);
+        }
+      }
+      &_Empty {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px dashed #cacaca;
+        transition: border-color $speed ease;
+        border-radius: 3px;
+        width: 100%;
+        height: inherit;
+        padding: em(39px) em(78px);
+        &:hover {
+          border-color: #91110e;
+        }
+        &_Input {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          top: 0;
+          bottom: 0;
+          opacity: 0;
+          cursor: pointer;
+        }
+
+        &_Icon {
+          width: em(29px);
+          height: em(29px);
+          margin-bottom: em(20px);
+          @include ifmobile {
+            width: em(19.114px);
+            height: em(19.114px);
+            margin-bottom: em(13px);
+          }
+        }
+        &_Label {
+          color: rgba(26, 26, 26, 0.5);
+          font-size: em(14px);
+          font-style: normal;
+          font-weight: 400;
+          line-height: 20px; /* 142.857% */
+          @include ifmobile {
+            font-size: em(9px);
+          }
+        }
+      }
+
+      &_Preview {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: relative;
+        flex: 1;
+        // .Image {
+        //   position: absolute;
+        //   top: 10px;
+        //   right: 10px;
+        //   background-color: rgba(0, 0, 0, 0.7);
+        //   color: white;
+        //   border-radius: 8px;
+        //   padding: 4px 6px;
+        //   font-size: 10px;
+        //   line-height: 9px;
+        //   z-index: 10;
+        // }
+      }
+
+      &_Actions {
+        display: flex;
+        flex-direction: row;
+        z-index: 1;
+        position: absolute;
+        top: em(20px);
+        right: em(20px);
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(0, -200%);
+        transition: all $speed ease;
+
+        .Change,
+        .Delete {
+          cursor: pointer;
+          border-radius: 50%;
+          background: rgba(31, 31, 31, 0.8);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: em(42px);
+          height: em(42px);
+
+          &_Icon {
+            width: em(22px);
+            height: em(22px);
+            path {
+              stroke: $white;
+              stroke-opacity: 1;
+            }
+          }
+          &:hover {
+            background: #cacaca;
+            .Change_Icon,
+            .Delete_Icon {
+              path {
+                stroke: $red;
+              }
+            }
+          }
+        }
+
+        .Change {
+          margin-right: em(12px);
+        }
+      }
+    }
+
+    .Thumbnails {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1.5px;
+      @include ifmobile {
+        gap: em(16px) em(21px);
+      }
+      &_Upload {
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1px;
+        border: 1px dashed #cacaca;
+        transition: border-color $speed ease;
+        width: em(47px);
+        height: em(33px);
+        &:hover {
+          border-color: #91110e;
+        }
+        &_Input {
+          position: absolute;
+          width: inherit;
+          height: inherit;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          opacity: 0;
+          cursor: pointer;
+          &::-webkit-file-upload-button {
+            cursor: pointer;
+          }
+        }
+        &_Icon {
+          width: em(14px);
+          height: em(14px);
+        }
+      }
+
+      &_Image {
+        cursor: pointer;
+        position: relative;
+        border-radius: 1px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: em(47px);
+        height: em(33px);
+        &:hover {
+          opacity: 0.5;
+        }
+        &_Selected {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+@include iflaptop {
+}
+@include iftablet {
+}
+@include iftablet-mini {
+}
+@include ifmobile {
+}

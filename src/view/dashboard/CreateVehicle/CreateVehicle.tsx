@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import s from './CreateVehicle.module.scss';
 import { useRouter } from 'next/router';
-import { StepBack } from 'components/dashboard/content';
+import { StepBack, UploadMerchPhoto } from 'components/dashboard/content';
 import { BaseInputApp, BaseSelectApp } from '@base/index';
 import { ConfirmPopup } from 'components/dashboard/modals';
 import toast from 'react-hot-toast';
@@ -411,12 +411,7 @@ const CreateVehicle: React.FC = () => {
               <p>Vehicle photo</p>
             </div>
 
-            <div className={s.Image_Subtitle}>
-              <p>max 10 photos - JPG, PNG, PDF up to 10 MB</p>
-            </div>
-
-            {/* ПЕРЕДЕЛАТЬ В КОМПОНЕТН */}
-            <div className={s.Image_Upload}></div>
+            <UploadMerchPhoto className={s.Image_Upload} multiple={true} />
 
             <div className={s.Image_Tooltip}>
               <svg
