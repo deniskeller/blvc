@@ -5,7 +5,11 @@ import {
   MerchCard,
   Pagination,
 } from 'components/dashboard/content';
-import { ConfirmPopup, CreateMerchPopup } from 'components/dashboard/modals';
+import {
+  ConfirmPopup,
+  CreateMerchPopup,
+  EditMerchPhotoPopup,
+} from 'components/dashboard/modals';
 import { BaseButtonApp, BaseSelectApp } from '@base/index';
 import toast from 'react-hot-toast';
 

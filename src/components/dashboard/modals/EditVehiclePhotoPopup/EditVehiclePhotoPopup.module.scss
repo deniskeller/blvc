@@ -1,5 +1,5 @@
 .Popup {
-  max-width: em(480px);
+  max-width: em(625px);
   @include ifmobile {
     max-width: em(320px);
   }

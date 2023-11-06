@@ -8,4 +8,5 @@ export { default as WebsiteFormsRequestDetailsPopup } from './WebsiteFormsReques
 export { default as CreateMerchPopup } from './CreateMerchPopup/CreateMerchPopup';
 export { default as ConfirmPopup } from './ConfirmPopup/ConfirmPopup';
 export { default as EditMerchPhotoPopup } from './EditMerchPhotoPopup/EditMerchPhotoPopup';
+export { default as EditVehiclePhotoPopup } from './EditVehiclePhotoPopup/EditVehiclePhotoPopup';
 

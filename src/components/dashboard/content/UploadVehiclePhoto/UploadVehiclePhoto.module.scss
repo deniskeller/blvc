@@ -12,24 +12,17 @@
 
   &_Container {
     display: flex;
-    flex-direction: row;
-    @include ifmobile {
-      flex-direction: column;
-    }
+    flex-direction: column;
 
     .Uploader {
       display: flex;
       border-radius: 3px;
       overflow: hidden;
       position: relative;
-      width: em(245px);
-      height: em(245px);
-      margin-right: em(16px);
+      min-height: em(362px);
+      margin-bottom: em(16px);
       @include ifmobile {
-        width: 100%;
-        height: em(286px);
-        margin-right: 0;
-        margin-bottom: em(16px);
+        min-height: em(240px);
       }
       &:hover {
         .Uploader_Actions {
@@ -49,7 +42,7 @@
         border-radius: 3px;
         width: 100%;
         height: inherit;
-        padding: em(39px) em(20px);
+        padding: em(39px) em(78px);
         &:hover {
           border-color: #91110e;
         }
@@ -91,6 +84,18 @@
         background-repeat: no-repeat;
         position: relative;
         flex: 1;
+        // .Image {
+        //   position: absolute;
+        //   top: 10px;
+        //   right: 10px;
+        //   background-color: rgba(0, 0, 0, 0.7);
+        //   color: white;
+        //   border-radius: 8px;
+        //   padding: 4px 6px;
+        //   font-size: 10px;
+        //   line-height: 9px;
+        //   z-index: 10;
+        // }
       }
 
       &_Actions {
@@ -143,15 +148,10 @@
 
     .Thumbnails {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       flex-wrap: wrap;
-      max-width: em(77px);
-      height: em(245px);
-      gap: em(20px) em(12px);
+      gap: 1.5px;
       @include ifmobile {
-        max-width: 100%;
-        height: 100%;
-        flex-direction: row;
         gap: em(16px) em(21px);
       }
       &_Upload {
@@ -163,12 +163,8 @@
         border-radius: 1px;
         border: 1px dashed #cacaca;
         transition: border-color $speed ease;
-        width: em(32.5px);
-        height: em(32.5px);
-        @include ifmobile {
-          width: em(40px);
-          height: em(40px);
-        }
+        width: em(47px);
+        height: em(33px);
         &:hover {
           border-color: #91110e;
         }
@@ -199,12 +195,8 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
-        width: em(32.5px);
-        height: em(32.5px);
-        @include ifmobile {
-          width: em(40px);
-          height: em(40px);
-        }
+        width: em(47px);
+        height: em(33px);
         &:hover {
           opacity: 0.5;
         }

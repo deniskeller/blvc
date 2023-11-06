@@ -1,6 +1,6 @@
 //@ts-nocheck
 import React, { useEffect, useState } from 'react';
-import s from './UploadMerchPhoto.module.scss';
+import s from './UploadVehiclePhoto.module.scss';
 import { BaseIcon } from '@base/index';
 import { ALL_ICONS } from '@constants/icons';
 
@@ -9,6 +9,15 @@ interface Props {
   multiple?: boolean;
   onClick?: (ev: React.MouseEvent<HTMLDivElement>) => void;
 }
+
+/* TEST DATA BEGINS */
+const SAMPLE_IMAGES = Array(0)
+  .fill(0)
+  .map((_, i) => ({
+    file: {},
+    thumbnail: `https://picsum.photos/500/400/?random${i}`,
+  }));
+/* TEST DATA ENDS */
 
 interface IFile {
   file: File;
@@ -20,7 +29,7 @@ interface IInputData {
   showDropArea: boolean;
 }
 
-const UploadMerchPhoto: React.FC<Props> = ({
+const UploadVehiclePhoto: React.FC<Props> = ({
   className = '',
   multiple,
   onClick,
@@ -57,6 +66,24 @@ const UploadMerchPhoto: React.FC<Props> = ({
     } else {
       setValue((prev) => ({ ...prev, previewIndex: previewIndex }));
     }
+  };
+
+  const showNextImage = (e: {
+    preventDefault: () => void;
+    stopPropagation: () => void;
+  }) => {
+    e.preventDefault();
+    e.stopPropagation();
+    selectImageForPreview(1, true);
+  };
+
+  const showPreviousImage = (e: {
+    preventDefault: () => void;
+    stopPropagation: () => void;
+  }) => {
+    e.preventDefault();
+    e.stopPropagation();
+    selectImageForPreview(-1, true);
   };
 
   const removeCurrentImage = (e: { preventDefault: () => any }) => {
@@ -149,7 +176,30 @@ const UploadMerchPhoto: React.FC<Props> = ({
                       : ''
                   })`,
                 }}
-              ></div>
+              >
+                {/* {multiple ? (
+                  <div className="image-preview-index">
+                    {value.previewIndex + 1} &#x2f; {value.files.length}
+                  </div>
+                ) : null} */}
+
+                {/* {multiple && value.files.length && (
+                  <div className="image-navigation-buttons">
+                    <button
+                      className="image-navigation-button"
+                      onClick={showPreviousImage}
+                    >
+                      &#10092;
+                    </button>
+                    <button
+                      className="image-navigation-button"
+                      onClick={showNextImage}
+                    >
+                      &#10093;
+                    </button>
+                  </div>
+                )} */}
+              </div>
 
               <div className={s.Uploader_Actions}>
                 <div className={s.Change} onClick={onClick}>
@@ -223,4 +273,4 @@ const UploadMerchPhoto: React.FC<Props> = ({
   );
 };
 
-export default UploadMerchPhoto;
+export default UploadVehiclePhoto;
