@@ -3,7 +3,7 @@ import s from './CreateVehicle.module.scss';
 import { useRouter } from 'next/router';
 import { StepBack, UploadMerchPhoto } from 'components/dashboard/content';
 import { BaseInputApp, BaseSelectApp } from '@base/index';
-import { ConfirmPopup } from 'components/dashboard/modals';
+import { ConfirmPopup, EditMerchPhotoPopup } from 'components/dashboard/modals';
 import toast from 'react-hot-toast';
 
 interface IFormData {
@@ -77,6 +77,9 @@ const CreateVehicle: React.FC = () => {
 
   // ПОДТВЕРЖДЕНИЕ СОХРАНЕНИЯ
   const [openedConfirmSaveProduct, setOpenedConfirmSaveProduct] =
+    useState(false);
+  // РЕДАКТИРОВАНИЕ ФОТОК
+  const [openedEditMerchPhotoPopup, setOpenedEditMerchPhotoPopup] =
     useState(false);
 
   // обработка покидания страницы
@@ -411,7 +414,11 @@ const CreateVehicle: React.FC = () => {
               <p>Vehicle photo</p>
             </div>
 
-            <UploadMerchPhoto className={s.Image_Upload} multiple={true} />
+            <UploadMerchPhoto
+              className={s.Image_Upload}
+              multiple={true}
+              onClick={() => setOpenedEditMerchPhotoPopup(true)}
+            />
 
             <div className={s.Image_Tooltip}>
               <svg
@@ -479,6 +486,21 @@ const CreateVehicle: React.FC = () => {
           setOpenedConfirmSaveProduct(false);
           setTimeout(() => {
             toast.success('Vehicle has been saved as a draft', {
+              duration: 3000,
+              className: 'dashboard',
+            });
+          }, 500);
+        }}
+      />
+
+      {/* РЕДАКТИРОВАНИЕ ФОТОК */}
+      <EditMerchPhotoPopup
+        opened={openedEditMerchPhotoPopup}
+        onClick={setOpenedEditMerchPhotoPopup}
+        onClick2={() => {
+          setOpenedEditMerchPhotoPopup(false);
+          setTimeout(() => {
+            toast.success('All changes saved', {
               duration: 3000,
               className: 'dashboard',
             });

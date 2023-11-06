@@ -1,0 +1,25 @@
+.Popup {
+  max-width: em(625px);
+  @include ifmobile {
+    max-width: em(320px);
+  }
+}
+.Title {
+  margin-bottom: em(30px);
+}
+
+.Buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 em(16px);
+  .Button {
+    width: 100%;
+  }
+}
+
+.Edit {
+  width: 100%;
+  height: em(415px);
+  background: grey;
+  margin-bottom: em(43px);
+}

@@ -7,4 +7,5 @@ export { default as WebsiteFormsParametersPopup } from './WebsiteFormsParameters
 export { default as WebsiteFormsRequestDetailsPopup } from './WebsiteFormsRequestDetailsPopup/WebsiteFormsRequestDetailsPopup';
 export { default as CreateMerchPopup } from './CreateMerchPopup/CreateMerchPopup';
 export { default as ConfirmPopup } from './ConfirmPopup/ConfirmPopup';
+export { default as EditMerchPhotoPopup } from './EditMerchPhotoPopup/EditMerchPhotoPopup';
 

@@ -7,6 +7,7 @@ import { ALL_ICONS } from '@constants/icons';
 interface Props {
   className?: string;
   multiple?: boolean;
+  onClick?: (ev: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 /* TEST DATA BEGINS */
@@ -28,7 +29,11 @@ interface IInputData {
   showDropArea: boolean;
 }
 
-const UploadMerchPhoto: React.FC<Props> = ({ className = '', multiple }) => {
+const UploadMerchPhoto: React.FC<Props> = ({
+  className = '',
+  multiple,
+  onClick,
+}) => {
   const [value, setValue] = useState<IInputData>({
     files: [],
     previewIndex: 0,
@@ -197,14 +202,7 @@ const UploadMerchPhoto: React.FC<Props> = ({ className = '', multiple }) => {
               </div>
 
               <div className={s.Uploader_Actions}>
-                <div
-                  className={s.Change}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    alert('lel');
-                  }}
-                >
+                <div className={s.Change} onClick={onClick}>
                   <BaseIcon
                     viewBox="0 0 22 22"
                     icon={ALL_ICONS.EDIT}
