@@ -12,7 +12,7 @@ import { SearchByInput } from 'components/dashboard/content';
 interface Props {
   opened: boolean;
   onClick: (value: boolean) => void;
-  onClick2?: (ev: React.MouseEvent<SVGSVGElement>) => void;
+  onClick2?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 interface FilterItem {
@@ -97,12 +97,7 @@ const WebsiteFormsParametersPopup: React.FC<Props> = ({
             Cancel
           </BaseButtonApp>
 
-          <BaseButtonApp
-            className={s.Button}
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-          >
+          <BaseButtonApp className={s.Button} onClick={onClick2}>
             apply
           </BaseButtonApp>
         </div>

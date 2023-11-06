@@ -1,12 +1,29 @@
-import { BaseIcon } from '@base/index';
+import { BaseIcon, BaseSelectApp } from '@base/index';
 import { ALL_ICONS } from '@constants/icons';
 import useOnClickOutside from '@hooks/useOnClickOutside';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import s from './Header.module.scss';
-import { Logo } from '../content';
+import { Logo, SearchByInput } from '../content';
 import { sidebarSlice } from '@store/sidebar/reducer';
 import { useAppDispatch, useAppSelector } from '@hooks/redux';
+
+interface FilterItem {
+  label: string;
+  value: string;
+}
+
+interface FiltersState {
+  sortBy: string;
+  search: string;
+  forms: FilterItem[];
+}
+
+const initialFiltersState = {
+  search: '',
+  sortBy: 'by_name',
+  forms: [{ value: 'all_forms', label: 'All forms' }],
+};
 
 const Header = () => {
   const router = useRouter();
@@ -35,12 +52,67 @@ const Header = () => {
     }
   }, [router.pathname]);
 
+  const [filters, setFilters] = useState<FiltersState>(initialFiltersState);
+
+  const setNewValue = (
+    value: FilterItem | FilterItem[] | string,
+    prop: keyof FiltersState
+  ) => {
+    setFilters((prev) => ({ ...prev, [prop]: value }));
+  };
+
+  //ЛОГИКА ДЛЯ ФИЛЬТРОВ ПРИ СКРОЛЕ
+  const [scroll, setScroll] = useState(0);
+
+  window.addEventListener('scroll', function () {
+    let scrollTop = window.scrollY || document.documentElement.scrollTop;
+    setScroll(scrollTop);
+    console.log('scrollPosition', scrollTop);
+  });
+
   return (
     <>
       <header className={s.Header}>
         <Logo className={s.Header_Logo} />
 
-        {/* <div className={s.Header_Filter}></div> */}
+        <div
+          className={`${s.Header_Filter} ${
+            scroll >= 300 ? s.Header_Filter_Visible : ''
+          }`}
+        >
+          <div className={s.Search}>
+            <SearchByInput
+              initialValue="by name"
+              searchValue={filters.search}
+              options={[
+                { value: 'by_name', label: 'by name' },
+                { value: 'by_email', label: 'by email' },
+              ]}
+              onSelect={(val: string) => setNewValue(val, 'sortBy')}
+              onChange={(val: string) => setNewValue(val, 'search')}
+              className={s.Search_Field}
+            />
+          </div>
+
+          <div className={s.Forms}>
+            <BaseSelectApp
+              name="forms"
+              value={filters.forms}
+              placeholder="Forms"
+              options={[
+                { value: 'all_forms', label: 'All forms' },
+                { value: 'published', label: 'Published' },
+                { value: 'hidden', label: 'Hidden' },
+              ]}
+              onChange={(val: FilterItem[] | FilterItem) =>
+                setNewValue(val, 'forms')
+              }
+              onClear={() => {}}
+              onBlur={() => {}}
+              className={s.Forms_Field}
+            />
+          </div>
+        </div>
 
         <div className={s.Header_User}>
           <BaseIcon

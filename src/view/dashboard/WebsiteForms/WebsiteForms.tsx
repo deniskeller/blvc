@@ -9,8 +9,9 @@ import {
   Pagination,
   SearchByInput,
 } from 'components/dashboard/content';
-import { BaseButtonApp, BaseSelectApp } from '@base/index';
+import { BaseButtonApp, BaseIcon, BaseSelectApp } from '@base/index';
 import toast from 'react-hot-toast';
+import { ALL_ICONS } from '@constants/icons';
 
 const partner_list = [
   {
@@ -84,16 +85,13 @@ const WebsiteForms: React.FC = () => {
   ] = useState(false);
 
   const [filters, setFilters] = useState<FiltersState>(initialFiltersState);
+
   const setNewValue = (
     value: FilterItem | FilterItem[] | string,
     prop: keyof FiltersState
   ) => {
     setFilters((prev) => ({ ...prev, [prop]: value }));
   };
-
-  // useEffect(() => {
-  //   console.log('filters: ', filters);
-  // }, [filters]);
 
   const [partners, setPartners] = useState(partner_list);
 
@@ -140,15 +138,38 @@ const WebsiteForms: React.FC = () => {
             className={s.Filters_Forms}
           />
 
-          <FilterButton
+          {/* <FilterButton
             className={s.Filters_Mobile}
             counter={1}
             onClick={() => setWebsiteFormsParametersPopup(true)}
+          /> */}
+
+          {/* <BaseButtonApp type="empty" onClick={() => setPartners([])}>
+            default
+          </BaseButtonApp> */}
+
+          <BaseIcon
+            viewBox="0 0 28 24"
+            icon={ALL_ICONS.FILTER}
+            className={s.Filters_Popup}
+            onClick={() => setWebsiteFormsParametersPopup(true)}
           />
 
-          <BaseButtonApp type="empty" onClick={() => setPartners([])}>
-            default
-          </BaseButtonApp>
+          {filters != initialFiltersState ? (
+            <BaseIcon
+              viewBox="0 0 24 24"
+              icon={ALL_ICONS.FILTER_RESET}
+              className={s.Filters_Reset}
+              onClick={() => {
+                setPartners([]);
+                setFilters({
+                  search: '',
+                  sortBy: 'by_name',
+                  forms: [{ value: 'all_forms', label: 'All forms' }],
+                });
+              }}
+            />
+          ) : null}
         </div>
 
         {partners?.length == 0 ? (
@@ -272,7 +293,15 @@ const WebsiteForms: React.FC = () => {
       <WebsiteFormsParametersPopup
         opened={openedWebsiteFormsParametersPopup}
         onClick={setWebsiteFormsParametersPopup}
-        onClick2={() => alert('apply filter')}
+        onClick2={(e) => {
+          e.preventDefault();
+          setWebsiteFormsParametersPopup(false);
+          setFilters({
+            search: 'sdfsdfsd',
+            sortBy: 'by_name',
+            forms: [{ value: 'all_forms', label: 'All forms' }],
+          });
+        }}
       />
 
       {/* ДОБАВЛЕНИЕ ПАРТНЕРА */}

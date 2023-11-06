@@ -73,6 +73,7 @@
       margin: 0 em(29px) 0 em(14px);
     }
   }
+
   &_Title {
     display: none;
     align-items: center;
@@ -94,6 +95,7 @@
       line-height: 100%;
     }
   }
+
   &_Burger {
     display: none;
     cursor: pointer;
@@ -101,6 +103,44 @@
     height: em(18px);
     @include ifmobile {
       display: block;
+    }
+  }
+
+  &_Filter {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-left: auto;
+    margin-right: em(65px);
+
+    .Search {
+      margin-right: em(35px);
+    }
+
+    .Search,
+    .Forms {
+      &_Field {
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(20px, 0);
+        transition: all 0.5s ease;
+      }
+    }
+
+    .Forms {
+      min-width: em(224px);
+    }
+
+    &_Visible {
+      .Search,
+      .Forms {
+        .Search_Field,
+        .Forms_Field {
+          opacity: 1;
+          pointer-events: initial;
+          transform: translate(0);
+        }
+      }
     }
   }
 }

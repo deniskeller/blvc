@@ -49,10 +49,12 @@
       padding: em(30px) em(20px) 0 em(20px);
       margin-bottom: em(20px);
     }
+    &_Search {
+      margin-right: em(35px);
+    }
 
     &_Search,
     &_Forms {
-      margin-right: em(35px);
       @include iftablet {
         display: none;
       }
@@ -63,9 +65,11 @@
         display: none;
       }
     }
+
     &_Forms {
       min-width: em(224px);
     }
+
     &_Mobile {
       display: none;
       @include iftablet {
@@ -76,6 +80,39 @@
       }
       @include ifmobile {
         display: flex;
+      }
+    }
+
+    &_Popup {
+      display: none;
+      cursor: pointer;
+      align-self: center;
+      width: em(34px);
+      height: em(38px);
+      @include iftablet {
+        display: flex;
+      }
+      @include iftablet-mini {
+        display: flex;
+      }
+      @include ifmobile {
+        display: flex;
+      }
+    }
+
+    &_Reset {
+      width: em(24px);
+      height: em(24px);
+      cursor: pointer;
+      margin-left: em(35px);
+      align-self: center;
+      path {
+        transition: fill $speed ease;
+      }
+      &:hover {
+        path:first-child {
+          fill: $red;
+        }
       }
     }
   }
