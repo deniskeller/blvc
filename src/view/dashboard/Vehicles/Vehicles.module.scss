@@ -129,15 +129,30 @@
     }
 
     &_Reset {
-      @include iftablet {
-        display: none;
+      opacity: 0;
+      pointer-events: none;
+      margin-left: 0;
+      transform: translate(20px, 0);
+      transition: all 0.5s ease;
+      &_Visible {
+        width: 100%;
+        opacity: 1;
+        margin-left: em(20px);
+        pointer-events: initial;
+        transform: translate(0);
       }
-      @include iftablet-mini {
-        display: none;
-      }
-      @include ifmobile {
-        display: none;
-      }
+
+      // &_Mobile {
+      //   width: 100%;
+      //   display: none;
+      //   margin-left: 0;
+      //   @include iftablet {
+      //     display: block;
+      //   }
+      //   @include iftablet-mini {
+      //     display: block;
+      //   }
+      // }
     }
 
     &_AddCar {
@@ -165,6 +180,20 @@
 
     &_Mobile {
       display: none;
+      @include iftablet {
+        display: flex;
+      }
+      @include iftablet-mini {
+        display: flex;
+      }
+      @include ifmobile {
+        display: flex;
+      }
+    }
+
+    &_Burger {
+      display: none;
+      align-self: center;
       @include iftablet {
         display: flex;
       }

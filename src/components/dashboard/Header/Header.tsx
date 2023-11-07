@@ -1,35 +1,15 @@
-import { BaseIcon, BaseSelectApp } from '@base/index';
+import { BaseIcon } from '@base/index';
 import { ALL_ICONS } from '@constants/icons';
-import useOnClickOutside from '@hooks/useOnClickOutside';
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import s from './Header.module.scss';
 import {
-  FilterButton,
-  FilterResetButton,
+  HeaderFilterVehicle,
+  HeaderFilterWebsiteForms,
   Logo,
-  SearchByInput,
 } from '../content';
 import { sidebarSlice } from '@store/sidebar/reducer';
 import { useAppDispatch, useAppSelector } from '@hooks/redux';
-import { WebsiteFormsParametersPopup } from '../modals';
-
-interface FilterItem {
-  label: string;
-  value: string;
-}
-
-interface FiltersState {
-  sortBy: string;
-  search: string;
-  forms: FilterItem[];
-}
-
-const initialFiltersState = {
-  search: '',
-  sortBy: 'by_name',
-  forms: [{ value: 'all_forms', label: 'All forms' }],
-};
 
 const Header = () => {
   const router = useRouter();
@@ -58,129 +38,17 @@ const Header = () => {
     }
   }, [router.pathname]);
 
-  const [filters, setFilters] = useState<FiltersState>(initialFiltersState);
-  const [visibleFilter, setVisibleFilter] = useState<boolean>(false);
-
-  const setNewValue = (
-    value: FilterItem | FilterItem[] | string,
-    prop: keyof FiltersState
-  ) => {
-    setFilters((prev) => ({ ...prev, [prop]: value }));
-  };
-
-  //ЛОГИКА ДЛЯ ФИЛЬТРОВ ПРИ СКРОЛЕ
-  const [scroll, setScroll] = useState(0);
-  window.addEventListener('scroll', function () {
-    let scrollTop = window.scrollY || document.documentElement.scrollTop;
-    setScroll(scrollTop);
-  });
-
-  useEffect(() => {}, []);
-
-  // МОБИЛЬНЫЙ ФИЛЬТР
-  const [openedWebsiteFormsParametersPopup, setWebsiteFormsParametersPopup] =
-    useState(false);
-
   return (
     <>
       <header className={s.Header}>
         <Logo className={s.Header_Logo} />
 
-        {router.pathname.split('/')[2] === 'vehicles' ||
-        router.pathname.split('/')[2] === 'website-forms' ||
-        router.pathname.split('/')[2] === 'merch-store' ? (
-          <div
-            className={`${s.Header_Filter} ${
-              scroll >= 300 ? s.Header_Filter_Visible : ''
-            }`}
-          >
-            <div
-              className={`${s.Content} ${
-                visibleFilter ? s.Content_Visible : ''
-              }`}
-            >
-              {/* /ФИЛЬТР ДЛЯ СТРАНИЦЫ website-forms START */}
-              {router.pathname.split('/')[2] === 'website-forms' ? (
-                <>
-                  <div className={s.Search}>
-                    <SearchByInput
-                      initialValue="by name"
-                      searchValue={filters.search}
-                      options={[
-                        { value: 'by_name', label: 'by name' },
-                        { value: 'by_email', label: 'by email' },
-                      ]}
-                      onSelect={(val: string) => setNewValue(val, 'sortBy')}
-                      onChange={(val: string) => setNewValue(val, 'search')}
-                      className={s.Search_Field}
-                    />
-                  </div>
+        {router.pathname.split('/')[2] === 'website-forms' ? (
+          <HeaderFilterWebsiteForms />
+        ) : null}
 
-                  <div className={s.Forms}>
-                    <BaseSelectApp
-                      name="forms"
-                      value={filters.forms}
-                      placeholder="Forms"
-                      options={[
-                        { value: 'all_forms', label: 'All forms' },
-                        { value: 'published', label: 'Published' },
-                        { value: 'hidden', label: 'Hidden' },
-                      ]}
-                      onChange={(val: FilterItem[] | FilterItem) =>
-                        setNewValue(val, 'forms')
-                      }
-                      onClear={() => {}}
-                      onBlur={() => {}}
-                      className={s.Forms_Field}
-                    />
-                  </div>
-
-                  <FilterResetButton
-                    className={`${s.Reset} ${
-                      filters !== initialFiltersState ? s.Reset_Visible : ''
-                    }`}
-                    onClick={() => {
-                      setFilters({
-                        search: '',
-                        sortBy: 'by_name',
-                        forms: [{ value: 'all_forms', label: 'All forms' }],
-                      });
-                    }}
-                  />
-                </>
-              ) : null}
-              {/* /ФИЛЬТР ДЛЯ СТРАНИЦЫ website-forms END */}
-            </div>
-
-            <FilterButton
-              className={`${s.Burger} ${
-                scroll >= 300 ? s.Burger_Visible : ''
-              } ${s.Burger_Desktop}`}
-              counter={1}
-              onClick={() => setVisibleFilter(!visibleFilter)}
-            />
-
-            <FilterResetButton
-              className={`${s.Reset} ${
-                filters !== initialFiltersState ? s.Reset_Visible : ''
-              } ${s.Reset_Mobile}`}
-              onClick={() => {
-                setFilters({
-                  search: '',
-                  sortBy: 'by_name',
-                  forms: [{ value: 'all_forms', label: 'All forms' }],
-                });
-              }}
-            />
-
-            <FilterButton
-              className={`${s.Burger} ${
-                scroll >= 300 ? s.Burger_Visible : ''
-              } ${s.Burger_Mobile}`}
-              counter={1}
-              onClick={() => setWebsiteFormsParametersPopup(true)}
-            />
-          </div>
+        {router.pathname.split('/')[2] === 'vehicles' ? (
+          <HeaderFilterVehicle />
         ) : null}
 
         <div className={s.Header_User}>
@@ -297,21 +165,6 @@ const Header = () => {
           </defs>
         </svg>
       </header>
-
-      {/* МОБИЛЬНЫЙ ФИЛЬТР */}
-      <WebsiteFormsParametersPopup
-        opened={openedWebsiteFormsParametersPopup}
-        onClick={setWebsiteFormsParametersPopup}
-        onClick2={(e) => {
-          e.preventDefault();
-          setWebsiteFormsParametersPopup(false);
-          setFilters({
-            search: 'sdfsdfsd',
-            sortBy: 'by_name',
-            forms: [{ value: 'all_forms', label: 'All forms' }],
-          });
-        }}
-      />
     </>
   );
 };

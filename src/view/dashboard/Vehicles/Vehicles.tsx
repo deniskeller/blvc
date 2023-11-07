@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import s from './Vehicles.module.scss';
 import {
   FilterButton,
+  FilterResetButton,
   Pagination,
   VehiclesCard,
 } from 'components/dashboard/content';
-import { ConfirmPopup, InviteUserPopup } from 'components/dashboard/modals';
+import {
+  ConfirmPopup,
+  InviteUserPopup,
+  VehicleParametersPopup,
+} from 'components/dashboard/modals';
 import { BaseButtonApp, BaseSelectApp } from '@base/index';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/router';
@@ -90,6 +95,16 @@ const Vehicles: React.FC = () => {
 
   const [vehicles, setVehicles] = useState(vehicles_list);
 
+  const refVehicleSearchInput = useRef<HTMLInputElement>(null);
+  const focusInput = () => {
+    if (refVehicleSearchInput.current !== null) {
+      refVehicleSearchInput.current.focus();
+    }
+  };
+
+  // МОБИЛЬНЫЙ ФИЛЬТР
+  const [openedParametersPopup, setOpenedParametersPopup] = useState(false);
+
   return (
     <>
       <section className={s.Vehicles}>
@@ -99,7 +114,7 @@ const Vehicles: React.FC = () => {
 
         <div className={s.Filters}>
           <div className={s.Filters_Search}>
-            <div className={s.Filters_Search_IconSearch}>
+            <div className={s.Filters_Search_IconSearch} onClick={focusInput}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 23 22"
@@ -122,6 +137,7 @@ const Vehicles: React.FC = () => {
             </div>
 
             <input
+              ref={refVehicleSearchInput}
               value={filters.search}
               type="text"
               placeholder="Search by name"
@@ -151,19 +167,25 @@ const Vehicles: React.FC = () => {
             className={s.Filters_Forms}
           />
 
-          <FilterButton
-            className={s.Filters_Mobile}
-            counter={1}
-            // onClick={() => setWebsiteFormsParametersPopup(true)}
+          <FilterResetButton
+            className={`${s.Reset} ${
+              filters !== initialFiltersState ? s.Reset_Visible : ''
+            } ${s.Reset_Mobile}`}
+            onClick={() => {
+              setVehicles([]);
+              setFilters({
+                search: '',
+                sortBy: 'by_name',
+                forms: [{ value: 'all_forms', label: 'All forms' }],
+              });
+            }}
           />
 
-          <BaseButtonApp
-            type="empty"
-            className={s.Filters_Reset}
-            onClick={() => setVehicles([])}
-          >
-            default
-          </BaseButtonApp>
+          <FilterButton
+            className={s.Filters_Burger}
+            counter={1}
+            onClick={() => setOpenedParametersPopup(true)}
+          />
 
           <BaseButtonApp
             className={s.Filters_AddCar}
@@ -252,6 +274,21 @@ const Vehicles: React.FC = () => {
               className: 'dashboard',
             });
           }, 500);
+        }}
+      />
+
+      {/* МОБИЛЬНЫЙ ФИЛЬТР */}
+      <VehicleParametersPopup
+        opened={openedParametersPopup}
+        onClick={setOpenedParametersPopup}
+        onClick2={(e) => {
+          e.preventDefault();
+          setOpenedParametersPopup(false);
+          setFilters({
+            search: 'sdfsdfsd',
+            sortBy: 'by_name',
+            forms: [{ value: 'all_forms', label: 'All forms' }],
+          });
         }}
       />
     </>

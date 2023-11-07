@@ -1,0 +1,84 @@
+.Popup {
+  max-width: em(400px);
+  @include ifmobile {
+    max-width: em(320px);
+  }
+}
+
+.Title {
+  margin-bottom: em(16px);
+}
+
+.Form {
+  &_Inputs {
+    margin-bottom: em(16px);
+    li:not(:last-child) {
+      margin-bottom: em(20px);
+    }
+    .Search {
+      &_Field {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px solid $base600light;
+
+        &_IconSearch {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          height: em(48px);
+          padding: 0 em(12px);
+          svg {
+            width: em(23px);
+            height: em(22px);
+          }
+        }
+
+        &_Input {
+          $size: 14px;
+          width: 100%;
+          height: em(48px, $size);
+          background: none;
+          outline: none;
+          border: none;
+          position: relative;
+          box-shadow: none;
+          background: transparent;
+          border-radius: 0;
+          transition: all 0.3s ease;
+          @include placeholder-color($base600light);
+          padding: em(15px, $size) em(14px, $size) em(15px, $size)
+            em(12px, $size);
+
+          text-overflow: ellipsis;
+          font-family: 'Mulish', sans-serif;
+          font-size: em($size);
+          font-style: normal;
+          font-weight: 500;
+          line-height: 100%;
+          color: #1a1a1a;
+          @include iflaptop {
+            width: em(132px, $size);
+          }
+          @include iftablet {
+          }
+          @include iftablet-mini {
+          }
+          @include ifmobile {
+          }
+        }
+      }
+    }
+  }
+
+  &_Buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 em(16px);
+    .Button {
+      width: 100%;
+    }
+  }
+}

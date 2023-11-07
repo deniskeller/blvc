@@ -9,5 +9,7 @@ export { default as MerchCard } from './MerchCard/MerchCard';
 export { default as UploadMerchPhoto } from './UploadMerchPhoto/UploadMerchPhoto';
 export { default as StepBack } from './StepBack/StepBack';
 export { default as UploadVehiclePhoto } from './UploadVehiclePhoto/UploadVehiclePhoto';
-export { default as FilterResetButton } from './FilterResetButton/FilterResetButton';
+export { default as FilterResetButton } from './FilterResetButton/FilterResetButton'; 
+export { default as HeaderFilterWebsiteForms } from './HeaderFilterWebsiteForms/HeaderFilterWebsiteForms'; 
+export { default as HeaderFilterVehicle } from './HeaderFilterVehicle/HeaderFilterVehicle'; 
 

@@ -98,8 +98,17 @@
     }
 
     &_Reset {
-      margin-right: em(20px);
+      margin-left: em(20px);
       align-self: center;
+      @include iftablet {
+        margin-right: em(20px);
+      }
+      @include iftablet-mini {
+        margin-right: em(20px);
+      }
+      @include ifmobile {
+        margin-right: em(20px);
+      }
     }
   }
 

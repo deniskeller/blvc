@@ -1,0 +1,222 @@
+.Filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(20px, 0);
+  transition: all 0.3s ease;
+  margin-right: em(65px);
+  @include iflaptop {
+    margin-right: em(20px);
+  }
+  @include iftablet {
+    margin-right: em(20px);
+  }
+  @include iftablet-mini {
+    margin-right: em(20px);
+  }
+  @include ifmobile {
+    display: none;
+  }
+
+  &_Visible {
+    opacity: 1;
+    pointer-events: initial;
+    transform: translate(0);
+  }
+
+  .Search {
+    &_Field {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border-bottom: 1px solid $base600light;
+      margin-right: em(20px);
+
+      &_IconSearch {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        height: em(48px);
+        padding: 0 em(12px);
+        svg {
+          width: em(23px);
+          height: em(22px);
+        }
+      }
+
+      &_Input {
+        $size: 14px;
+        width: em(153px, $size);
+        height: em(48px, $size);
+        background: none;
+        outline: none;
+        border: none;
+        position: relative;
+        box-shadow: none;
+        background: transparent;
+        border-radius: 0;
+        transition: all 0.3s ease;
+        @include placeholder-color($base600light);
+        padding: em(15px, $size) em(14px, $size) em(15px, $size) em(12px, $size);
+
+        text-overflow: ellipsis;
+        font-family: 'Mulish', sans-serif;
+        font-size: em($size);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 100%;
+        color: #1a1a1a;
+        @include iflaptop {
+          width: em(132px, $size);
+        }
+        @include iftablet {
+        }
+        @include iftablet-mini {
+        }
+        @include ifmobile {
+        }
+      }
+    }
+  }
+
+  .Search,
+  .Forms {
+    &_Field {
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(20px, 0);
+      transition: all 0.3s ease;
+    }
+  }
+  .Forms {
+    &_Field {
+      min-width: em(224px);
+    }
+  }
+
+  .Reset {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    margin-left: 0;
+    transform: translate(20px, 0);
+    transition: all 0.5s ease;
+    &_Visible {
+      width: 100%;
+      opacity: 1;
+      margin-left: em(20px);
+      pointer-events: initial;
+      transform: translate(0);
+    }
+
+    &_Mobile {
+      width: 100%;
+      display: none;
+      margin-left: 0;
+      @include iftablet {
+        display: block;
+      }
+      @include iftablet-mini {
+        display: block;
+      }
+    }
+  }
+
+  .Burger {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(20px, 0);
+    transition: all 0.3s ease;
+    margin-left: 0;
+    &_Visible {
+      margin-left: em(20px);
+      opacity: 1;
+      pointer-events: initial;
+      transform: translate(0);
+    }
+
+    &_Desktop {
+      @include iftablet {
+        display: none;
+      }
+      @include iftablet-mini {
+        display: none;
+      }
+      @include ifmobile {
+        display: none;
+      }
+    }
+
+    &_Mobile {
+      display: none;
+      @include iftablet {
+        display: block;
+      }
+      @include iftablet-mini {
+        display: block;
+      }
+    }
+  }
+
+  .AddProduct {
+    width: em(240px);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(20px, 0);
+    transition: all 0.6s ease;
+    margin-left: 0;
+    &_Visible {
+      margin-left: em(20px);
+      opacity: 1;
+      pointer-events: initial;
+      transform: translate(0);
+    }
+    svg {
+      width: em(14px);
+      height: em(14px);
+      margin-right: em(10px);
+    }
+
+    @include iftablet {
+      width: em(140px);
+    }
+    @include iftablet-mini {
+      width: em(140px);
+    }
+    @include ifmobile {
+      width: 100%;
+    }
+  }
+
+  .Content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+    @include iftablet {
+      display: none;
+    }
+    @include iftablet-mini {
+      display: none;
+    }
+    @include ifmobile {
+      display: none;
+    }
+    &_Visible {
+      .Search,
+      .Forms {
+        .Search_Field,
+        .Forms_Field {
+          opacity: 1;
+          pointer-events: initial;
+          transform: translate(0);
+        }
+      }
+    }
+  }
+}

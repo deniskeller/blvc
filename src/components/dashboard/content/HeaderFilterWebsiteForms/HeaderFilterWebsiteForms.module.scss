@@ -1,0 +1,138 @@
+.Filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(20px, 0);
+  transition: all 0.5s ease;
+  margin-right: em(65px);
+  @include iflaptop {
+    margin-right: em(20px);
+  }
+  @include iftablet {
+    margin-right: em(20px);
+  }
+  @include iftablet-mini {
+    margin-right: em(20px);
+  }
+  @include ifmobile {
+    display: none;
+  }
+
+  &_Visible {
+    opacity: 1;
+    pointer-events: initial;
+    transform: translate(0);
+  }
+
+  .Search {
+    margin-right: em(20px);
+  }
+
+  .Search,
+  .Forms {
+    &_Field {
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(20px, 0);
+      transition: all 0.5s ease;
+    }
+  }
+
+  .Forms {
+    min-width: em(224px);
+  }
+
+  .Reset {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    margin-left: 0;
+    transform: translate(20px, 0);
+    transition: all 0.5s ease;
+    &_Visible {
+      width: 100%;
+      opacity: 1;
+      margin-left: em(20px);
+      pointer-events: initial;
+      transform: translate(0);
+    }
+
+    &_Mobile {
+      width: 100%;
+      display: none;
+      margin-left: 0;
+      @include iftablet {
+        display: block;
+      }
+      @include iftablet-mini {
+        display: block;
+      }
+    }
+  }
+
+  .Burger {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(20px, 0);
+    transition: all 0.5s ease;
+    margin-left: 0;
+    &_Visible {
+      margin-left: em(20px);
+      opacity: 1;
+      pointer-events: initial;
+      transform: translate(0);
+    }
+
+    &_Desktop {
+      @include iftablet {
+        display: none;
+      }
+      @include iftablet-mini {
+        display: none;
+      }
+      @include ifmobile {
+        display: none;
+      }
+    }
+
+    &_Mobile {
+      display: none;
+      @include iftablet {
+        display: block;
+      }
+      @include iftablet-mini {
+        display: block;
+      }
+    }
+  }
+
+  .Content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+    @include iftablet {
+      display: none;
+    }
+    @include iftablet-mini {
+      display: none;
+    }
+    @include ifmobile {
+      display: none;
+    }
+    &_Visible {
+      .Search,
+      .Forms {
+        .Search_Field,
+        .Forms_Field {
+          opacity: 1;
+          pointer-events: initial;
+          transform: translate(0);
+        }
+      }
+    }
+  }
+}
