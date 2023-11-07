@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import s from './BaseTextareaApp.module.scss';
 
 interface Props {
@@ -28,9 +28,21 @@ const BaseTextareaApp: React.FC<Props> = ({
   onChange,
   onKeyDown,
 }) => {
+  const refTextarea = useRef<HTMLTextAreaElement | null>(null);
+  const [height, setHeight] = useState(50);
+
+  useEffect(() => {
+    if (refTextarea.current != null) {
+      const scrollHeight = refTextarea.current.scrollHeight;
+      refTextarea.current.style.height = scrollHeight + 'px';
+    }
+    // setHeight(0);
+  }, [value]);
+
   return (
     <div className={`${s.BaseTextarea} ${className}`}>
       <textarea
+        ref={refTextarea}
         value={value}
         className={`${s.Textarea} ${error ? s.Error : ''}`}
         name={name}
@@ -42,6 +54,10 @@ const BaseTextareaApp: React.FC<Props> = ({
           onChange(e.target.value)
         }
         onKeyDown={onKeyDown}
+        onBlur={() => setHeight(0)}
+        style={{
+          height: refTextarea.current?.scrollHeight + 'px',
+        }}
       />
 
       {label ? (
@@ -49,6 +65,10 @@ const BaseTextareaApp: React.FC<Props> = ({
           {label}
         </label>
       ) : null}
+
+      <span className={s.Counter}>
+        {length}/{maxLength}
+      </span>
     </div>
   );
 };

@@ -47,7 +47,7 @@ const HeaderFilterWebsiteForms: React.FC<Props> = ({}) => {
 
   return (
     <>
-      <div className={`${s.Filter} ${scroll >= 300 ? s.Filter_Visible : ''}`}>
+      <div className={`${s.Filter} ${scroll >= 189 ? s.Filter_Visible : ''}`}>
         <div
           className={`${s.Content} ${visibleFilter ? s.Content_Visible : ''}`}
         >
@@ -99,7 +99,7 @@ const HeaderFilterWebsiteForms: React.FC<Props> = ({}) => {
         </div>
 
         <FilterButton
-          className={`${s.Burger} ${scroll >= 300 ? s.Burger_Visible : ''} ${
+          className={`${s.Burger} ${scroll >= 189 ? s.Burger_Visible : ''} ${
             s.Burger_Desktop
           }`}
           counter={1}
@@ -120,7 +120,7 @@ const HeaderFilterWebsiteForms: React.FC<Props> = ({}) => {
         />
 
         <FilterButton
-          className={`${s.Burger} ${scroll >= 300 ? s.Burger_Visible : ''} ${
+          className={`${s.Burger} ${scroll >= 189 ? s.Burger_Visible : ''} ${
             s.Burger_Mobile
           }`}
           counter={1}
