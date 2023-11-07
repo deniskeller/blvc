@@ -167,19 +167,19 @@ const Vehicles: React.FC = () => {
             className={s.Filters_Forms}
           />
 
-          <FilterResetButton
-            className={`${s.Reset} ${
-              filters !== initialFiltersState ? s.Reset_Visible : ''
-            } ${s.Reset_Mobile}`}
-            onClick={() => {
-              setVehicles([]);
-              setFilters({
-                search: '',
-                sortBy: 'by_name',
-                forms: [{ value: 'all_forms', label: 'All forms' }],
-              });
-            }}
-          />
+          {filters != initialFiltersState ? (
+            <FilterResetButton
+              className={s.Filters_Reset}
+              onClick={() => {
+                setVehicles([]);
+                setFilters({
+                  search: '',
+                  sortBy: 'by_name',
+                  forms: [{ value: 'all_forms', label: 'All forms' }],
+                });
+              }}
+            />
+          ) : null}
 
           <FilterButton
             className={s.Filters_Burger}

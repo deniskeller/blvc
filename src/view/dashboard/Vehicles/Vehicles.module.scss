@@ -55,7 +55,7 @@
     }
     @include ifmobile {
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: flex-end;
       margin-bottom: em(20px);
       padding: em(30px) em(19px) 0 em(19px);
     }
@@ -66,6 +66,7 @@
       flex-direction: row;
       align-items: center;
       border-bottom: 1px solid $base600light;
+      margin-right: em(35px);
 
       &_IconSearch {
         height: em(22px);
@@ -112,7 +113,6 @@
 
     &_Search,
     &_Forms {
-      margin-right: em(35px);
       @include iftablet {
         display: none;
       }
@@ -129,30 +129,18 @@
     }
 
     &_Reset {
-      opacity: 0;
-      pointer-events: none;
-      margin-left: 0;
-      transform: translate(20px, 0);
-      transition: all 0.5s ease;
-      &_Visible {
-        width: 100%;
-        opacity: 1;
-        margin-left: em(20px);
-        pointer-events: initial;
-        transform: translate(0);
+      margin-left: em(20px);
+      align-self: center;
+      @include iftablet {
+        margin-right: em(20px);
       }
-
-      // &_Mobile {
-      //   width: 100%;
-      //   display: none;
-      //   margin-left: 0;
-      //   @include iftablet {
-      //     display: block;
-      //   }
-      //   @include iftablet-mini {
-      //     display: block;
-      //   }
-      // }
+      @include iftablet-mini {
+        margin-right: em(20px);
+      }
+      @include ifmobile {
+        margin-left: auto;
+        margin-right: em(20px);
+      }
     }
 
     &_AddCar {
@@ -175,19 +163,7 @@
       @include ifmobile {
         width: 100%;
         margin-left: 0;
-      }
-    }
-
-    &_Mobile {
-      display: none;
-      @include iftablet {
-        display: flex;
-      }
-      @include iftablet-mini {
-        display: flex;
-      }
-      @include ifmobile {
-        display: flex;
+        margin-top: em(10px);
       }
     }
 
