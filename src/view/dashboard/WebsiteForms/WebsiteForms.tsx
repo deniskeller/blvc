@@ -6,6 +6,7 @@ import {
 } from 'components/dashboard/modals';
 import {
   FilterButton,
+  FilterResetButton,
   Pagination,
   SearchByInput,
 } from 'components/dashboard/content';
@@ -156,9 +157,7 @@ const WebsiteForms: React.FC = () => {
           />
 
           {filters != initialFiltersState ? (
-            <BaseIcon
-              viewBox="0 0 24 24"
-              icon={ALL_ICONS.FILTER_RESET}
+            <FilterResetButton
               className={s.Filters_Reset}
               onClick={() => {
                 setPartners([]);

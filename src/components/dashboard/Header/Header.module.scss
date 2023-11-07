@@ -109,7 +109,7 @@
   &_Filter {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
     margin-left: auto;
     margin-right: em(65px);
 
@@ -131,6 +131,25 @@
       min-width: em(224px);
     }
 
+    .Reset {
+      opacity: 0;
+      pointer-events: none;
+      margin-left: em(35px);
+    }
+
+    .Burger {
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(20px, 0);
+      transition: all 0.5s ease;
+      margin-left: em(35px);
+      &_Visible {
+        opacity: 1;
+        pointer-events: initial;
+        transform: translate(0);
+      }
+    }
+
     &_Visible {
       .Search,
       .Forms {
@@ -140,6 +159,11 @@
           pointer-events: initial;
           transform: translate(0);
         }
+      }
+
+      .Reset {
+        opacity: 1;
+        pointer-events: initial;
       }
     }
   }

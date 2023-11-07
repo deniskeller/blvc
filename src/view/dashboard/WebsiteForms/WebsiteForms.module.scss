@@ -101,19 +101,8 @@
     }
 
     &_Reset {
-      width: em(30px);
-      height: em(30px);
-      cursor: pointer;
       margin-left: em(35px);
       align-self: center;
-      path {
-        transition: fill $speed ease;
-      }
-      &:hover {
-        path:first-child {
-          fill: $red;
-        }
-      }
     }
   }
 

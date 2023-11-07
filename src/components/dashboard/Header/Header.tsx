@@ -4,7 +4,12 @@ import useOnClickOutside from '@hooks/useOnClickOutside';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import s from './Header.module.scss';
-import { Logo, SearchByInput } from '../content';
+import {
+  FilterButton,
+  FilterResetButton,
+  Logo,
+  SearchByInput,
+} from '../content';
 import { sidebarSlice } from '@store/sidebar/reducer';
 import { useAppDispatch, useAppSelector } from '@hooks/redux';
 
@@ -53,6 +58,7 @@ const Header = () => {
   }, [router.pathname]);
 
   const [filters, setFilters] = useState<FiltersState>(initialFiltersState);
+  const [visiblefilter, setVisiblefilter] = useState<boolean>(false);
 
   const setNewValue = (
     value: FilterItem | FilterItem[] | string,
@@ -63,23 +69,19 @@ const Header = () => {
 
   //ЛОГИКА ДЛЯ ФИЛЬТРОВ ПРИ СКРОЛЕ
   const [scroll, setScroll] = useState(0);
-
   window.addEventListener('scroll', function () {
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
     setScroll(scrollTop);
-    console.log('scrollPosition', scrollTop);
   });
+
+  useEffect(() => {}, []);
 
   return (
     <>
       <header className={s.Header}>
         <Logo className={s.Header_Logo} />
 
-        <div
-          className={`${s.Header_Filter} ${
-            scroll >= 300 ? s.Header_Filter_Visible : ''
-          }`}
-        >
+        <div className={`${s.Header_Filter}`}>
           <div className={s.Search}>
             <SearchByInput
               initialValue="by name"
@@ -112,6 +114,25 @@ const Header = () => {
               className={s.Forms_Field}
             />
           </div>
+
+          {filters !== initialFiltersState ? (
+            <FilterResetButton
+              className={s.Reset}
+              onClick={() => {
+                setFilters({
+                  search: '',
+                  sortBy: 'by_name',
+                  forms: [{ value: 'all_forms', label: 'All forms' }],
+                });
+              }}
+            />
+          ) : null}
+
+          <FilterButton
+            className={`${s.Burger} ${scroll >= 300 ? s.Burger_Visible : ''}`}
+            counter={1}
+            onClick={() => setVisiblefilter(true)}
+          />
         </div>
 
         <div className={s.Header_User}>
