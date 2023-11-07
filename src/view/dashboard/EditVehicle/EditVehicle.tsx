@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import s from './EditVehicle.module.scss';
 import { useRouter } from 'next/router';
-import { StepBack } from 'components/dashboard/content';
+import { StepBack, UploadVehiclePhoto } from 'components/dashboard/content';
 import { BaseButtonApp, BaseInputApp, BaseSelectApp } from '@base/index';
-import { ConfirmPopup } from 'components/dashboard/modals';
+import {
+  ConfirmPopup,
+  EditVehiclePhotoPopup,
+} from 'components/dashboard/modals';
 import toast from 'react-hot-toast';
 
 interface IFormData {
@@ -88,6 +91,10 @@ const EditVehicle: React.FC = () => {
     setOpenedConfirmLeavePagePopup(false);
     router.back();
   };
+
+  // РЕДАКТИРОВАНИЕ ФОТОК
+  const [openedEditVehiclePhotoPopup, setOpenedEditVehiclePhotoPopup] =
+    useState(false);
 
   return (
     <>
@@ -419,8 +426,11 @@ const EditVehicle: React.FC = () => {
               <p>max 10 photos - JPG, PNG, PDF up to 10 MB</p>
             </div>
 
-            {/* ПЕРЕДЕЛАТЬ В КОМПОНЕТН */}
-            <div className={s.Image_Upload}></div>
+            <UploadVehiclePhoto
+              className={s.Image_Upload}
+              multiple={true}
+              onClick={() => setOpenedEditVehiclePhotoPopup(true)}
+            />
 
             <div className={s.Image_Tooltip}>
               <svg
@@ -513,6 +523,21 @@ const EditVehicle: React.FC = () => {
           setOpenedConfirmDeleteVehicles(false);
           setTimeout(() => {
             toast.success('Vehicle has been deleted', {
+              duration: 3000,
+              className: 'dashboard',
+            });
+          }, 500);
+        }}
+      />
+
+      {/* РЕДАКТИРОВАНИЕ ФОТОК */}
+      <EditVehiclePhotoPopup
+        opened={openedEditVehiclePhotoPopup}
+        onClick={setOpenedEditVehiclePhotoPopup}
+        onClick2={() => {
+          setOpenedEditVehiclePhotoPopup(false);
+          setTimeout(() => {
+            toast.success('All changes saved', {
               duration: 3000,
               className: 'dashboard',
             });
