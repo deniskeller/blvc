@@ -7,8 +7,8 @@
   .Textarea {
     $size: 14px;
     width: 100%;
-    height: em(32px, $size);
-    max-height: em(80px, $size);
+    min-height: em(32px, $size);
+    max-height: em(160px, $size);
     background: none;
     outline: none;
     border: none;
@@ -75,13 +75,15 @@
     position: absolute;
     right: em(6px);
     bottom: em(4px);
-    color: red;
+    color: $red;
     opacity: 0.6;
     font-family: 'Mulish', sans-serif;
     font-size: em(12px);
     font-style: normal;
     font-weight: 400;
     line-height: 100%;
+    pointer-events: none;
+    user-select: none;
   }
 
   .Error {

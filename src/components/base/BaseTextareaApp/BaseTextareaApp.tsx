@@ -9,9 +9,9 @@ interface Props {
   disabled?: boolean;
   className?: string;
   error?: string | boolean;
-  value: string | number;
+  value: string;
   maxLength?: number;
-  onChange(value: string | number): void;
+  onChange(value: string): void;
   onKeyDown?: React.KeyboardEventHandler;
 }
 
@@ -29,14 +29,18 @@ const BaseTextareaApp: React.FC<Props> = ({
   onKeyDown,
 }) => {
   const refTextarea = useRef<HTMLTextAreaElement | null>(null);
-  const [height, setHeight] = useState(50);
 
-  useEffect(() => {
+  const onBlur = () => {
     if (refTextarea.current != null) {
       const scrollHeight = refTextarea.current.scrollHeight;
-      refTextarea.current.style.height = scrollHeight + 'px';
+      refTextarea.current.style.height = scrollHeight + 'px' || 32 + 'px';
     }
-    // setHeight(0);
+  };
+
+  useEffect(() => {
+    if (refTextarea.current != null && value.length == 0) {
+      refTextarea.current.style.height = 32 + 'px';
+    }
   }, [value]);
 
   return (
@@ -54,7 +58,7 @@ const BaseTextareaApp: React.FC<Props> = ({
           onChange(e.target.value)
         }
         onKeyDown={onKeyDown}
-        onBlur={() => setHeight(0)}
+        onBlur={onBlur}
         style={{
           height: refTextarea.current?.scrollHeight + 'px',
         }}
@@ -67,7 +71,7 @@ const BaseTextareaApp: React.FC<Props> = ({
       ) : null}
 
       <span className={s.Counter}>
-        {length}/{maxLength}
+        {value.length}/{maxLength}
       </span>
     </div>
   );
