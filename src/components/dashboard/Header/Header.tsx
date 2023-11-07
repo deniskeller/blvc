@@ -58,7 +58,7 @@ const Header = () => {
   }, [router.pathname]);
 
   const [filters, setFilters] = useState<FiltersState>(initialFiltersState);
-  const [visiblefilter, setVisiblefilter] = useState<boolean>(false);
+  const [visibleFilter, setVisibleFilter] = useState<boolean>(false);
 
   const setNewValue = (
     value: FilterItem | FilterItem[] | string,
@@ -81,43 +81,51 @@ const Header = () => {
       <header className={s.Header}>
         <Logo className={s.Header_Logo} />
 
-        <div className={`${s.Header_Filter}`}>
-          <div className={s.Search}>
-            <SearchByInput
-              initialValue="by name"
-              searchValue={filters.search}
-              options={[
-                { value: 'by_name', label: 'by name' },
-                { value: 'by_email', label: 'by email' },
-              ]}
-              onSelect={(val: string) => setNewValue(val, 'sortBy')}
-              onChange={(val: string) => setNewValue(val, 'search')}
-              className={s.Search_Field}
-            />
-          </div>
+        <div
+          className={`${s.Header_Filter} ${
+            scroll >= 300 ? s.Header_Filter_Visible : ''
+          }`}
+        >
+          <div
+            className={`${s.Content} ${visibleFilter ? s.Content_Visible : ''}`}
+          >
+            <div className={s.Search}>
+              <SearchByInput
+                initialValue="by name"
+                searchValue={filters.search}
+                options={[
+                  { value: 'by_name', label: 'by name' },
+                  { value: 'by_email', label: 'by email' },
+                ]}
+                onSelect={(val: string) => setNewValue(val, 'sortBy')}
+                onChange={(val: string) => setNewValue(val, 'search')}
+                className={s.Search_Field}
+              />
+            </div>
 
-          <div className={s.Forms}>
-            <BaseSelectApp
-              name="forms"
-              value={filters.forms}
-              placeholder="Forms"
-              options={[
-                { value: 'all_forms', label: 'All forms' },
-                { value: 'published', label: 'Published' },
-                { value: 'hidden', label: 'Hidden' },
-              ]}
-              onChange={(val: FilterItem[] | FilterItem) =>
-                setNewValue(val, 'forms')
-              }
-              onClear={() => {}}
-              onBlur={() => {}}
-              className={s.Forms_Field}
-            />
-          </div>
+            <div className={s.Forms}>
+              <BaseSelectApp
+                name="forms"
+                value={filters.forms}
+                placeholder="Forms"
+                options={[
+                  { value: 'all_forms', label: 'All forms' },
+                  { value: 'published', label: 'Published' },
+                  { value: 'hidden', label: 'Hidden' },
+                ]}
+                onChange={(val: FilterItem[] | FilterItem) =>
+                  setNewValue(val, 'forms')
+                }
+                onClear={() => {}}
+                onBlur={() => {}}
+                className={s.Forms_Field}
+              />
+            </div>
 
-          {filters !== initialFiltersState ? (
             <FilterResetButton
-              className={s.Reset}
+              className={`${s.Reset} ${
+                filters !== initialFiltersState ? s.Reset_Visible : ''
+              }`}
               onClick={() => {
                 setFilters({
                   search: '',
@@ -126,12 +134,12 @@ const Header = () => {
                 });
               }}
             />
-          ) : null}
+          </div>
 
           <FilterButton
             className={`${s.Burger} ${scroll >= 300 ? s.Burger_Visible : ''}`}
             counter={1}
-            onClick={() => setVisiblefilter(true)}
+            onClick={() => setVisibleFilter(!visibleFilter)}
           />
         </div>
 

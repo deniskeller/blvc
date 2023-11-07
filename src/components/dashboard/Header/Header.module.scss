@@ -112,6 +112,15 @@
     align-items: center;
     margin-left: auto;
     margin-right: em(65px);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(20px, 0);
+    transition: all 0.5s ease;
+    &_Visible {
+      opacity: 1;
+      pointer-events: initial;
+      transform: translate(0);
+    }
 
     .Search {
       margin-right: em(35px);
@@ -132,9 +141,19 @@
     }
 
     .Reset {
+      width: 0%;
       opacity: 0;
       pointer-events: none;
-      margin-left: em(35px);
+      margin-left: 0;
+      transform: translate(20px, 0);
+      transition: all 0.5s ease;
+      &_Visible {
+        width: 100%;
+        opacity: 1;
+        margin-left: em(35px);
+        pointer-events: initial;
+        transform: translate(0);
+      }
     }
 
     .Burger {
@@ -150,20 +169,21 @@
       }
     }
 
-    &_Visible {
-      .Search,
-      .Forms {
-        .Search_Field,
-        .Forms_Field {
-          opacity: 1;
-          pointer-events: initial;
-          transform: translate(0);
+    .Content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-left: auto;
+      &_Visible {
+        .Search,
+        .Forms {
+          .Search_Field,
+          .Forms_Field {
+            opacity: 1;
+            pointer-events: initial;
+            transform: translate(0);
+          }
         }
-      }
-
-      .Reset {
-        opacity: 1;
-        pointer-events: initial;
       }
     }
   }

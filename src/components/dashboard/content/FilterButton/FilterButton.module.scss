@@ -1,7 +1,30 @@
 .Filter {
+  position: relative;
   cursor: pointer;
   width: em(27px);
   height: em(27px);
+
+  &_Counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 100%;
+    border-radius: 50%;
+    background: $red;
+    position: absolute;
+    top: em(-6px);
+    right: em(-6px);
+    width: em(14px);
+    height: em(14px);
+    span {
+      color: $white;
+      font-size: em(8px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%; /* 150% */
+      letter-spacing: -0.15px;
+    }
+  }
 
   &_Icon {
     width: inherit;
