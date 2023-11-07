@@ -12,6 +12,7 @@ import {
 } from '../content';
 import { sidebarSlice } from '@store/sidebar/reducer';
 import { useAppDispatch, useAppSelector } from '@hooks/redux';
+import { WebsiteFormsParametersPopup } from '../modals';
 
 interface FilterItem {
   label: string;
@@ -76,56 +77,93 @@ const Header = () => {
 
   useEffect(() => {}, []);
 
+  // МОБИЛЬНЫЙ ФИЛЬТР
+  const [openedWebsiteFormsParametersPopup, setWebsiteFormsParametersPopup] =
+    useState(false);
+
   return (
     <>
       <header className={s.Header}>
         <Logo className={s.Header_Logo} />
 
-        <div
-          className={`${s.Header_Filter} ${
-            scroll >= 300 ? s.Header_Filter_Visible : ''
-          }`}
-        >
+        {router.pathname.split('/')[2] === 'vehicles' ||
+        router.pathname.split('/')[2] === 'website-forms' ||
+        router.pathname.split('/')[2] === 'merch-store' ? (
           <div
-            className={`${s.Content} ${visibleFilter ? s.Content_Visible : ''}`}
+            className={`${s.Header_Filter} ${
+              scroll >= 300 ? s.Header_Filter_Visible : ''
+            }`}
           >
-            <div className={s.Search}>
-              <SearchByInput
-                initialValue="by name"
-                searchValue={filters.search}
-                options={[
-                  { value: 'by_name', label: 'by name' },
-                  { value: 'by_email', label: 'by email' },
-                ]}
-                onSelect={(val: string) => setNewValue(val, 'sortBy')}
-                onChange={(val: string) => setNewValue(val, 'search')}
-                className={s.Search_Field}
-              />
+            <div
+              className={`${s.Content} ${
+                visibleFilter ? s.Content_Visible : ''
+              }`}
+            >
+              {/* /ФИЛЬТР ДЛЯ СТРАНИЦЫ website-forms START */}
+              {router.pathname.split('/')[2] === 'website-forms' ? (
+                <>
+                  <div className={s.Search}>
+                    <SearchByInput
+                      initialValue="by name"
+                      searchValue={filters.search}
+                      options={[
+                        { value: 'by_name', label: 'by name' },
+                        { value: 'by_email', label: 'by email' },
+                      ]}
+                      onSelect={(val: string) => setNewValue(val, 'sortBy')}
+                      onChange={(val: string) => setNewValue(val, 'search')}
+                      className={s.Search_Field}
+                    />
+                  </div>
+
+                  <div className={s.Forms}>
+                    <BaseSelectApp
+                      name="forms"
+                      value={filters.forms}
+                      placeholder="Forms"
+                      options={[
+                        { value: 'all_forms', label: 'All forms' },
+                        { value: 'published', label: 'Published' },
+                        { value: 'hidden', label: 'Hidden' },
+                      ]}
+                      onChange={(val: FilterItem[] | FilterItem) =>
+                        setNewValue(val, 'forms')
+                      }
+                      onClear={() => {}}
+                      onBlur={() => {}}
+                      className={s.Forms_Field}
+                    />
+                  </div>
+
+                  <FilterResetButton
+                    className={`${s.Reset} ${
+                      filters !== initialFiltersState ? s.Reset_Visible : ''
+                    }`}
+                    onClick={() => {
+                      setFilters({
+                        search: '',
+                        sortBy: 'by_name',
+                        forms: [{ value: 'all_forms', label: 'All forms' }],
+                      });
+                    }}
+                  />
+                </>
+              ) : null}
+              {/* /ФИЛЬТР ДЛЯ СТРАНИЦЫ website-forms END */}
             </div>
 
-            <div className={s.Forms}>
-              <BaseSelectApp
-                name="forms"
-                value={filters.forms}
-                placeholder="Forms"
-                options={[
-                  { value: 'all_forms', label: 'All forms' },
-                  { value: 'published', label: 'Published' },
-                  { value: 'hidden', label: 'Hidden' },
-                ]}
-                onChange={(val: FilterItem[] | FilterItem) =>
-                  setNewValue(val, 'forms')
-                }
-                onClear={() => {}}
-                onBlur={() => {}}
-                className={s.Forms_Field}
-              />
-            </div>
+            <FilterButton
+              className={`${s.Burger} ${
+                scroll >= 300 ? s.Burger_Visible : ''
+              } ${s.Burger_Desktop}`}
+              counter={1}
+              onClick={() => setVisibleFilter(!visibleFilter)}
+            />
 
             <FilterResetButton
               className={`${s.Reset} ${
                 filters !== initialFiltersState ? s.Reset_Visible : ''
-              }`}
+              } ${s.Reset_Mobile}`}
               onClick={() => {
                 setFilters({
                   search: '',
@@ -134,14 +172,16 @@ const Header = () => {
                 });
               }}
             />
-          </div>
 
-          <FilterButton
-            className={`${s.Burger} ${scroll >= 300 ? s.Burger_Visible : ''}`}
-            counter={1}
-            onClick={() => setVisibleFilter(!visibleFilter)}
-          />
-        </div>
+            <FilterButton
+              className={`${s.Burger} ${
+                scroll >= 300 ? s.Burger_Visible : ''
+              } ${s.Burger_Mobile}`}
+              counter={1}
+              onClick={() => setWebsiteFormsParametersPopup(true)}
+            />
+          </div>
+        ) : null}
 
         <div className={s.Header_User}>
           <BaseIcon
@@ -257,6 +297,21 @@ const Header = () => {
           </defs>
         </svg>
       </header>
+
+      {/* МОБИЛЬНЫЙ ФИЛЬТР */}
+      <WebsiteFormsParametersPopup
+        opened={openedWebsiteFormsParametersPopup}
+        onClick={setWebsiteFormsParametersPopup}
+        onClick2={(e) => {
+          e.preventDefault();
+          setWebsiteFormsParametersPopup(false);
+          setFilters({
+            search: 'sdfsdfsd',
+            sortBy: 'by_name',
+            forms: [{ value: 'all_forms', label: 'All forms' }],
+          });
+        }}
+      />
     </>
   );
 };

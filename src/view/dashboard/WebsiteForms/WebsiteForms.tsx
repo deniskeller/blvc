@@ -139,23 +139,6 @@ const WebsiteForms: React.FC = () => {
             className={s.Filters_Forms}
           />
 
-          {/* <FilterButton
-            className={s.Filters_Mobile}
-            counter={1}
-            onClick={() => setWebsiteFormsParametersPopup(true)}
-          /> */}
-
-          {/* <BaseButtonApp type="empty" onClick={() => setPartners([])}>
-            default
-          </BaseButtonApp> */}
-
-          <BaseIcon
-            viewBox="0 0 28 24"
-            icon={ALL_ICONS.FILTER}
-            className={s.Filters_Popup}
-            onClick={() => setWebsiteFormsParametersPopup(true)}
-          />
-
           {filters != initialFiltersState ? (
             <FilterResetButton
               className={s.Filters_Reset}
@@ -169,6 +152,12 @@ const WebsiteForms: React.FC = () => {
               }}
             />
           ) : null}
+
+          <FilterButton
+            className={s.Filters_Burger}
+            counter={1}
+            onClick={() => setWebsiteFormsParametersPopup(true)}
+          />
         </div>
 
         {partners?.length == 0 ? (

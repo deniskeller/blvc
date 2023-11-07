@@ -37,15 +37,15 @@
     padding: 0 em(60px);
     margin-bottom: em(32px);
     @include iftablet {
-      justify-content: space-between;
+      justify-content: flex-end;
       padding: 0 em(20px);
     }
     @include iftablet-mini {
-      justify-content: space-between;
+      justify-content: flex-end;
       padding: 0 em(10px);
     }
     @include ifmobile {
-      justify-content: space-between;
+      justify-content: flex-end;
       padding: em(30px) em(20px) 0 em(20px);
       margin-bottom: em(20px);
     }
@@ -83,12 +83,9 @@
       }
     }
 
-    &_Popup {
+    &_Burger {
       display: none;
-      cursor: pointer;
       align-self: center;
-      width: em(34px);
-      height: em(38px);
       @include iftablet {
         display: flex;
       }
@@ -101,7 +98,7 @@
     }
 
     &_Reset {
-      margin-left: em(35px);
+      margin-right: em(20px);
       align-self: center;
     }
   }

@@ -111,19 +111,33 @@
     flex-direction: row;
     align-items: center;
     margin-left: auto;
-    margin-right: em(65px);
     opacity: 0;
     pointer-events: none;
     transform: translate(20px, 0);
     transition: all 0.5s ease;
+    margin-right: em(65px);
+    @include iflaptop {
+      margin-right: em(20px);
+    }
+    @include iftablet {
+      margin-right: em(20px);
+    }
+    @include iftablet-mini {
+      margin-right: em(20px);
+    }
+    @include ifmobile {
+      display: none;
+    }
+
     &_Visible {
       opacity: 1;
       pointer-events: initial;
       transform: translate(0);
     }
 
+    //СТИЛИ ДЛЯ СТРАНИЦЫ website-forms START
     .Search {
-      margin-right: em(35px);
+      margin-right: em(20px);
     }
 
     .Search,
@@ -139,9 +153,9 @@
     .Forms {
       min-width: em(224px);
     }
-
+    //СТИЛИ ДЛЯ СТРАНИЦЫ website-forms END
     .Reset {
-      width: 0%;
+      width: 0;
       opacity: 0;
       pointer-events: none;
       margin-left: 0;
@@ -150,9 +164,21 @@
       &_Visible {
         width: 100%;
         opacity: 1;
-        margin-left: em(35px);
+        margin-left: em(20px);
         pointer-events: initial;
         transform: translate(0);
+      }
+
+      &_Mobile {
+        width: 100%;
+        display: none;
+        margin-left: 0;
+        @include iftablet {
+          display: block;
+        }
+        @include iftablet-mini {
+          display: block;
+        }
       }
     }
 
@@ -161,11 +187,33 @@
       pointer-events: none;
       transform: translate(20px, 0);
       transition: all 0.5s ease;
-      margin-left: em(35px);
+      margin-left: em(20px);
       &_Visible {
         opacity: 1;
         pointer-events: initial;
         transform: translate(0);
+      }
+
+      &_Desktop {
+        @include iftablet {
+          display: none;
+        }
+        @include iftablet-mini {
+          display: none;
+        }
+        @include ifmobile {
+          display: none;
+        }
+      }
+
+      &_Mobile {
+        display: none;
+        @include iftablet {
+          display: block;
+        }
+        @include iftablet-mini {
+          display: block;
+        }
       }
     }
 
@@ -174,6 +222,15 @@
       flex-direction: row;
       align-items: center;
       margin-left: auto;
+      @include iftablet {
+        display: none;
+      }
+      @include iftablet-mini {
+        display: none;
+      }
+      @include ifmobile {
+        display: none;
+      }
       &_Visible {
         .Search,
         .Forms {

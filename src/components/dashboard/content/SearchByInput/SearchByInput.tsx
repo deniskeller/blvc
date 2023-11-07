@@ -1,7 +1,7 @@
 import { BaseIcon } from '@base/index';
 import { ALL_ICONS } from '@constants/icons';
 import useOnClickOutside from '@hooks/useOnClickOutside';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import s from './SearchByInput.module.scss';
 
 interface Props {
@@ -48,9 +48,16 @@ const SearchByInput: React.FC<Props> = ({
     onSelect(value);
   };
 
+  const inputRef = useRef<HTMLInputElement>(null);
+  const focusInput = () => {
+    if (inputRef.current !== null) {
+      inputRef.current.focus();
+    }
+  };
+
   return (
     <div className={`${s.SearchByInput} ${className}`} ref={selectContainerRef}>
-      <div className={s.SearchByInput_IconSearch}>
+      <div className={s.SearchByInput_IconSearch} onClick={focusInput}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 22" fill="none">
           <g clipPath="url(#clip0_10581_22632)">
             <path
@@ -69,6 +76,7 @@ const SearchByInput: React.FC<Props> = ({
       </div>
 
       <input
+        ref={inputRef}
         value={searchValue}
         type="text"
         placeholder="Search"

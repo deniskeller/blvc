@@ -15,7 +15,7 @@ const FilterButton: React.FC<Props> = ({
   return (
     <div className={`${className} ${s.Filter}`}>
       <div className={s.Filter_Counter}>
-        <span>2</span>
+        <span>{counter}</span>
       </div>
 
       <svg
