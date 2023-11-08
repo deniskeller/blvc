@@ -44,135 +44,144 @@
       padding: 0 em(70px) 0 em(60px);
     }
     @include iftablet {
-      justify-content: flex-end;
       margin-bottom: em(34px);
       padding: 0 em(20px) 0 em(20px);
     }
     @include iftablet-mini {
-      justify-content: flex-end;
       margin-bottom: em(34px);
       padding: 0 em(20px) 0 em(20px);
     }
     @include ifmobile {
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: flex-end;
       margin-bottom: em(20px);
       padding: em(30px) em(19px) 0 em(19px);
     }
 
-    &_Search {
-      position: relative;
+    .Tabs {
+      list-style: none;
       display: flex;
       flex-direction: row;
-      align-items: center;
-      border-bottom: 1px solid $base600light;
-
-      &_IconSearch {
-        height: em(22px);
-        padding: 0 em(14px) 0 em(12px);
-        svg {
-          width: inherit;
-          height: inherit;
-        }
+      margin-right: em(65px);
+      @include iflaptop {
+        margin-right: auto;
       }
-
-      &_Input {
-        $size: 14px;
-        width: em(153px, $size);
-        height: em(48px, $size);
-        background: none;
-        outline: none;
-        border: none;
-        position: relative;
-        box-shadow: none;
-        background: transparent;
-        border-radius: 0;
-        transition: all 0.3s ease;
-        @include placeholder-color($base600light);
-        padding: em(15px, $size) em(14px, $size) em(15px, $size) em(12px, $size);
-
-        text-overflow: ellipsis;
-        font-family: 'Mulish', sans-serif;
-        font-size: em($size);
-        font-style: normal;
-        font-weight: 500;
-        line-height: 100%;
-        color: #1a1a1a;
-        @include iflaptop {
-          width: em(132px, $size);
-        }
-        @include iftablet {
-        }
-        @include iftablet-mini {
-        }
-        @include ifmobile {
-        }
-      }
-    }
-
-    &_Search,
-    &_Forms {
-      margin-right: em(35px);
       @include iftablet {
-        display: none;
+        margin-right: auto;
       }
       @include iftablet-mini {
-        display: none;
+        margin-right: auto;
       }
       @include ifmobile {
-        display: none;
+        margin-right: 0;
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: em(10px);
+      }
+      &_Item:not(:last-child) {
+        margin-right: em(32px);
+        @include iftablet-mini {
+          margin-right: em(20px);
+        }
+        @include ifmobile {
+          margin-right: em(20px);
+        }
+      }
+      &_Item {
+        cursor: pointer;
+        width: max-content;
+        position: relative;
+        line-height: 100%;
+        padding-bottom: em(14px);
+        @include iftablet-mini {
+          padding-bottom: em(11px);
+        }
+        @include ifmobile {
+          padding-bottom: em(11px);
+        }
+        span {
+          color: $base600light;
+          text-align: center;
+          font-size: em(16px);
+          font-style: normal;
+          font-weight: 700;
+          line-height: 150%; /* 150% */
+          @include iftablet-mini {
+            font-size: em(14px);
+          }
+          @include ifmobile {
+            font-size: em(14px);
+          }
+        }
+
+        &_Active {
+          &::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: $red3;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+          }
+        }
       }
     }
 
-    &_Forms {
-      min-width: em(224px);
+    .Date,
+    .Price,
+    .Status {
+      display: none;
+      min-width: em(212px);
+      @include ifdesktop {
+        display: block;
+      }
+    }
+    .Date,
+    .Price {
+      margin-right: em(25px);
     }
 
     &_Reset {
-      @include iftablet {
-        display: none;
-      }
-      @include iftablet-mini {
-        display: none;
-      }
-      @include ifmobile {
-        display: none;
+      margin-right: em(20px);
+      @include ifdesktop {
+        margin-left: em(20px);
       }
     }
 
-    &_AddCar {
-      width: em(240px);
+    &_AddProduct {
+      min-width: em(200px);
       margin-left: auto;
+      @include iflaptop {
+        margin-left: em(20px);
+      }
+      @include iftablet {
+        margin-left: em(20px);
+      }
+      @include iftablet-mini {
+        margin-left: em(20px);
+      }
+      @include ifmobile {
+        width: 100%;
+        margin-left: 0;
+        margin-top: em(10px);
+      }
       svg {
         width: em(14px);
         height: em(14px);
         margin-right: em(10px);
       }
-
-      @include iftablet {
-        width: em(140px);
-        margin-left: em(16px);
-      }
-      @include iftablet-mini {
-        width: em(140px);
-        margin-left: em(16px);
-      }
-      @include ifmobile {
-        width: 100%;
-        margin-left: 0;
-      }
     }
 
-    &_Mobile {
-      display: none;
-      @include iftablet {
-        display: flex;
-      }
-      @include iftablet-mini {
-        display: flex;
+    &_Burger {
+      display: flex;
+      align-self: center;
+      @include ifdesktop {
+        display: none;
       }
       @include ifmobile {
-        display: flex;
+        align-self: flex-end;
       }
     }
   }

@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import s from './MerchStore.module.scss';
 import {
   FilterButton,
+  FilterResetButton,
   MerchCard,
   Pagination,
 } from 'components/dashboard/content';
 import {
   ConfirmPopup,
   CreateMerchPopup,
-  EditMerchPhotoPopup,
+  MerchStoreParametersPopup,
 } from 'components/dashboard/modals';
 import { BaseButtonApp, BaseSelectApp } from '@base/index';
 import toast from 'react-hot-toast';
@@ -53,21 +54,21 @@ for (let i = 1; i < 30; i++) {
   });
 }
 
-interface FilterItem {
+interface IFilterItem {
   label: string;
   value: string;
 }
 
-interface FiltersState {
-  sortBy: string;
-  search: string;
-  forms: FilterItem[];
+interface IFiltersState {
+  date: IFilterItem[];
+  price: IFilterItem[];
+  status: IFilterItem[];
 }
 
 const initialFiltersState = {
-  search: '',
-  sortBy: 'by_name',
-  forms: [{ value: 'all_forms', label: 'All forms' }],
+  date: [{ value: 'old_to_recent', label: 'Date (old → recent)' }],
+  price: [{ value: 'min_to_max', label: 'Price (min → max)' }],
+  status: [{ value: 'all_forms', label: 'All forms' }],
 };
 
 const MerchStore: React.FC = () => {
@@ -80,16 +81,17 @@ const MerchStore: React.FC = () => {
   const [openedConfirmDeleteItemPopup, setOpenedConfirmDeleteItemPopup] =
     useState(false);
 
-  // стили инпута поиска
-  const [isFocus, setIsFocus] = useState(false);
   // фильтры
-  const [filters, setFilters] = useState<FiltersState>(initialFiltersState);
+  const [filters, setFilters] = useState<IFiltersState>(initialFiltersState);
   const setNewValue = (
-    value: FilterItem | FilterItem[] | string,
-    prop: keyof FiltersState
+    value: IFilterItem | IFilterItem[] | string,
+    prop: keyof IFiltersState
   ) => {
     setFilters((prev) => ({ ...prev, [prop]: value }));
   };
+  //мобильный фильтр
+  const [openedMerchStoreParametersPopup, setOpenedMerchStoreParametersPopup] =
+    useState(false);
 
   // товары
   const [merchList, setMerchList] = useState(merch_list);
@@ -100,6 +102,9 @@ const MerchStore: React.FC = () => {
     setOpenedCreateMerchPopup(false);
   };
 
+  //табы
+  const [activeTab, setActiveTab] = useState(0);
+
   return (
     <>
       <section className={s.MerchStore}>
@@ -108,75 +113,107 @@ const MerchStore: React.FC = () => {
         </div>
 
         <div className={s.Filters}>
-          <div className={s.Filters_Search}>
-            <div className={s.Filters_Search_IconSearch}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 23 22"
-                fill="none"
-              >
-                <g clipPath="url(#clip0_10581_22632)">
-                  <path
-                    d="M18.4509 17.4509L22.5423 21.5423M12.465 19.9299C7.78989 19.9299 4 16.1401 4 11.465C4 6.78989 7.78989 3 12.465 3C17.1401 3 20.9299 6.78989 20.9299 11.465C20.9299 16.1401 17.1401 19.9299 12.465 19.9299Z"
-                    stroke={isFocus ? '#A61613' : '#1A1A1A'}
-                    strokeOpacity={!filters.search && !isFocus ? '0.6' : '1'}
-                    strokeWidth="1.5"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_10581_22632">
-                    <rect width="23" height="22" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
-            </div>
-
-            <input
-              value={filters.search}
-              type="text"
-              placeholder="Search by name"
-              className={s.Filters_Search_Input}
-              onFocus={() => setIsFocus(true)}
-              onBlur={() => setIsFocus(false)}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setNewValue(e.target.value, 'search')
-              }
-            />
-          </div>
+          <ul className={s.Tabs}>
+            <li
+              className={`${s.Tabs_Item} ${
+                activeTab == 0 ? s.Tabs_Item_Active : ''
+              }`}
+              onClick={() => setActiveTab(0)}
+            >
+              <span>Men</span>
+            </li>
+            <li
+              className={`${s.Tabs_Item} ${
+                activeTab == 1 ? s.Tabs_Item_Active : ''
+              }`}
+              onClick={() => setActiveTab(1)}
+            >
+              <span>Women</span>
+            </li>
+            <li
+              className={`${s.Tabs_Item} ${
+                activeTab == 2 ? s.Tabs_Item_Active : ''
+              }`}
+              onClick={() => setActiveTab(2)}
+            >
+              <span>Accessories </span>
+            </li>
+          </ul>
 
           <BaseSelectApp
-            name="forms"
-            value={filters.forms}
-            placeholder="Forms"
+            name="date"
+            value={filters.date}
+            placeholder="Date"
+            options={[
+              { value: 'old_to_recent', label: 'Date (old → recent)' },
+              { value: 'recent_to_old', label: 'Date (recent → old)' },
+            ]}
+            onChange={(val: IFilterItem[] | IFilterItem) =>
+              setNewValue(val, 'date')
+            }
+            onClear={() => {}}
+            onBlur={() => {}}
+            className={s.Date}
+          />
+
+          <BaseSelectApp
+            name="price"
+            value={filters.price}
+            placeholder="Price"
+            options={[
+              { value: 'min_to_max', label: 'Price (min → max)' },
+              { value: 'max_to_min', label: 'Price (max → min)' },
+            ]}
+            onChange={(val: IFilterItem[] | IFilterItem) =>
+              setNewValue(val, 'price')
+            }
+            onClear={() => {}}
+            onBlur={() => {}}
+            className={s.Price}
+          />
+
+          <BaseSelectApp
+            name="status"
+            value={filters.status}
+            placeholder="Status"
             options={[
               { value: 'all_forms', label: 'All forms' },
               { value: 'published', label: 'Published' },
               { value: 'hidden', label: 'Hidden' },
             ]}
-            onChange={(val: FilterItem[] | FilterItem) =>
-              setNewValue(val, 'forms')
+            onChange={(val: IFilterItem[] | IFilterItem) =>
+              setNewValue(val, 'status')
             }
             onClear={() => {}}
             onBlur={() => {}}
-            className={s.Filters_Forms}
+            className={s.Status}
           />
+
+          {filters != initialFiltersState || activeTab != 0 ? (
+            <FilterResetButton
+              className={s.Filters_Reset}
+              onClick={() => {
+                setMerchList([]);
+                setFilters({
+                  date: [
+                    { value: 'old_to_recent', label: 'Date (old → recent)' },
+                  ],
+                  price: [{ value: 'min_to_max', label: 'Price (min → max)' }],
+                  status: [{ value: 'all_forms', label: 'All forms' }],
+                });
+                setActiveTab(0);
+              }}
+            />
+          ) : null}
 
           <FilterButton
-            className={s.Filters_Mobile}
+            className={s.Filters_Burger}
             counter={1}
-            // onClick={() => setWebsiteFormsParametersPopup(true)}
+            onClick={() => setOpenedMerchStoreParametersPopup(true)}
           />
 
           <BaseButtonApp
-            type="empty"
-            className={s.Filters_Reset}
-            onClick={() => setMerchList([])}
-          >
-            default
-          </BaseButtonApp>
-
-          <BaseButtonApp
-            className={s.Filters_AddCar}
+            className={s.Filters_AddProduct}
             onClick={() => setOpenedCreateMerchPopup(true)}
           >
             <svg
@@ -242,6 +279,7 @@ const MerchStore: React.FC = () => {
         )}
         {merchList?.length != 0 ? <Pagination /> : null}
       </section>
+
       {/* ДОБАВЛЕНИЕ ТОВАРА */}
       <CreateMerchPopup
         opened={openedCreateMerchPopup}
@@ -272,6 +310,16 @@ const MerchStore: React.FC = () => {
               className: 'dashboard',
             });
           }, 500);
+        }}
+      />
+
+      {/* МОБИЛЬНЫЙ ФИЛЬТР */}
+      <MerchStoreParametersPopup
+        opened={openedMerchStoreParametersPopup}
+        onClick={setOpenedMerchStoreParametersPopup}
+        onClick2={(e) => {
+          e.preventDefault();
+          setOpenedMerchStoreParametersPopup(false);
         }}
       />
     </>

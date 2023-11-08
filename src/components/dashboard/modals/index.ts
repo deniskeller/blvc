@@ -10,4 +10,5 @@ export { default as ConfirmPopup } from './ConfirmPopup/ConfirmPopup';
 export { default as EditMerchPhotoPopup } from './EditMerchPhotoPopup/EditMerchPhotoPopup';
 export { default as EditVehiclePhotoPopup } from './EditVehiclePhotoPopup/EditVehiclePhotoPopup';
 export { default as VehicleParametersPopup } from './VehicleParametersPopup/VehicleParametersPopup';
+export { default as MerchStoreParametersPopup } from './MerchStoreParametersPopup/MerchStoreParametersPopup';
 
