@@ -12,4 +12,5 @@ export { default as UploadVehiclePhoto } from './UploadVehiclePhoto/UploadVehicl
 export { default as FilterResetButton } from './FilterResetButton/FilterResetButton'; 
 export { default as HeaderFilterWebsiteForms } from './HeaderFilterWebsiteForms/HeaderFilterWebsiteForms'; 
 export { default as HeaderFilterVehicle } from './HeaderFilterVehicle/HeaderFilterVehicle'; 
+export { default as HeaderFilterMerchStore } from './HeaderFilterMerchStore/HeaderFilterMerchStore'; 
 

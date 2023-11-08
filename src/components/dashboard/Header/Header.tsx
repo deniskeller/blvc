@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import s from './Header.module.scss';
 import {
+  HeaderFilterMerchStore,
   HeaderFilterVehicle,
   HeaderFilterWebsiteForms,
   Logo,
@@ -49,6 +50,10 @@ const Header = () => {
 
         {router.pathname.split('/')[2] === 'vehicles' ? (
           <HeaderFilterVehicle />
+        ) : null}
+
+        {router.pathname.split('/')[2] === 'merch-store' ? (
+          <HeaderFilterMerchStore />
         ) : null}
 
         <div className={s.Header_User}>

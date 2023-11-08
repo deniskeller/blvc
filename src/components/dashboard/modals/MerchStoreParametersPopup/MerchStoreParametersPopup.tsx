@@ -5,11 +5,11 @@ import {
   BaseSelectApp,
   BaseTitleApp,
 } from '@base/index';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import s from './MerchStoreParametersPopup.module.scss';
-import { SearchByInput } from 'components/dashboard/content';
 
 interface Props {
+  isHeader?: boolean;
   opened: boolean;
   onClick: (value: boolean) => void;
   onClick2?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
@@ -21,18 +21,21 @@ interface IFilterItem {
 }
 
 interface IFiltersState {
+  tabs: IFilterItem[];
   date: IFilterItem[];
   price: IFilterItem[];
   status: IFilterItem[];
 }
 
 const initialFiltersState = {
+  tabs: [{ value: 'men', label: 'Men' }],
   date: [{ value: 'old_to_recent', label: 'Date (old → recent)' }],
   price: [{ value: 'min_to_max', label: 'Price (min → max)' }],
   status: [{ value: 'all_forms', label: 'All forms' }],
 };
 
 const MerchStoreParametersPopup: React.FC<Props> = ({
+  isHeader = false,
   opened,
   onClick,
   onClick2,
@@ -51,6 +54,27 @@ const MerchStoreParametersPopup: React.FC<Props> = ({
 
       <form className={s.Form}>
         <ul className={s.Form_Inputs}>
+          {isHeader ? (
+            <li>
+              <BaseSelectApp
+                name="tabs"
+                value={filters.tabs}
+                placeholder="Tabs"
+                options={[
+                  { value: 'men', label: 'Men' },
+                  { value: 'women', label: 'Women' },
+                  { value: 'accessories', label: 'Accessories' },
+                ]}
+                onChange={(val: IFilterItem[] | IFilterItem) =>
+                  setNewValue(val, 'tabs')
+                }
+                onClear={() => {}}
+                onBlur={() => {}}
+                className={s.Tabs_Select}
+              />
+            </li>
+          ) : null}
+
           <li>
             <BaseSelectApp
               name="date"

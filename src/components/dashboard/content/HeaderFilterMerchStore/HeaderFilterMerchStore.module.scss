@@ -1,0 +1,182 @@
+.Filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(20px, 0);
+  transition: all 0.3s ease;
+  margin-right: em(65px);
+  @include iflaptop {
+    margin-right: em(20px);
+  }
+  @include iftablet {
+    margin-right: em(20px);
+  }
+  @include iftablet-mini {
+    margin-right: em(20px);
+  }
+  @include ifmobile {
+    display: none;
+  }
+
+  &_Visible {
+    opacity: 1;
+    pointer-events: initial;
+    transform: translate(0);
+  }
+
+  .Tabs,
+  .Date,
+  .Price,
+  .Status {
+    min-width: em(180px);
+    &_Select {
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(20px, 0);
+      transition: all 0.3s ease;
+    }
+  }
+  .Tabs {
+    @include iflaptop {
+      min-width: em(126px);
+    }
+  }
+  .Status {
+    @include iflaptop {
+      min-width: em(126px);
+    }
+  }
+
+  .Tabs,
+  .Date,
+  .Price {
+    margin-right: em(20px);
+  }
+
+  .Reset {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    margin-left: 0;
+    transform: translate(20px, 0);
+    transition: all 0.5s ease;
+    &_Visible {
+      width: 100%;
+      opacity: 1;
+      margin-left: em(20px);
+      pointer-events: initial;
+      transform: translate(0);
+    }
+
+    &_Mobile {
+      width: 100%;
+      display: none;
+      margin-left: 0;
+      @include iftablet {
+        display: block;
+      }
+      @include iftablet-mini {
+        display: block;
+      }
+    }
+  }
+
+  .Burger {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(20px, 0);
+    transition: all 0.3s ease;
+    margin-left: 0;
+    &_Visible {
+      margin-left: em(20px);
+      opacity: 1;
+      pointer-events: initial;
+      transform: translate(0);
+    }
+
+    &_Desktop {
+      @include iftablet {
+        display: none;
+      }
+      @include iftablet-mini {
+        display: none;
+      }
+      @include ifmobile {
+        display: none;
+      }
+    }
+
+    &_Mobile {
+      display: none;
+      @include iftablet {
+        display: block;
+      }
+      @include iftablet-mini {
+        display: block;
+      }
+    }
+  }
+
+  .AddProduct {
+    min-width: em(192px);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(20px, 0);
+    transition: all 0.6s ease;
+    margin-left: 0;
+    &_Visible {
+      margin-left: em(20px);
+      opacity: 1;
+      pointer-events: initial;
+      transform: translate(0);
+    }
+    svg {
+      width: em(14px);
+      height: em(14px);
+      margin-right: em(10px);
+    }
+
+    @include ifmobile {
+      width: 100%;
+    }
+  }
+
+  .Content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+    @include iftablet {
+      display: none;
+    }
+    @include iftablet-mini {
+      display: none;
+    }
+    @include ifmobile {
+      display: none;
+    }
+    &_Visible {
+      .Tabs,
+      .Date,
+      .Price,
+      .Status {
+        &_Select {
+          opacity: 1;
+          pointer-events: initial;
+          transform: translate(0);
+        }
+      }
+    }
+  }
+}
+@include iflaptop {
+}
+@include iftablet {
+}
+@include iftablet-mini {
+}
+@include ifmobile {
+}

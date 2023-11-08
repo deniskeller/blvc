@@ -229,25 +229,6 @@
         line-height: 114.5%; /* 27.48px */
       }
     }
-
-    &_Details {
-      position: absolute;
-      right: em(25px);
-      bottom: em(14px);
-      width: max-content;
-      border-bottom: 1px solid $base600light;
-      transform: translate(200%, 0);
-      transition: all $speed ease;
-      span {
-        color: $red;
-        font-size: em(16px);
-        font-style: normal;
-        font-weight: 400;
-        line-height: 130%; /* 20.8px */
-        letter-spacing: 1.6px;
-        text-transform: uppercase;
-      }
-    }
   }
 }
 

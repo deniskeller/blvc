@@ -97,10 +97,6 @@ const MerchCard: React.FC<Props> = ({ item, onClick, onClick2, onClick3 }) => {
         <div className={s.Info_Price}>
           <span>{price}</span>
         </div>
-
-        <div className={s.Info_Details} onClick={onClick}>
-          <span>Details</span>
-        </div>
       </div>
     </div>
   );
