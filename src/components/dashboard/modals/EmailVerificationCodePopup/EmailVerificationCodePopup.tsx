@@ -1,16 +1,16 @@
-import { BaseButtonApp, BaseInputApp, BasePopup } from '@base/index';
+import { BaseButtonApp, BasePopup } from '@base/index';
 import React, { useState, useEffect, useRef } from 'react';
-import s from './PhoneVerificationCodePopup.module.scss';
+import s from './EmailVerificationCodePopup.module.scss';
 import VerificationInput from 'react-verification-input';
 import { StepBack } from 'components/dashboard/content';
 
 interface Props {
   opened: boolean;
   onClick: (value: boolean) => void;
-  onClick2: (value: boolean) => void;
+  onClick2: () => void;
 }
 
-const PhoneVerificationCodePopup: React.FC<Props> = ({
+const EmailVerificationCodePopup: React.FC<Props> = ({
   opened,
   onClick,
   onClick2,
@@ -29,9 +29,8 @@ const PhoneVerificationCodePopup: React.FC<Props> = ({
     } else {
       setRepeatSending(true);
       setError(false);
+      onClick2();
     }
-    // onClick(false);
-    // onClick2(true);
   };
 
   useEffect(() => {
@@ -44,12 +43,16 @@ const PhoneVerificationCodePopup: React.FC<Props> = ({
     }
   }, [counter, repeat]);
 
+  useEffect(() => {
+    console.log('value: ', value);
+  }, [value]);
+
   return (
     <BasePopup opened={opened} onClick={onClick} className={s.Popup}>
       <StepBack onClick={() => onClick(false)} className={s.Back} />
 
       <div className={s.Description}>
-        <p>Please enter the 6 digit code received on your phone number</p>
+        <p>Please enter the 6 digit code received on your new email address</p>
       </div>
 
       <form className={s.Form}>
@@ -72,7 +75,7 @@ const PhoneVerificationCodePopup: React.FC<Props> = ({
             </div>
           ) : null}
 
-          {repeatSending && !error ? (
+          {repeatSending && !error && value.length < 6 ? (
             <div className={s.RepeatSending}>
               <p>
                 Didn’t get the code?&nbsp;
@@ -94,4 +97,4 @@ const PhoneVerificationCodePopup: React.FC<Props> = ({
   );
 };
 
-export default PhoneVerificationCodePopup;
+export default EmailVerificationCodePopup;

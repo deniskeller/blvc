@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import s from './Team.module.scss';
 import { PartnerCard } from 'components/dashboard/content';
 import {
+  EmailVerificationCodePopup,
   EnterNewEmailPopup,
   InviteUserPopup,
-  PhoneVerificationCodePopup,
   UserDetailsPopup,
   UserDetailsSupervizorPopup,
 } from 'components/dashboard/modals';
+import toast from 'react-hot-toast';
 
 const partner_list = [
   {
@@ -175,21 +176,29 @@ const Team: React.FC = () => {
         opened={openedUserDetailsPopup}
         onClick={setUserDetailsPopup}
         onClick2={() => setEnterNewEmailPopup(true)}
-        onClick3={() => setPhoneVerificationCodePopup(true)}
       />
 
       {/* ИЗМЕНЕНИЕ ЕМЕЙЛА */}
       <EnterNewEmailPopup
         opened={openedEnterNewEmailPopup}
         onClick={setEnterNewEmailPopup}
-        onClick2={() => {}}
+        onClick2={() => setPhoneVerificationCodePopup(true)}
       />
 
       {/* ПРОВЕРОЧНЫЙ КОД */}
-      <PhoneVerificationCodePopup
+      <EmailVerificationCodePopup
         opened={openedPhoneVerificationCodePopup}
         onClick={setPhoneVerificationCodePopup}
-        onClick2={() => {}}
+        onClick2={() => {
+          setPhoneVerificationCodePopup(false);
+          setEnterNewEmailPopup(false);
+          setTimeout(() => {
+            toast.success('Your email address has been successfully changed', {
+              duration: 3000,
+              className: 'dashboard',
+            });
+          }, 500);
+        }}
       />
     </>
   );

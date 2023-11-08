@@ -1,7 +1,6 @@
 import { BaseButtonApp, BaseInputApp, BasePopup } from '@base/index';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import s from './EnterNewEmailPopup.module.scss';
-import toast from 'react-hot-toast';
 import { StepBack } from 'components/dashboard/content';
 
 interface Props {
@@ -15,14 +14,7 @@ const EnterNewEmailPopup: React.FC<Props> = ({ opened, onClick, onClick2 }) => {
 
   const submitHandler = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    onClick(false);
-    // onClick2(true);
-    setTimeout(() => {
-      toast.success('Your email address has been successfully changed', {
-        duration: 3000,
-        className: 'dashboard',
-      });
-    }, 500);
+    onClick2(true);
   };
 
   return (

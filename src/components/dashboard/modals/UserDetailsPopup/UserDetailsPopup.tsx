@@ -16,7 +16,6 @@ interface Props {
   opened: boolean;
   onClick: (value: boolean) => void;
   onClick2: (e: React.SyntheticEvent) => void;
-  onClick3: (ev: React.MouseEvent<SVGSVGElement>) => void;
 }
 
 interface IFormData {
@@ -42,12 +41,7 @@ const initialState = {
   status: [{ label: 'Blocked', value: 'Blocked' }],
 };
 
-const UserDetailsPopup: React.FC<Props> = ({
-  opened,
-  onClick,
-  onClick2,
-  onClick3,
-}) => {
+const UserDetailsPopup: React.FC<Props> = ({ opened, onClick, onClick2 }) => {
   const [value, setValue] = useState<IFormData>(initialState);
   const [phone, setPhone] = useState('edit');
 
@@ -59,6 +53,7 @@ const UserDetailsPopup: React.FC<Props> = ({
   };
 
   const [disabledPhone, setDisabledPhone] = useState(true);
+  const [disabledEmail, setDisabledEmail] = useState(true);
 
   return (
     <BasePopup opened={opened} onClick={onClick}>
@@ -92,7 +87,7 @@ const UserDetailsPopup: React.FC<Props> = ({
               label="Email"
               value={value.email}
               onChange={(val: string) => setNewValue(val, 'email')}
-              // disabled
+              disabled={disabledEmail}
             />
 
             <BaseIcon
@@ -128,6 +123,7 @@ const UserDetailsPopup: React.FC<Props> = ({
                 className={s.Save}
                 onClick={() => {
                   setDisabledPhone(true);
+                  setPhone('edit');
                   setTimeout(() => {
                     toast.success('Your phone has been successfully changed', {
                       duration: 3000,
