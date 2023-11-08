@@ -42,15 +42,20 @@ const Dashboard: React.FC<Props> = ({ children }) => {
 
           <div className={s.Content}>{children}</div>
 
-          <div className={s.Background}>
-            <Image
+          <div
+            className={s.Background}
+            style={{
+              backgroundImage: 'url(/pictures/images/main-car-bg2.png)',
+            }}
+          >
+            {/* <Image
               src={'/pictures/images/main-car-bg2.png'}
               alt="background image"
               width={1920}
               height={808}
               priority
               className={s.Background_Image}
-            />
+            /> */}
           </div>
         </div>
       </div>

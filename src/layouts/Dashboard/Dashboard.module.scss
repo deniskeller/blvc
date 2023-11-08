@@ -6,9 +6,6 @@
   &_Body {
     display: flex;
     position: relative;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: bottom;
 
     .Content {
       width: 100%;
@@ -30,7 +27,21 @@
       width: 100%;
       height: em(576px);
       overflow: hidden;
-      // box-shadow: 0px 0px 50px 0px #efefef;
+
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: top;
+      @include iftablet {
+        background-size: contain;
+        background-position: bottom;
+      }
+      @include iftablet-mini {
+        background-size: contain;
+        background-position: bottom;
+      }
+      @include ifmobile {
+        background-image: none;
+      }
 
       @include ifmobile {
         display: none;
@@ -38,8 +49,8 @@
 
       &_Image {
         position: absolute;
+        top: 0;
         left: 0;
-        bottom: em(-232px);
         width: auto;
         height: em(808px);
       }
