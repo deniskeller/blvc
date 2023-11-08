@@ -10,6 +10,7 @@ import React, { useState, useEffect } from 'react';
 import s from './UserDetailsPopup.module.scss';
 import { PhoneInput } from 'components/dashboard/content';
 import { ALL_ICONS } from '@constants/icons';
+import toast from 'react-hot-toast';
 
 interface Props {
   opened: boolean;
@@ -56,6 +57,8 @@ const UserDetailsPopup: React.FC<Props> = ({
   ) => {
     setValue((prev) => ({ ...prev, [prop]: value }));
   };
+
+  const [disabledPhone, setDisabledPhone] = useState(true);
 
   return (
     <BasePopup opened={opened} onClick={onClick}>
@@ -104,7 +107,7 @@ const UserDetailsPopup: React.FC<Props> = ({
             <PhoneInput
               value={value.phone}
               onChange={(val: string) => setNewValue(val, 'phone')}
-              // disabled
+              disabled={disabledPhone}
             />
 
             {phone == 'edit' ? (
@@ -112,7 +115,10 @@ const UserDetailsPopup: React.FC<Props> = ({
                 viewBox="0 0 22 22"
                 icon={ALL_ICONS.EDIT}
                 className={s.Edit}
-                onClick={() => setPhone('save')}
+                onClick={() => {
+                  setDisabledPhone(false);
+                  setPhone('save');
+                }}
               />
             ) : phone == 'save' ? (
               <svg
@@ -120,7 +126,15 @@ const UserDetailsPopup: React.FC<Props> = ({
                 viewBox="0 0 22 22"
                 fill="none"
                 className={s.Save}
-                onClick={onClick3}
+                onClick={() => {
+                  setDisabledPhone(true);
+                  setTimeout(() => {
+                    toast.success('Your phone has been successfully changed', {
+                      duration: 3000,
+                      className: 'dashboard',
+                    });
+                  }, 500);
+                }}
               >
                 <path
                   fillRule="evenodd"

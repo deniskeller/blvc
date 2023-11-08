@@ -127,6 +127,7 @@ const UserDetailsSupervizorPopup: React.FC<Props> = ({
               label="Job title"
               value={value.job_title}
               onChange={(val: string) => setNewValue(val, 'job_title')}
+              disabled
             />
           </li>
 
