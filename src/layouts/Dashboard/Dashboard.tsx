@@ -37,19 +37,14 @@ const Dashboard: React.FC<Props> = ({ children }) => {
       <div className={s.Dashboard}>
         <Header />
 
-        <div
-          className={s.Dashboard_Body}
-          // style={{
-          //   backgroundImage: 'url(/pictures/images/main-car-bg-min.png)',
-          // }}
-        >
+        <div className={s.Dashboard_Body}>
           <Sidebar pages={pages} className={s.Sidebar} />
 
           <div className={s.Content}>{children}</div>
 
           <div className={s.Background}>
             <Image
-              src={'/pictures/images/main-car-bg-min.png'}
+              src={'/pictures/images/main-car-bg2.png'}
               alt="background image"
               width={1920}
               height={808}

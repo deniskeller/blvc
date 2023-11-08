@@ -19,10 +19,9 @@ interface Props {
   type?: string;
   onClick?: (e: React.SyntheticEvent) => void;
   onClick2?: (e: React.SyntheticEvent) => void;
-  onClick3?: (e: React.SyntheticEvent) => void;
 }
 
-const MerchCard: React.FC<Props> = ({ item, onClick, onClick2, onClick3 }) => {
+const MerchCard: React.FC<Props> = ({ item, onClick, onClick2 }) => {
   const { id, status, image, availability, name, tags, price } = item as IItem;
 
   const computedDecorStyle = (status: string) => {
@@ -53,7 +52,7 @@ const MerchCard: React.FC<Props> = ({ item, onClick, onClick2, onClick3 }) => {
         <span>{status}</span>
       </div>
 
-      <div className={s.Change} onClick={onClick2}>
+      <div className={s.Change} onClick={onClick}>
         <BaseIcon
           viewBox="0 0 22 22"
           icon={ALL_ICONS.EDIT}
@@ -61,7 +60,7 @@ const MerchCard: React.FC<Props> = ({ item, onClick, onClick2, onClick3 }) => {
         />
       </div>
 
-      <div className={s.Delete} onClick={onClick3}>
+      <div className={s.Delete} onClick={onClick2}>
         <BaseIcon
           viewBox="0 0 24 24"
           icon={ALL_ICONS.DELETE}

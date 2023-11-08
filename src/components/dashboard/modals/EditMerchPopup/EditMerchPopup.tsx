@@ -7,7 +7,7 @@ import {
   BaseTitleApp,
 } from '@base/index';
 import React, { useState, useEffect } from 'react';
-import s from './CreateMerchPopup.module.scss';
+import s from './EditMerchPopup.module.scss';
 import toast from 'react-hot-toast';
 import { UploadMerchPhoto } from 'components/dashboard/content';
 import { EditMerchPhotoPopup } from '..';
@@ -34,16 +34,25 @@ interface ISelectItem {
 }
 
 const initialState = {
-  name_of_product: '',
-  сategory: [],
-  color: [],
-  size: [],
-  product_description: '',
-  price: '',
-  status: [],
+  name_of_product: 'T-shirt BLVC Logo Oversize Fit ',
+  сategory: [{ value: 'men', label: 'Men' }],
+  color: [
+    { value: 'black', label: 'Black' },
+    { value: 'white', label: 'White' },
+  ],
+  size: [
+    { value: 'XS', label: 'XS' },
+    { value: 'S', label: 'S' },
+    { value: 'M', label: 'M' },
+    { value: 'L', label: 'L' },
+  ],
+  product_description:
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque at culpa repellat tenetur facilis sunt velit natus iste tempore doloremque.',
+  price: '75€',
+  status: [{ value: 'published', label: 'Published' }],
 };
 
-const CreateMerchPopup: React.FC<Props> = ({ opened, onClick, onClick2 }) => {
+const EditMerchPopup: React.FC<Props> = ({ opened, onClick, onClick2 }) => {
   const [value, setValue] = useState<IFormData>(initialState);
 
   // РЕДАКТИРОВАНИЕ ФОТОК
@@ -60,7 +69,7 @@ const CreateMerchPopup: React.FC<Props> = ({ opened, onClick, onClick2 }) => {
   return (
     <>
       <BasePopup opened={opened} onClick={onClick2} className={s.Popup}>
-        <BaseTitleApp className={s.Title}>Create product</BaseTitleApp>
+        <BaseTitleApp className={s.Title}>Edit product</BaseTitleApp>
 
         <form className={s.Form}>
           <ul className={s.Form_Content}>
@@ -259,4 +268,4 @@ const CreateMerchPopup: React.FC<Props> = ({ opened, onClick, onClick2 }) => {
   );
 };
 
-export default CreateMerchPopup;
+export default EditMerchPopup;

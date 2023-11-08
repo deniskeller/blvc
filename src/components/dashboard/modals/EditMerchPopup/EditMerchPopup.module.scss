@@ -1,0 +1,72 @@
+.Popup {
+  max-width: em(780px);
+  @include iftablet-mini {
+    max-width: em(600px);
+  }
+
+  @include ifmobile {
+    max-width: em(320px);
+  }
+}
+
+.Title {
+  margin-bottom: em(31px);
+}
+
+.Form {
+  &_Content {
+    margin-bottom: em(32px);
+
+    li:not(:last-child) {
+      margin-bottom: em(32px);
+      @include ifmobile {
+        margin-bottom: em(16px);
+      }
+    }
+    li {
+      .Row1 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0 em(20px);
+        @include ifmobile {
+          grid-template-columns: 1fr;
+          gap: em(16px) 0;
+        }
+        li {
+          margin-bottom: 0;
+        }
+      }
+      .Row2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 em(20px);
+        li {
+          margin-bottom: 0;
+        }
+
+        @include ifmobile {
+          grid-template-columns: 1fr;
+          gap: em(16px) 0;
+        }
+      }
+    }
+  }
+
+  &_Buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 em(16px);
+    max-width: em(470px);
+    .Button {
+      width: 100%;
+    }
+  }
+}
+@include iflaptop {
+}
+@include iftablet {
+}
+@include iftablet-mini {
+}
+@include ifmobile {
+}

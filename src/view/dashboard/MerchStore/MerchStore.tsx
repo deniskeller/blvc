@@ -9,6 +9,7 @@ import {
 import {
   ConfirmPopup,
   CreateMerchPopup,
+  EditMerchPopup,
   MerchStoreParametersPopup,
 } from 'components/dashboard/modals';
 import { BaseButtonApp, BaseSelectApp } from '@base/index';
@@ -74,6 +75,8 @@ const initialFiltersState = {
 const MerchStore: React.FC = () => {
   //ДОБАВЛЕНИЕ ТОВАРА
   const [openedCreateMerchPopup, setOpenedCreateMerchPopup] = useState(false);
+  //РЕДАКТИРОВАНИЕ ТОВАРА
+  const [openedEditMerchPopup, setOpenedEditMerchPopup] = useState(false);
   // ПОДТВЕРЖДЕНИЕ ЗАКРЫТИЕ МОДАЛКИ ДОБАВЛЕНИЯ ТОВАРА
   const [openedConfirmLeavePagePopup, setOpenedConfirmLeavePagePopup] =
     useState(false);
@@ -98,8 +101,15 @@ const MerchStore: React.FC = () => {
 
   // обработка покидания страницы
   const confirmLeavePageHandler = () => {
-    setOpenedConfirmLeavePagePopup(false);
-    setOpenedCreateMerchPopup(false);
+    if (openedCreateMerchPopup) {
+      setOpenedConfirmLeavePagePopup(false);
+      setOpenedCreateMerchPopup(false);
+    }
+
+    if (openedEditMerchPopup) {
+      setOpenedConfirmLeavePagePopup(false);
+      setOpenedEditMerchPopup(false);
+    }
   };
 
   //табы
@@ -268,9 +278,8 @@ const MerchStore: React.FC = () => {
                   <MerchCard
                     item={item}
                     key={index}
-                    onClick={() => alert('go to Details')}
-                    onClick2={() => alert('Change?')}
-                    onClick3={() => setOpenedConfirmDeleteItemPopup(true)}
+                    onClick={() => setOpenedEditMerchPopup(true)}
+                    onClick2={() => setOpenedConfirmDeleteItemPopup(true)}
                   />
                 );
               })}
@@ -284,6 +293,13 @@ const MerchStore: React.FC = () => {
       <CreateMerchPopup
         opened={openedCreateMerchPopup}
         onClick={setOpenedCreateMerchPopup}
+        onClick2={() => setOpenedConfirmLeavePagePopup(true)}
+      />
+
+      {/* РЕДАКТИРОВАНИЕ ТОВАРА */}
+      <EditMerchPopup
+        opened={openedEditMerchPopup}
+        onClick={setOpenedEditMerchPopup}
         onClick2={() => setOpenedConfirmLeavePagePopup(true)}
       />
 
