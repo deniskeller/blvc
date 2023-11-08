@@ -193,7 +193,7 @@
         overflow: hidden;
         color: $base900light;
         text-overflow: ellipsis;
-        // font-family: Granville;
+        font-family: $Granville;
         font-size: em(16px);
 
         font-style: normal;
@@ -308,7 +308,7 @@
         overflow: hidden;
         color: $base600light;
         text-overflow: ellipsis;
-        // font-family: Granville;
+        font-family: $Granville;
         font-size: em(13px);
         font-style: normal;
         font-weight: 400;
@@ -321,30 +321,39 @@
       span {
         display: flex;
         color: $base900light;
-        // font-family: Granville;
-        font-size: em(19px);
+        font-family: $Granville;
+        font-size: em(16px);
         font-style: normal;
         font-weight: 400;
         line-height: 120%;
+        @include ifdesktop {
+          font-size: em(19px);
+        }
       }
     }
 
     &_Details {
       position: absolute;
-      right: em(25px);
+      right: em(9px);
       bottom: em(25px);
       width: max-content;
       border-bottom: 1px solid $base600light;
       transform: translate(200%, 0);
       transition: all $speed ease;
+      @include ifdesktop {
+        right: em(25px);
+      }
       span {
         color: $red;
-        font-size: em(16px);
         font-style: normal;
+        font-size: em(14px);
         font-weight: 400;
         line-height: 130%; /* 20.8px */
         letter-spacing: 1.6px;
         text-transform: uppercase;
+        @include ifdesktop {
+          font-size: em(16px);
+        }
       }
     }
   }
