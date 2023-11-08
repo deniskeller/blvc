@@ -47,7 +47,7 @@ const initialState = {
     { value: 'L', label: 'L' },
   ],
   product_description:
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque at culpa repellat tenetur facilis sunt velit natus iste tempore doloremque.',
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque at culpa repellat tenetur facilis sunt velit natus iste tempore doloremque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque at culpa repellat tenetur facilis sunt velit natus iste tempore doloremque. Lorassssssssssssssssss',
   price: '75€',
   status: [{ value: 'published', label: 'Published' }],
 };

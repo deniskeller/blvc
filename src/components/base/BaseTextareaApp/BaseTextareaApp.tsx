@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import s from './BaseTextareaApp.module.scss';
 
 interface Props {
@@ -33,14 +33,24 @@ const BaseTextareaApp: React.FC<Props> = ({
   const onBlur = () => {
     if (refTextarea.current != null) {
       const scrollHeight = refTextarea.current.scrollHeight;
-      refTextarea.current.style.height = scrollHeight + 'px' || 32 + 'px';
+      refTextarea.current.style.height = scrollHeight + 'px';
     }
   };
 
   useEffect(() => {
-    if (refTextarea.current != null && value.length == 0) {
-      refTextarea.current.style.height = 32 + 'px';
+    if (refTextarea.current != null) {
+      refTextarea.current.style.height = 'inherit';
+      refTextarea.current.style.height =
+        refTextarea.current.scrollHeight + 'px';
     }
+
+    setTimeout(() => {
+      if (refTextarea.current != null && value.length > 1) {
+        refTextarea.current.style.height = 'initial';
+        refTextarea.current.style.height =
+          refTextarea.current.scrollHeight + 'px';
+      }
+    }, 10);
   }, [value]);
 
   return (
@@ -59,9 +69,6 @@ const BaseTextareaApp: React.FC<Props> = ({
         }
         onKeyDown={onKeyDown}
         onBlur={onBlur}
-        style={{
-          height: refTextarea.current?.scrollHeight + 'px',
-        }}
       />
 
       {label ? (

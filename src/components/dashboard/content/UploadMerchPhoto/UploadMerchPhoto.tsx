@@ -100,10 +100,6 @@ const UploadMerchPhoto: React.FC<Props> = ({
     });
   };
 
-  useEffect(() => {
-    console.log('value: ', value);
-  }, [value]);
-
   return (
     <div className={`${s.UploadPhoto} ${className}`}>
       <div className={s.UploadPhoto_Label}>
