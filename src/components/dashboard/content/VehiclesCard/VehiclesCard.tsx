@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import s from './VehiclesCard.module.scss';
 import { ALL_ICONS } from '@constants/icons';
 import { BaseIcon } from '@base/index';
+import Skeleton from 'react-loading-skeleton';
 
 interface IItem {
   id: number;
@@ -40,6 +41,11 @@ const VehiclesCard: React.FC<Props> = ({
     monthly_payment,
   } = item as IItem;
 
+  const [skeleton, setSkeleton] = useState(false);
+  setTimeout(() => {
+    setSkeleton(true);
+  }, 2000);
+
   const computedDecorStyle = (status: string) => {
     if (status == 'hidden') return 'Hidden';
     if (status == 'published') return 'Published';
@@ -49,6 +55,10 @@ const VehiclesCard: React.FC<Props> = ({
     if (status == 'hidden') return '#5A5A5A';
     if (status == 'published') return '#1A1A1A';
   };
+
+  if (!skeleton) {
+    return <Skeleton className={s.SkeletonCard} />;
+  }
 
   return (
     <div className={s.VehiclesCard}>

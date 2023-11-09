@@ -232,6 +232,13 @@
   }
 }
 
+.SkeletonCard {
+  min-height: em(390px);
+  @include ifmobile {
+    min-height: em(437px);
+  }
+}
+
 @include iflaptop {
 }
 @include iftablet {

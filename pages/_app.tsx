@@ -4,6 +4,7 @@ import Head from 'next/head';
 import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import '../styles/globals.scss';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = React.useState(false);

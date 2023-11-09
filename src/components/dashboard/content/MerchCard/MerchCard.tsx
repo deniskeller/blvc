@@ -1,8 +1,9 @@
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './MerchCard.module.scss';
 import { ALL_ICONS } from '@constants/icons';
 import { BaseIcon } from '@base/index';
+import Skeleton from 'react-loading-skeleton';
 
 interface IItem {
   id: number;
@@ -24,6 +25,11 @@ interface Props {
 const MerchCard: React.FC<Props> = ({ item, onClick, onClick2 }) => {
   const { id, status, image, availability, name, tags, price } = item as IItem;
 
+  const [skeleton, setSkeleton] = useState(false);
+  setTimeout(() => {
+    setSkeleton(true);
+  }, 2000);
+
   const computedDecorStyle = (status: string) => {
     if (status == 'hidden') return 'Hidden';
     if (status == 'published') return 'Published';
@@ -33,6 +39,10 @@ const MerchCard: React.FC<Props> = ({ item, onClick, onClick2 }) => {
     if (status == 'hidden') return '#5A5A5A';
     if (status == 'published') return '#1A1A1A';
   };
+
+  if (!skeleton) {
+    return <Skeleton className={s.SkeletonCard} />;
+  }
 
   return (
     <div className={s.MerchCard}>
